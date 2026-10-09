@@ -24,9 +24,22 @@ docker run -d --name plumb -p 8000:8000 -v plumb-data:/data \
 
 The database lives in the `/data` volume, so it survives restarts.
 
-## Render, Railway, Fly
+## Free hosting for a demo (Render)
 
-`render.yaml` is a ready blueprint (Docker, 1 GB disk, health check on `/api/health`). Set `PLUMB_PASSWORD` in the dashboard. On any host, mount a persistent disk at `/data`, otherwise the database resets on each deploy.
+`render.yaml` is a blueprint for Render's free web service. No card is needed, and it runs the app as plain Python, so there is no Docker build.
+
+1. Sign in at render.com with GitHub and allow it to read the `Plumb-Floor-Pricing` repo.
+2. New, then Blueprint, pick the repo, and apply. Wait for the first deploy to go live (a few minutes).
+3. Open the `onrender.com` URL it gives you.
+
+What the free tier means in practice (Render's own limits, [render.com/docs/free](https://render.com/docs/free)):
+- It spins down after 15 minutes without traffic, and the next visit takes about a minute to wake it. Open the link a couple of minutes before anyone reviews it.
+- The filesystem is ephemeral: every restart or spin-down wipes the database. The synthetic demo data reloads automatically, but decisions and uploads are lost.
+- 750 free instance hours a month.
+
+Because the data resets and is open to anyone with the link by default, use this for the synthetic demo only. Never upload real data to it. To require a login, add `PLUMB_USER` and `PLUMB_PASSWORD` in the Render dashboard.
+
+For a deployment that keeps its data, use a paid Render plan with a disk, a small VPS with the Docker command above, or any host that gives you a persistent volume.
 
 ## Put it behind HTTPS
 

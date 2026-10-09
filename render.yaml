@@ -1,19 +1,19 @@
+# Free demo deployment on Render (no card needed). Data is ephemeral: the demo dataset reloads on every start.
 services:
   - type: web
     name: plumb
-    runtime: docker
-    plan: starter
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-app.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
-    disk:
-      name: plumb-data
-      mountPath: /data
-      sizeGB: 1
     envVars:
-      - key: PLUMB_USER
-        value: ops
-      - key: PLUMB_PASSWORD
-        sync: false
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: PLUMB_DB
+        value: /tmp/plumb.db
       - key: PLUMB_SEED_DEMO
         value: "1"
       - key: PLUMB_AGENT
         value: heuristic
+      # Optional: add PLUMB_USER / PLUMB_PASSWORD in the Render dashboard to require a login.
