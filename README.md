@@ -24,7 +24,8 @@ Full walkthrough (about 2 minutes, no audio): [`docs/media/plumb_walkthrough.mp4
 | Product demo | https://plumb-floor-pricing-demo.vercel.app (tabs: Overview, Floor desk, Results, Pilot, Case study, Architecture) |
 | Web app | `uvicorn app.main:app` (see [Run the web app](#run-the-web-app)), deploy notes in [`DEPLOY.md`](DEPLOY.md) |
 | Offline copy | [`demo/plumb_product.html`](demo/plumb_product.html), open it in any browser |
-| Case study | https://plumb-floor-pricing-demo.vercel.app/#case, [`PDF`](docs/PLUMB_Case_Study.pdf), or [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) |
+| Case study | https://plumb-floor-pricing-demo.vercel.app/#case, [PDF on Drive](https://drive.google.com/file/d/11ZVHD2gojPZQDyprYKLUf3ImkbY8oLHE/view?usp=sharing) ([in repo](docs/PLUMB_Case_Study.pdf)), or [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) |
+| Demo video | [Product walkthrough on Drive](https://drive.google.com/file/d/1JGBBPzHxYWsa7dIzhTl8PS7_pQoKQXAo/view?usp=sharing) |
 | Pitch deck | [`docs/pitch/PLUMB_Pitch_Deck.pdf`](docs/pitch/PLUMB_Pitch_Deck.pdf) ([.pptx](docs/pitch/PLUMB_Pitch_Deck.pptx)) |
 | Pipeline JSON | [`workflow.json`](workflow.json) |
 | Demo script | [`DEMO_VIDEO_SCRIPT.md`](DEMO_VIDEO_SCRIPT.md) |
