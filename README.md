@@ -38,6 +38,8 @@ It starts with the synthetic dataset loaded. Upload real data on the Data tab (t
 
 ![Web app](docs/screens/app-floor-desk.png)
 
+![Decisions](docs/screens/app-decisions.png)
+
 PLUMB suggests floors; it does not write to an ad server. Basic auth is a shared password, so put it behind HTTPS and your VPN or SSO. 11 tests cover the app end to end (`pytest -q`).
 
 ## What it does
