@@ -2,7 +2,7 @@
 
 **A floor-pricing partner for ad ops: a statistics layer that proposes, an agent that can refuse, and a human who decides.**
 
-By J John Britto, Head of Product & Technology. Solo submission, 100xEngineers Cohort 7 capstone.
+By J John Britto, Head of Product. Solo submission, 100xEngineers Cohort 7 capstone.
 
 *All numbers in this study come from a synthetic sample dataset. My real data is official and confidential, so none of it is used here. The sample world is built so the best floor is known for every placement and day, which is what lets decisions be scored properly.*
 
