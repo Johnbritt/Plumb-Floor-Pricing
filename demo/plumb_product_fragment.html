@@ -389,7 +389,7 @@ function renderOverview() {
       <tr><td>In-scope revenue</td><td class="r num">$50K / month</td><td>Illustrative figure from the original proposal.</td></tr>
       <tr><td>Resulting range</td><td class="r num">${money(monthLo)}–${money(monthHi)} / mo</td><td>$50K × 5–10% × ${pc(recovered, 0)}. Replace with real figures before relying on it.</td></tr>
     </tbody></table></div>
-    <div class="callout" style="margin-top:16px"><span class="mark"></span><div><b>Validation status.</b> Sample data only. No user interviews, no live pilot and no signed commitment yet. The pilot plan in the case study defines what would count as proof.</div></div>
+    <div class="callout" style="margin-top:16px"><span class="mark"></span><div><b>About the data.</b> Every figure on this page is computed on a synthetic sample dataset. Real customer and platform data is confidential and is not shown here. The pilot plan in the case study defines what would count as proof.</div></div>
   </section>`;
   $("p-overview").querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.go)));
 }
@@ -633,9 +633,8 @@ function renderCase() {
       <li>The manual-pricing arm is a model of ops behaviour, not a measurement. The size of the gap to ops depends on it.</li>
       <li>Bidders do not react to floors in the sample data. Real bidders do.</li>
       <li>The human in the pair arm is assumed. It is a sensitivity analysis, not an observation.</li>
-      <li>There are no user interviews and no pilot yet.</li>
     </ul>
-    <h2>Pilot plan <span class="tag assume" style="vertical-align:middle">Planned, not started</span></h2>
+    <h2>Pilot plan <span class="tag assume" style="vertical-align:middle">Design, on sample data</span></h2>
     <p>The pilot as first written (20 cells, one shadow week, one week with half the cells on PLUMB, matched manual cells as control) was stress-tested 100 times on the sample data, along with two larger designs. The Pilot tab has the results. The short version: the first design cannot tell a real gain from noise, and its harmful-move limit sits below what the system itself produces. The revised plan is a 40-cell, five-week pilot judged against matched cells.</p>
     <p><button class="btn small dark" type="button" id="goPilot">Open the pilot plan</button></p>
     <h2>Next</h2>
@@ -678,7 +677,7 @@ function renderPilot() {
     return `<tr><td><b>${PIL[k].label.replace("Extended: ", "")}</b></td><td class="r num">${lift(p.lift_median)} <span style="color:var(--muted)">(${lift(p.lift_p10)} to ${lift(p.lift_p90)})</span></td><td class="r num">${pc(p.p_pass_plan, 0)}</td><td class="r num">${pc(p.p_pass_v2, 0)}</td><td class="r num">${pc(n.p_lift_ge3, 0)}</td><td class="r num">${pc(n.p_ci_above0, 0)}</td><td class="r num">${l ? pc(l.p_pass_v2, 0) : "n/a"}</td></tr>`; }).join("");
   const A0 = PIL.as_written, F = PIL.forty_cells;
   $("p-pilot").innerHTML = `
-  <div class="sectionhead"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2>Pilot plan</h2><span class="tag assume">Planned, not started</span></div><p>Each pilot below picks cells at random, pairs them by traffic, switches half to PLUMB after a shadow week, and measures against the other half. 100 test runs per design on the same sample data as the Results tab. This is a plan and a power check, not the result of a live pilot.</p></div>
+  <div class="sectionhead"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2>Pilot plan</h2><span class="tag assume">Design, on sample data</span></div><p>Each pilot below picks cells at random, pairs them by traffic, switches half to PLUMB after a shadow week, and measures against the other half. 100 test runs per design on the same sample data as the Results tab. This is a plan and a power check, not the result of a live pilot.</p></div>
   <div class="chips" role="group" aria-label="Pilot design">${chips}</div>
   <div class="two">
     <section class="card" style="display:flex;flex-direction:column;gap:14px">

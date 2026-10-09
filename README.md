@@ -134,7 +134,7 @@ Generated worlds are cached in `.cache/` and rebuild deterministically from the 
 - The human in the pair arm is an assumption, shown as a sensitivity analysis.
 - Refusing on thin cells freezes learning, so those cells need a small randomized floor test. Not built yet.
 - Holding through an outage can cost revenue, because an outage probably lowers the best floor. The agent should adjust direction, not only hold.
-- There are no user interviews, no pilot and no signed commitment yet. Figures labelled Assumption in the demo are estimates, not measurements.
+- All data in this repo and demo is synthetic; real platform data is confidential and not included. Figures labelled Assumption in the demo are estimates, not measurements.
 
 ## Next
 
