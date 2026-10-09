@@ -3,8 +3,8 @@
   "data": "synthetic only (src/sim.py); no real ad-stack data",
   "steps": [
     {
-      "id": "simulate",
-      "what": "synthetic world: auction with floor, events, free-text ops notes",
+      "id": "generate_sample_data",
+      "what": "sample-data generator: auction with floor, events, free-text ops notes",
       "module": "src/sim.py"
     },
     {
@@ -41,8 +41,8 @@
       "module": "src/evaluate.py"
     },
     {
-      "id": "pilot_simulation",
-      "what": "simulates the pilot plan: matched pairs, shadow week, DiD lift, harm vs control, override rate, A/A false-positive rate",
+      "id": "pilot_design_check",
+      "what": "checks the pilot plan on sample data: matched pairs, shadow week, DiD lift, harm vs control, override rate, A/A false-positive rate",
       "module": "src/pilot_sim.py"
     }
   ],
