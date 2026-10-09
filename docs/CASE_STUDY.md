@@ -48,7 +48,7 @@ Thresholds were tuned on 10 development cells of one sample world, then frozen a
 - **Refusal buys safety, not dollars.** Harmful moves fall from 6.2% to about 3%, at a cost of 2 to 3 points of revenue.
 - **The agent did not beat a plain rule.** The offline stand-in is itself a rule set, so this question stays open until the Claude backend is run.
 - **The pair did not beat the model alone.** Refusals hand decisions back to a human whose manual process is the weakest arm, and wrong overrides cost more than catches save.
-- **The size of the gap to manual pricing depends on my model of manual pricing.** Quote the direction, not the size, until real ops colleagues run that arm.
+- **The size of the gap to manual pricing depends on my model of manual pricing.** Read the direction, not the size, until real ops colleagues run that arm.
 - **No bidder reaction is modelled.** Real bidders adapt to floors.
 - **Two sample worlds, one seed each.** The intervals do not capture world-to-world variation.
 
