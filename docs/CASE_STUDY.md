@@ -22,7 +22,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 | E. Stats + agent refusal (model alone) | 95.0% (91.4% to 97.3%) | 20.3% | 2.9% |
 | F. Ops + agent (the pair) | 95.3% (92.6% to 96.9%) | 19.5% | 6.1% |
 
-![results](fig1_results.png)
+![results](../results/fig1_results.png)
 
 ## Scorecard against the submission's claims
 | Claim in the doc | Verdict in the simulator | Evidence |
@@ -41,7 +41,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 3. **Refusing on thin cells freezes learning.** On the thinnest cells, refusal arms capture 77.1% vs 80.8% for ops and 98.2% for the unguarded layer: a refused cell stays stuck at its starting floor. Next iteration: pair "insufficient signal" with a small randomized floor test so the cell gathers data, or pool thin cells with similar ones.
 4. **Notes-driven holds hurt during outages.** Agent minus rule on event days: $-619. Likely cause: an outage removes bidders, which lowers the best floor, so freezing the floor is the wrong response. I have not isolated this, but it points to an agent that adjusts direction instead of just holding.
 
-![sensitivity](fig2_sensitivity.png)
+![sensitivity](../results/fig2_sensitivity.png)
 
 Left: if a harmful move carries a penalty beyond its same-day revenue loss (bidders pulling back, persistence), the guarded arms close the gap. At 20x the scaled-step arm overtakes the full-step arm. Right: the pair never reliably beats the model alone. Two things drive this: refusals hand decisions back to a human whose manual process is the weakest arm, and wrong overrides cost more than catches save.
 
