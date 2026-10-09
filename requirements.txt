@@ -2,5 +2,9 @@ numpy
 pandas
 scipy
 matplotlib
+fastapi
+uvicorn[standard]
+python-multipart
 pytest
-anthropic  # only for the optional Claude agent backend
+httpx
+anthropic  # optional: only for PLUMB_AGENT=claude

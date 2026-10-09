@@ -44,3 +44,10 @@ Second-price auction with a reserve (the floor), lognormal bidders with particip
 
 ## Evaluation (`evaluate.py`)
 Closed loop (each arm lives with its own floor history), common random numbers across arms, 60-day burn-in under the manual heuristic, decisions for days 60 to 179, cluster bootstrap over cells. Gates are tuned on world 1 development cells, frozen, then scored on a fresh world 2.
+
+## Web app (`app/`)
+- `store.py`: SQLite tables for daily rows, notes, decisions (with a snapshot of what PLUMB showed) and cached agent plans.
+- `ingest.py`: CSV validation and upsert. Accepts revenue per 1k requests or revenue in dollars.
+- `service.py`: wraps `engine.decide_system` for live data. Recommendations are computed on demand from the stored history, so uploading a new day moves the desk forward with no jobs to run. The agent is called only for cells with a note in the last three days, and plans are cached.
+- `main.py`: JSON API plus the static UI, optional HTTP Basic auth, CSV exports (floor sheet, decisions).
+- Rules enforced server side: a refused cell cannot be accepted, and setting your own floor needs a written reason.

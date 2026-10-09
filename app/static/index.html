@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLUMB</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 26'%3E%3Cpath d='M11 10 L19 19 L11 26 L3 19 Z' fill='%23ff5b14'/%3E%3Crect x='10' width='2' height='10' fill='%230b0b0c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topin">
+    <div class="logo"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="0" x2="11" y2="10" stroke="#fff" stroke-width="2"/><path d="M11 10 L19 19 L11 26 L3 19 Z" fill="#ff5b14"/></svg>PLUMB</div>
+    <nav class="navtabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-desk" type="button" aria-selected="true">Floor desk</button>
+      <button role="tab" id="tab-log" type="button" aria-selected="false">Decisions</button>
+      <button role="tab" id="tab-data" type="button" aria-selected="false">Data</button>
+      <button role="tab" id="tab-method" type="button" aria-selected="false">Method</button>
+    </nav>
+    <span class="who" id="who"></span>
+  </div>
+</header>
+<main class="page" id="p-desk"></main>
+<main class="page" id="p-log" hidden></main>
+<main class="page" id="p-data" hidden></main>
+<main class="page" id="p-method" hidden></main>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

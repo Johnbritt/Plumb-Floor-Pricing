@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: plumb
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    disk:
+      name: plumb-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: PLUMB_USER
+        value: ops
+      - key: PLUMB_PASSWORD
+        sync: false
+      - key: PLUMB_SEED_DEMO
+        value: "1"
+      - key: PLUMB_AGENT
+        value: heuristic

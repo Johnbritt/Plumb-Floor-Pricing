@@ -12,10 +12,33 @@ PLUMB is a floor-pricing partner for ad operations: a statistics layer proposes 
 | | |
 |---|---|
 | Product demo | https://claude.ai/artifact/MNNzpuFdRgiEo9JpKSQ2uE (tabs: Overview, Floor desk, Results, Pilot, Case study, Architecture) |
+| Web app | `uvicorn app.main:app` (see [Run the web app](#run-the-web-app)), deploy notes in [`DEPLOY.md`](DEPLOY.md) |
 | Offline copy | [`demo/plumb_product.html`](demo/plumb_product.html), open it in any browser |
 | Case study | the demo's Case study tab, or [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) |
 | Pipeline JSON | [`workflow.json`](workflow.json) |
 | Demo script | [`DEMO_VIDEO_SCRIPT.md`](DEMO_VIDEO_SCRIPT.md) |
+
+## Run the web app
+
+A working product, not only a demo: a FastAPI backend with SQLite and a browser UI. Load your own daily data and ops notes, get a call per cell, accept, hold or override with a reason, and export the floor sheet for your ad server.
+
+```bash
+pip install -r requirements-app.txt
+PLUMB_PASSWORD='choose-one' uvicorn app.main:app --port 8000     # http://localhost:8000, user: ops
+```
+
+It starts with the synthetic dataset loaded. Upload real data on the Data tab (templates provided), or set `PLUMB_SEED_DEMO=0` to start empty. Docker, Render and HTTPS notes are in [`DEPLOY.md`](DEPLOY.md); settings are in [`.env.example`](.env.example). API docs are served at `/docs`.
+
+| Tab | Does |
+|---|---|
+| Floor desk | Queue of cells with PLUMB's call, chart, the ops notes it used, accept / hold / set your own floor, accept all, export floor sheet |
+| Decisions | Audit trail with who, when and why; override rate; CSV export |
+| Data | Upload daily rows and notes, load or clear demo data |
+| Method | How a floor is set, the parameters in force, the caveats |
+
+![Web app](docs/screens/app-floor-desk.png)
+
+PLUMB suggests floors; it does not write to an ad server. Basic auth is a shared password, so put it behind HTTPS and your VPN or SSO. 11 tests cover the app end to end (`pytest -q`).
 
 ## What it does
 
@@ -57,6 +80,7 @@ Design iterations, including the hard-gate version that refused 82% of days and 
 |---|---|
 | Simulator and engine | Python, NumPy, pandas |
 | Agent layer | Keyword stand-in (default), Claude backend via the Anthropic SDK (optional) |
+| Web app | FastAPI, SQLite, vanilla JS UI, optional Docker |
 | Demo | One self-contained HTML page, no backend, data baked in |
 | Checks | pytest, GitHub Actions |
 
@@ -65,6 +89,7 @@ Details in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 ## Project structure
 
 ```
+app/                FastAPI backend (main, service, store, ingest, seed) and static UI
 src/
   sim.py            world generator: second-price auction with a floor, events, free-text notes
   engine.py         stats fit, gates, confidence step, simulated ops habit, closed-loop run
@@ -79,7 +104,8 @@ data/               synthetic datasets (daily cells, ground truth, ops notes)
 results/            metrics, tuning grids, decisions, figures, pilot results
 demo/               product template, baked page, demo data
 docs/               case study and screenshots
-tests/              pytest checks
+tests/              pytest checks (engine, agent, simulator, web app)
+Dockerfile, render.yaml, DEPLOY.md, .env.example
 workflow.json       pipeline description
 ```
 
