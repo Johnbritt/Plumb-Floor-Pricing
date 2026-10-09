@@ -7,6 +7,16 @@ PLUMB is a floor-pricing partner for ad operations: a statistics layer proposes 
 
 100xEngineers Cohort 7 capstone, solo submission.
 
+## See it in action
+
+Full walkthrough (about 2 minutes, no audio): [`docs/media/plumb_walkthrough.mp4`](docs/media/plumb_walkthrough.mp4)
+
+| Floor desk (product demo) | Web app |
+|---|---|
+| ![Floor desk](docs/media/plumb-demo-floor-desk.gif) | ![Web app](docs/media/plumb-app.gif) |
+
+![Results and pilot plan](docs/media/plumb-demo-results-pilot.gif)
+
 ## Live
 
 | | |
