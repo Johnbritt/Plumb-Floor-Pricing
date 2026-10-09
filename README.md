@@ -151,6 +151,6 @@ Generated worlds are cached in `.cache/` and rebuild deterministically from the 
 
 ## Next
 
-1. Run the Claude-backed agent on a sample and compare against the rule arm.
+1. Run the Claude-backed agent on a sample and compare against the rule arm. The plan is to run this on a real ad stack with real numbers, calling a custom model through an API.
 2. Add the randomized floor test for thin cells and re-score.
 3. Run the revised pilot and replace the modelled ops habit with real decisions from a shadow week.

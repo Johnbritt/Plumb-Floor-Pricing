@@ -71,7 +71,7 @@ Before proposing a live pilot I tested the pilot design itself on sample data: m
 
 ## Limits and next steps
 
-1. Run the Claude backend on a sample of cells to settle the agent-versus-rule question.
+1. Run the Claude backend on a sample of cells to settle the agent-versus-rule question. The plan is to run this on a real ad stack with real numbers, calling a custom model through an API.
 2. Add the thin-cell randomized floor test and an outage-aware direction change.
 3. Run a matched-cell pilot with real ops colleagues using the revised criteria.
 4. Replace the modelled manual arm with measured manual decisions.
