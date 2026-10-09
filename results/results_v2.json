@@ -1,0 +1,939 @@
+{
+ "world2_confirmation": {
+  "prm": {
+   "v": 2,
+   "zfull": 2.0,
+   "rz": 2.5,
+   "thinV": 1500.0,
+   "nc_scale": 0.5,
+   "zthr": 0
+  },
+  "hp": {
+   "blind": 0.35,
+   "catch": 0.6,
+   "catch_noted": 0.9,
+   "false_override": 0.1,
+   "fallback_hold": 0.5
+  },
+  "n_placements": 40,
+  "n_decisions": 4800,
+  "n_anomaly_decisions": 462,
+  "tiers": {
+   "0": 28,
+   "2": 6,
+   "1": 6
+  },
+  "arms": {
+   "ops": {
+    "label": "A. Ops alone (today)",
+    "capture": 0.7873961826037706,
+    "capture_ci": [
+     0.7402276375246412,
+     0.8404274695711524
+    ],
+    "cell_mean_capture": 0.8169317673818675,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.163125,
+    "capture_thick": 0.7834910431365701,
+    "capture_anomaly": 0.8136640847316631,
+    "capture_mid": 0.8392439061385092,
+    "capture_thin": 0.808038021910497,
+    "cell_capture_thin": 0.8041404520542995,
+    "harmful_move_rate_thin": 0.175,
+    "regret_usd": 98213.55735019215
+   },
+   "stats": {
+    "label": "B. Stats layer, no refusal, full step",
+    "capture": 0.982542150021502,
+    "capture_ci": [
+     0.9760554631286498,
+     0.987541962686843
+    ],
+    "cell_mean_capture": 0.9793537223902309,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.06166666666666667,
+    "capture_thick": 0.9822718401652556,
+    "capture_anomaly": 0.9847246114537129,
+    "capture_mid": 0.9787770159708029,
+    "capture_thin": 0.9815142417179201,
+    "cell_capture_thin": 0.9828690421623575,
+    "harmful_move_rate_thin": 0.044444444444444446,
+    "regret_usd": 8064.754297796884
+   },
+   "shrink": {
+    "label": "C. Stats layer, confidence-scaled step",
+    "capture": 0.9606070861698202,
+    "capture_ci": [
+     0.9337379550209489,
+     0.9787873672469449
+    ],
+    "cell_mean_capture": 0.9627111731882276,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.026458333333333334,
+    "capture_thick": 0.960831392392413,
+    "capture_anomaly": 0.9588946098146931,
+    "capture_mid": 0.9600084492135225,
+    "capture_thin": 0.969155730511737,
+    "cell_capture_thin": 0.9661930128931896,
+    "harmful_move_rate_thin": 0.016666666666666666,
+    "regret_usd": 18197.783318448324
+   },
+   "rule": {
+    "label": "D. Stats + rule refusal (no notes)",
+    "capture": 0.950243962982596,
+    "capture_ci": [
+     0.9045859130818562,
+     0.976808036658662
+    ],
+    "cell_mean_capture": 0.9299055302583671,
+    "refuse_rate": 0.176875,
+    "harmful_move_rate": 0.030416666666666668,
+    "capture_thick": 0.9506693147687574,
+    "capture_anomaly": 0.9509286527891408,
+    "capture_mid": 0.9291168153421714,
+    "capture_thin": 0.7714736269104975,
+    "cell_capture_thin": 0.7921288889813355,
+    "harmful_move_rate_thin": 0.018055555555555554,
+    "regret_usd": 22985.087732548727
+   },
+   "agent": {
+    "label": "E. Stats + agent refusal (model alone)",
+    "capture": 0.9497211273065949,
+    "capture_ci": [
+     0.9135923802322075,
+     0.973279002193227
+    ],
+    "cell_mean_capture": 0.9317343470785472,
+    "refuse_rate": 0.20291666666666666,
+    "harmful_move_rate": 0.029375,
+    "capture_thick": 0.9513863646797832,
+    "capture_anomaly": 0.9395856368601914,
+    "capture_mid": 0.9634676260597274,
+    "capture_thin": 0.7714736269104975,
+    "cell_capture_thin": 0.7921288889813355,
+    "harmful_move_rate_thin": 0.018055555555555554,
+    "regret_usd": 23226.61468290427
+   },
+   "pair": {
+    "label": "F. Ops + agent (the pair)",
+    "capture": 0.9525725781933957,
+    "capture_ci": [
+     0.9264414972756343,
+     0.968528935131658
+    ],
+    "cell_mean_capture": 0.9297113484917869,
+    "refuse_rate": 0.19541666666666666,
+    "harmful_move_rate": 0.06104166666666667,
+    "capture_thick": 0.955869491418856,
+    "capture_anomaly": 0.9309041901939851,
+    "capture_mid": 0.942531685569433,
+    "capture_thin": 0.8069590322563199,
+    "cell_capture_thin": 0.799723504457715,
+    "harmful_move_rate_thin": 0.11388888888888889,
+    "regret_usd": 21909.37053069722
+   }
+  },
+  "diffs": {
+   "pair-ops": {
+    "point": 0.16517639558962505,
+    "ci": [
+     0.11499915454306173,
+     0.2127245057468928
+    ],
+    "p_gt0": 1.0
+   },
+   "pair-agent": {
+    "point": 0.0028514508868008326,
+    "ci": [
+     -0.007662959672513581,
+     0.015071379783326951
+    ],
+    "p_gt0": 0.682
+   },
+   "agent-ops": {
+    "point": 0.16232494470282421,
+    "ci": [
+     0.10656851859252915,
+     0.21823382435675692
+    ],
+    "p_gt0": 1.0
+   },
+   "agent-rule": {
+    "point": -0.0005228356760010877,
+    "ci": [
+     -0.00837659536698429,
+     0.009612545817736842
+    ],
+    "p_gt0": 0.4215
+   },
+   "rule-shrink": {
+    "point": -0.01036312318722421,
+    "ci": [
+     -0.029347976978595244,
+     0.000448301045712647
+    ],
+    "p_gt0": 0.038
+   },
+   "shrink-stats": {
+    "point": -0.02193506385168187,
+    "ci": [
+     -0.04718821224779124,
+     -0.004900556511480273
+    ],
+    "p_gt0": 0.0
+   },
+   "agent-shrink": {
+    "point": -0.010885958863225298,
+    "ci": [
+     -0.02079791785311348,
+     -0.003454700452090246
+    ],
+    "p_gt0": 0.0005
+   },
+   "stats-ops": {
+    "point": 0.19514596741773138,
+    "ci": [
+     0.139539302585036,
+     0.24491195969621163
+    ],
+    "p_gt0": 1.0
+   },
+   "rule-ops": {
+    "point": 0.1628477803788253,
+    "ci": [
+     0.10301782591715582,
+     0.22194607206065275
+    ],
+    "p_gt0": 1.0
+   }
+  },
+  "refusal_rule": {
+   "refusals": 849,
+   "by_tier": {
+    "2": 720,
+    "0": 103,
+    "1": 26
+   },
+   "prevented_bad_moves": 36,
+   "usd_saved": 114.26898339832991,
+   "false_refusals": 637,
+   "usd_missed": 298.5023151181547,
+   "reasons": {
+    "insufficient_signal": 849
+   },
+   "net_usd": -184.23333171982478
+  },
+  "refusal_agent": {
+   "refusals": 974,
+   "by_tier": {
+    "2": 720,
+    "0": 208,
+    "1": 46
+   },
+   "prevented_bad_moves": 66,
+   "usd_saved": 166.56416796839105,
+   "false_refusals": 681,
+   "usd_missed": 927.6293438589638,
+   "reasons": {
+    "insufficient_signal": 935,
+    "hold": 39
+   },
+   "net_usd": -761.0651758905727
+  },
+  "pair_human": {
+   "system_recs": 3826,
+   "harmful_recs": 234,
+   "caught": 30,
+   "usd_from_catches": -21.860516007252798,
+   "wrong_overrides": 232,
+   "usd_lost_wrong_overrides": 1429.8794011191271,
+   "refusals_handed_back": 974,
+   "override_rate": 0.09147935180345008,
+   "actions": {
+    "accept": 2154,
+    "accept (unreviewed)": 1352,
+    "manual": 448,
+    "hold": 400,
+    "override (wrong)": 232,
+    "override (caught)": 124,
+    "hold (knew why)": 90
+   }
+  },
+  "harm_multiplier": {
+   "1": {
+    "ops": 0.7873961826037706,
+    "stats": 0.982542150021502,
+    "shrink": 0.9606070861698202,
+    "rule": 0.950243962982596,
+    "agent": 0.9497211273065949,
+    "pair": 0.9525725781933957
+   },
+   "2": {
+    "ops": 0.7661630245889125,
+    "stats": 0.9793461827834776,
+    "shrink": 0.9593559658029626,
+    "rule": 0.9485728950588445,
+    "agent": 0.948091896482404,
+    "pair": 0.9483779082394479
+   },
+   "3": {
+    "ops": 0.7449298665740544,
+    "stats": 0.9761502155454529,
+    "shrink": 0.9581048454361047,
+    "rule": 0.9469018271350927,
+    "agent": 0.9464626656582129,
+    "pair": 0.9441832382855001
+   },
+   "5": {
+    "ops": 0.702463550544338,
+    "stats": 0.9697582810694041,
+    "shrink": 0.9556026047023893,
+    "rule": 0.9435596912875897,
+    "agent": 0.9432042040098312,
+    "pair": 0.9357938983776045
+   },
+   "10": {
+    "ops": 0.5962977604700471,
+    "stats": 0.9537784448792813,
+    "shrink": 0.9493470028681007,
+    "rule": 0.9352043516688318,
+    "agent": 0.9350580498888764,
+    "pair": 0.9148205486078654
+   },
+   "20": {
+    "ops": 0.3839661803214655,
+    "stats": 0.921818772499036,
+    "shrink": 0.9368357991995232,
+    "rule": 0.9184936724313162,
+    "agent": 0.9187657416469674,
+    "pair": 0.8728738490683875
+   }
+  },
+  "agent_vs_rule_usd": {
+   "anomaly_days": {
+    "n": 462,
+    "usd": -619.1938522865125
+   },
+   "noted_days": {
+    "n": 240,
+    "usd": -357.1286082160583
+   },
+   "other_days": {
+    "n": 4560,
+    "usd": 115.60165786051675
+   }
+  },
+  "sensitivity": [
+   {
+    "blind": 0.0,
+    "catch": 0.2,
+    "fallback_hold": 0.0,
+    "capture": 0.9324599953182593,
+    "vs_agent": -0.017261131988335565,
+    "vs_ops": 0.14506381271448865
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.2,
+    "fallback_hold": 0.5,
+    "capture": 0.930784271119463,
+    "vs_agent": -0.018936856187131812,
+    "vs_ops": 0.1433880885156924
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.2,
+    "fallback_hold": 1.0,
+    "capture": 0.9386102604506864,
+    "vs_agent": -0.011110866855908452,
+    "vs_ops": 0.15121407784691576
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.6,
+    "fallback_hold": 0.0,
+    "capture": 0.9462595342444953,
+    "vs_agent": -0.0034615930620995883,
+    "vs_ops": 0.15886335164072463
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.6,
+    "fallback_hold": 0.5,
+    "capture": 0.9455744988047077,
+    "vs_agent": -0.004146628501887184,
+    "vs_ops": 0.15817831620093703
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.6,
+    "fallback_hold": 1.0,
+    "capture": 0.9400900658354712,
+    "vs_agent": -0.009631061471123692,
+    "vs_ops": 0.15269388323170052
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.9,
+    "fallback_hold": 0.0,
+    "capture": 0.9318508403603735,
+    "vs_agent": -0.017870286946221392,
+    "vs_ops": 0.14445465775660282
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.9,
+    "fallback_hold": 0.5,
+    "capture": 0.9334871981461007,
+    "vs_agent": -0.016233929160494154,
+    "vs_ops": 0.14609101554233006
+   },
+   {
+    "blind": 0.0,
+    "catch": 0.9,
+    "fallback_hold": 1.0,
+    "capture": 0.938981969177624,
+    "vs_agent": -0.01073915812897086,
+    "vs_ops": 0.15158578657385335
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.2,
+    "fallback_hold": 0.0,
+    "capture": 0.942394231360529,
+    "vs_agent": -0.007326895946065837,
+    "vs_ops": 0.15499804875675838
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.2,
+    "fallback_hold": 0.5,
+    "capture": 0.9389617193718999,
+    "vs_agent": -0.010759407934694987,
+    "vs_ops": 0.15156553676812923
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.2,
+    "fallback_hold": 1.0,
+    "capture": 0.9482554342144399,
+    "vs_agent": -0.0014656930921549405,
+    "vs_ops": 0.16085925161066927
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.6,
+    "fallback_hold": 0.0,
+    "capture": 0.950663585007506,
+    "vs_agent": 0.0009424577009111701,
+    "vs_ops": 0.16326740240373538
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.6,
+    "fallback_hold": 0.5,
+    "capture": 0.9525725781933957,
+    "vs_agent": 0.0028514508868008326,
+    "vs_ops": 0.16517639558962505
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.6,
+    "fallback_hold": 1.0,
+    "capture": 0.9518664272574514,
+    "vs_agent": 0.0021452999508565496,
+    "vs_ops": 0.16447024465368076
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.9,
+    "fallback_hold": 0.0,
+    "capture": 0.9410921243423105,
+    "vs_agent": -0.008629002964284371,
+    "vs_ops": 0.15369594173853984
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.9,
+    "fallback_hold": 0.5,
+    "capture": 0.9421239071869283,
+    "vs_agent": -0.00759722011966657,
+    "vs_ops": 0.15472772458315764
+   },
+   {
+    "blind": 0.35,
+    "catch": 0.9,
+    "fallback_hold": 1.0,
+    "capture": 0.9468966550171709,
+    "vs_agent": -0.0028244722894239516,
+    "vs_ops": 0.15950047241340026
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.2,
+    "fallback_hold": 0.0,
+    "capture": 0.9353864393429625,
+    "vs_agent": -0.014334687963632353,
+    "vs_ops": 0.14799025673919186
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.2,
+    "fallback_hold": 0.5,
+    "capture": 0.9391145603830895,
+    "vs_agent": -0.010606566923505367,
+    "vs_ops": 0.15171837777931885
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.2,
+    "fallback_hold": 1.0,
+    "capture": 0.9488629009146243,
+    "vs_agent": -0.0008582263919705291,
+    "vs_ops": 0.16146671831085369
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.6,
+    "fallback_hold": 0.0,
+    "capture": 0.947240537702242,
+    "vs_agent": -0.002480589604352823,
+    "vs_ops": 0.1598443550984714
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.6,
+    "fallback_hold": 0.5,
+    "capture": 0.9484074509276987,
+    "vs_agent": -0.0013136763788961225,
+    "vs_ops": 0.1610112683239281
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.6,
+    "fallback_hold": 1.0,
+    "capture": 0.9502808676053278,
+    "vs_agent": 0.000559740298732958,
+    "vs_ops": 0.16288468500155717
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.9,
+    "fallback_hold": 0.0,
+    "capture": 0.927688468245217,
+    "vs_agent": -0.022032659061377857,
+    "vs_ops": 0.14029228564144636
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.9,
+    "fallback_hold": 0.5,
+    "capture": 0.9281516816683507,
+    "vs_agent": -0.021569445638244145,
+    "vs_ops": 0.14075549906458007
+   },
+   {
+    "blind": 0.7,
+    "catch": 0.9,
+    "fallback_hold": 1.0,
+    "capture": 0.9440805642782467,
+    "vs_agent": -0.0056405630283481445,
+    "vs_ops": 0.15668438167447607
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.2,
+    "fallback_hold": 0.0,
+    "capture": 0.9351492313272819,
+    "vs_agent": -0.014571895979312965,
+    "vs_ops": 0.14775304872351125
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.2,
+    "fallback_hold": 0.5,
+    "capture": 0.9382785997952238,
+    "vs_agent": -0.011442527511371092,
+    "vs_ops": 0.15088241719145312
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.2,
+    "fallback_hold": 1.0,
+    "capture": 0.9497211273065949,
+    "vs_agent": 0.0,
+    "vs_ops": 0.16232494470282421
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.6,
+    "fallback_hold": 0.0,
+    "capture": 0.9308544464525256,
+    "vs_agent": -0.018866680854069284,
+    "vs_ops": 0.14345826384875493
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.6,
+    "fallback_hold": 0.5,
+    "capture": 0.9318615006497163,
+    "vs_agent": -0.01785962665687857,
+    "vs_ops": 0.14446531804594565
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.6,
+    "fallback_hold": 1.0,
+    "capture": 0.9497211273065949,
+    "vs_agent": 0.0,
+    "vs_ops": 0.16232494470282421
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.9,
+    "fallback_hold": 0.0,
+    "capture": 0.939351025273102,
+    "vs_agent": -0.010370102033492867,
+    "vs_ops": 0.15195484266933135
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.9,
+    "fallback_hold": 0.5,
+    "capture": 0.93968965871001,
+    "vs_agent": -0.01003146859658488,
+    "vs_ops": 0.15229347610623933
+   },
+   {
+    "blind": 1.0,
+    "catch": 0.9,
+    "fallback_hold": 1.0,
+    "capture": 0.9497211273065949,
+    "vs_agent": 0.0,
+    "vs_ops": 0.16232494470282421
+   }
+  ]
+ },
+ "world1_seen": {
+  "prm": {
+   "v": 2,
+   "zfull": 2.0,
+   "rz": 2.5,
+   "thinV": 1500.0,
+   "nc_scale": 0.5,
+   "zthr": 0
+  },
+  "hp": {
+   "blind": 0.35,
+   "catch": 0.6,
+   "catch_noted": 0.9,
+   "false_override": 0.1,
+   "fallback_hold": 0.5
+  },
+  "n_placements": 30,
+  "n_decisions": 3600,
+  "n_anomaly_decisions": 335,
+  "tiers": {
+   "0": 26,
+   "2": 4
+  },
+  "arms": {
+   "ops": {
+    "label": "A. Ops alone (today)",
+    "capture": 0.7895316722639112,
+    "capture_ci": [
+     0.7575104343308786,
+     0.8178901213046887
+    ],
+    "cell_mean_capture": 0.8031496210362523,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.1625,
+    "capture_thick": 0.7855954009389723,
+    "capture_anomaly": 0.821897275155674,
+    "capture_mid": null,
+    "capture_thin": 0.8865370975449433,
+    "cell_capture_thin": 0.8735004086858371,
+    "harmful_move_rate_thin": 0.15416666666666667,
+    "regret_usd": 88268.41490551777
+   },
+   "stats": {
+    "label": "B. Stats layer, no refusal, full step",
+    "capture": 0.9607828276899139,
+    "capture_ci": [
+     0.92177342963051,
+     0.9861816210225632
+    ],
+    "cell_mean_capture": 0.9726040350846378,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.06305555555555556,
+    "capture_thick": 0.9614861283321476,
+    "capture_anomaly": 0.9544378086273678,
+    "capture_mid": null,
+    "capture_thin": 0.9824969041376684,
+    "cell_capture_thin": 0.9820239181518825,
+    "harmful_move_rate_thin": 0.07291666666666667,
+    "regret_usd": 16447.309075541765
+   },
+   "shrink": {
+    "label": "C. Stats layer, confidence-scaled step",
+    "capture": 0.9297088419351798,
+    "capture_ci": [
+     0.8652491263903768,
+     0.9744120233319756
+    ],
+    "cell_mean_capture": 0.9501091922960924,
+    "refuse_rate": 0.0,
+    "harmful_move_rate": 0.026111111111111113,
+    "capture_thick": 0.9321435892064888,
+    "capture_anomaly": 0.9079694434228822,
+    "capture_mid": null,
+    "capture_thin": 0.9882580851645884,
+    "cell_capture_thin": 0.9879130172848473,
+    "harmful_move_rate_thin": 0.022916666666666665,
+    "regret_usd": 29479.44315894807
+   },
+   "rule": {
+    "label": "D. Stats + rule refusal (no notes)",
+    "capture": 0.9382146999047849,
+    "capture_ci": [
+     0.8936093215248958,
+     0.9734573825509761
+    ],
+    "cell_mean_capture": 0.9478534841104771,
+    "refuse_rate": 0.06472222222222222,
+    "harmful_move_rate": 0.025,
+    "capture_thick": 0.9406251068387743,
+    "capture_anomaly": 0.9170854050656466,
+    "capture_mid": null,
+    "capture_thin": 0.9694806272396689,
+    "cell_capture_thin": 0.9564899958045876,
+    "harmful_move_rate_thin": 0.014583333333333334,
+    "regret_usd": 25912.16722501302
+   },
+   "agent": {
+    "label": "E. Stats + agent refusal (model alone)",
+    "capture": 0.9289246779769693,
+    "capture_ci": [
+     0.8624704606466335,
+     0.9727630439815721
+    ],
+    "cell_mean_capture": 0.9419389428041618,
+    "refuse_rate": 0.09027777777777778,
+    "harmful_move_rate": 0.021111111111111112,
+    "capture_thick": 0.9309064255769313,
+    "capture_anomaly": 0.9114309347962418,
+    "capture_mid": null,
+    "capture_thin": 0.9628461851435932,
+    "cell_capture_thin": 0.9507496027482099,
+    "harmful_move_rate_thin": 0.01875,
+    "regret_usd": 29808.31406490247
+   },
+   "pair": {
+    "label": "F. Ops + agent (the pair)",
+    "capture": 0.9310772232476866,
+    "capture_ci": [
+     0.883469465952419,
+     0.9679226416485542
+    ],
+    "cell_mean_capture": 0.9405148624738425,
+    "refuse_rate": 0.07916666666666666,
+    "harmful_move_rate": 0.05,
+    "capture_thick": 0.9327056997667792,
+    "capture_anomaly": 0.9167123666259308,
+    "capture_mid": null,
+    "capture_thin": 0.9585480891670858,
+    "cell_capture_thin": 0.944033911911153,
+    "harmful_move_rate_thin": 0.07291666666666667,
+    "regret_usd": 28905.557051045093
+   }
+  },
+  "diffs": {
+   "pair-ops": {
+    "point": 0.14154555098377541,
+    "ci": [
+     0.09982470615303711,
+     0.18187394694952458
+    ],
+    "p_gt0": 1.0
+   },
+   "pair-agent": {
+    "point": 0.0021525452707172876,
+    "ci": [
+     -0.012723435455336201,
+     0.021333945667333123
+    ],
+    "p_gt0": 0.5405
+   },
+   "agent-ops": {
+    "point": 0.13939300571305813,
+    "ci": [
+     0.08112273930944641,
+     0.18831218963070173
+    ],
+    "p_gt0": 1.0
+   },
+   "agent-rule": {
+    "point": -0.009290021927815584,
+    "ci": [
+     -0.03242372136964616,
+     0.00851317310057365
+    ],
+    "p_gt0": 0.224
+   },
+   "rule-shrink": {
+    "point": 0.008505857969605124,
+    "ci": [
+     -0.0020693578790645538,
+     0.028516914795519935
+    ],
+    "p_gt0": 0.6285
+   },
+   "shrink-stats": {
+    "point": -0.03107398575473408,
+    "ci": [
+     -0.05667534483323403,
+     -0.010519729036167411
+    ],
+    "p_gt0": 0.0
+   },
+   "agent-shrink": {
+    "point": -0.0007841639582104598,
+    "ci": [
+     -0.008783768839175112,
+     0.0086935874975531
+    ],
+    "p_gt0": 0.384
+   },
+   "stats-ops": {
+    "point": 0.17125115542600267,
+    "ci": [
+     0.13576944775318958,
+     0.21149221902732565
+    ],
+    "p_gt0": 1.0
+   },
+   "rule-ops": {
+    "point": 0.1486830276408737,
+    "ci": [
+     0.10570724360101005,
+     0.19226516377051536
+    ],
+    "p_gt0": 1.0
+   }
+  },
+  "refusal_rule": {
+   "refusals": 233,
+   "by_tier": {
+    "2": 127,
+    "0": 106
+   },
+   "prevented_bad_moves": 6,
+   "usd_saved": 6.134806176182048,
+   "false_refusals": 143,
+   "usd_missed": 141.78899304171497,
+   "reasons": {
+    "insufficient_signal": 233
+   },
+   "net_usd": -135.65418686553292
+  },
+  "refusal_agent": {
+   "refusals": 325,
+   "by_tier": {
+    "0": 191,
+    "2": 134
+   },
+   "prevented_bad_moves": 23,
+   "usd_saved": 168.7221527552959,
+   "false_refusals": 181,
+   "usd_missed": 484.6868329716607,
+   "reasons": {
+    "insufficient_signal": 301,
+    "hold": 24
+   },
+   "net_usd": -315.9646802163648
+  },
+  "pair_human": {
+   "system_recs": 3275,
+   "harmful_recs": 207,
+   "caught": 18,
+   "usd_from_catches": 83.75487225903672,
+   "wrong_overrides": 200,
+   "usd_lost_wrong_overrides": 668.2199989873847,
+   "refusals_handed_back": 325,
+   "override_rate": 0.09038167938931298,
+   "actions": {
+    "accept": 1874,
+    "accept (unreviewed)": 1137,
+    "override (wrong)": 200,
+    "hold": 116,
+    "manual": 115,
+    "override (caught)": 104,
+    "hold (knew why)": 54
+   }
+  },
+  "harm_multiplier": {
+   "1": {
+    "ops": 0.7895316722639112,
+    "stats": 0.9607828276899139,
+    "shrink": 0.9297088419351798,
+    "rule": 0.9382146999047849,
+    "agent": 0.9289246779769693,
+    "pair": 0.9310772232476866
+   },
+   "2": {
+    "ops": 0.7684176608990128,
+    "stats": 0.9562123285858544,
+    "shrink": 0.9278143146492709,
+    "rule": 0.9363022812712927,
+    "agent": 0.9274413242023437,
+    "pair": 0.9275944251721855
+   },
+   "3": {
+    "ops": 0.7473036495341144,
+    "stats": 0.9516418294817949,
+    "shrink": 0.925919787363362,
+    "rule": 0.9343898626378002,
+    "agent": 0.9259579704277177,
+    "pair": 0.9241116270966843
+   },
+   "5": {
+    "ops": 0.7050756268043178,
+    "stats": 0.942500831273676,
+    "shrink": 0.922130732791544,
+    "rule": 0.9305650253708159,
+    "agent": 0.9229912628784663,
+    "pair": 0.9171460309456819
+   },
+   "10": {
+    "ops": 0.5995055699798262,
+    "stats": 0.9196483357533785,
+    "shrink": 0.9126580963619993,
+    "rule": 0.9210029322033547,
+    "agent": 0.9155744940053377,
+    "pair": 0.8997320405681761
+   },
+   "20": {
+    "ops": 0.3883654563308429,
+    "stats": 0.8739433447127839,
+    "shrink": 0.8937128235029099,
+    "rule": 0.9018787458684323,
+    "agent": 0.9007409562590802,
+    "pair": 0.8649040598131642
+   }
+  },
+  "agent_vs_rule_usd": {
+   "anomaly_days": {
+    "n": 335,
+    "usd": -247.29615124380496
+   },
+   "noted_days": {
+    "n": 156,
+    "usd": 26.83840600068484
+   },
+   "other_days": {
+    "n": 3444,
+    "usd": -3922.985245890135
+   }
+  }
+ }
+}

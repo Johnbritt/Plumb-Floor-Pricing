@@ -1,0 +1,1213 @@
+cell_id,date,text,kind
+CELL-00,2026-04-01,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-00,2026-04-07,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-00,2026-04-14,"Deploy v2.30 rolled out, no change in bid flow",benign
+CELL-00,2026-04-16,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-00,2026-06-09,New ops dashboard link shared in channel,noise
+CELL-00,2026-06-20,New ops dashboard link shared in channel,noise
+CELL-00,2026-06-21,New ops dashboard link shared in channel,noise
+CELL-00,2026-07-03,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-00,2026-07-04,Reminder: update sprint tickets,noise
+CELL-00,2026-07-11,Invoice reconciliation for last month done,noise
+CELL-00,2026-07-12,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-00,2026-07-16,"Deploy v2.26 rolled out, no change in bid flow",benign
+CELL-00,2026-08-14,Invoice reconciliation for last month done,noise
+CELL-00,2026-08-19,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-00,2026-08-29,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-00,2026-08-30,Weekly sync moved to 4pm,noise
+CELL-00,2026-09-02,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-00,2026-09-03,New ops dashboard link shared in channel,noise
+CELL-00,2026-09-04,New ops dashboard link shared in channel,noise
+CELL-00,2026-09-07,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-00,2026-09-08,Reminder: update sprint tickets,noise
+CELL-00,2026-09-11,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-00,2026-09-11,Invoice reconciliation for last month done,noise
+CELL-00,2026-09-15,Reminder: update sprint tickets,noise
+CELL-00,2026-09-16,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-00,2026-09-16,Weekly sync moved to 4pm,noise
+CELL-00,2026-09-19,Reminder: update sprint tickets,noise
+CELL-00,2026-09-24,"festive sale campaign goes live tomorrow, expect higher demand",surge
+CELL-01,2026-04-07,"Bidder-H has gone quiet since morning, checking with their AM",outage
+CELL-01,2026-04-12,"Deploy v2.39 rolled out, no change in bid flow",benign
+CELL-01,2026-04-23,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-01,2026-05-01,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-01,2026-05-08,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-01,2026-05-12,"Demand partner Bidder-H not bidding today, support ticket open",outage
+CELL-01,2026-05-13,Reminder: update sprint tickets,noise
+CELL-01,2026-05-13,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-01,2026-05-17,Invoice reconciliation for last month done,noise
+CELL-01,2026-05-20,Invoice reconciliation for last month done,noise
+CELL-01,2026-05-21,New ops dashboard link shared in channel,noise
+CELL-01,2026-05-30,Weekly sync moved to 4pm,noise
+CELL-01,2026-06-04,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-01,2026-06-06,Reminder: update sprint tickets,noise
+CELL-01,2026-06-11,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-01,2026-06-12,Reminder: update sprint tickets,noise
+CELL-01,2026-06-16,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-01,2026-06-18,"Bidder-F paused by their side, timeouts across our placements",outage
+CELL-01,2026-06-30,Weekly sync moved to 4pm,noise
+CELL-01,2026-07-02,New ops dashboard link shared in channel,noise
+CELL-01,2026-07-03,Invoice reconciliation for last month done,noise
+CELL-01,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-01,2026-07-17,Invoice reconciliation for last month done,noise
+CELL-01,2026-07-20,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-01,2026-07-29,Invoice reconciliation for last month done,noise
+CELL-01,2026-07-30,Weekly sync moved to 4pm,noise
+CELL-01,2026-08-04,Invoice reconciliation for last month done,noise
+CELL-01,2026-08-11,Weekly sync moved to 4pm,noise
+CELL-01,2026-08-12,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-01,2026-08-17,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-01,2026-08-20,Reminder: update sprint tickets,noise
+CELL-01,2026-08-24,Invoice reconciliation for last month done,noise
+CELL-01,2026-08-26,"Seeing timeouts on Bidder-A, monitoring",ambig_decoy
+CELL-01,2026-08-26,New ops dashboard link shared in channel,noise
+CELL-01,2026-09-04,"Deploy v2.11 rolled out, no change in bid flow",benign
+CELL-01,2026-09-08,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-01,2026-09-13,"Deploy v2.21 rolled out, no change in bid flow",benign
+CELL-01,2026-09-17,Weekly sync moved to 4pm,noise
+CELL-01,2026-09-24,Invoice reconciliation for last month done,noise
+CELL-01,2026-09-25,"Deploy v2.45 rolled out, no change in bid flow",benign
+CELL-01,2026-09-25,Reminder: update sprint tickets,noise
+CELL-02,2026-04-05,New ops dashboard link shared in channel,noise
+CELL-02,2026-04-11,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-02,2026-04-11,Weekly sync moved to 4pm,noise
+CELL-02,2026-04-15,New ops dashboard link shared in channel,noise
+CELL-02,2026-04-24,Reminder: update sprint tickets,noise
+CELL-02,2026-05-11,Invoice reconciliation for last month done,noise
+CELL-02,2026-05-17,Weekly sync moved to 4pm,noise
+CELL-02,2026-05-22,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-02,2026-05-24,Reminder: update sprint tickets,noise
+CELL-02,2026-05-30,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-02,2026-06-12,"IPL match campaign goes live tomorrow, expect higher demand",surge
+CELL-02,2026-06-13,Weekly sync moved to 4pm,noise
+CELL-02,2026-06-16,"Bidder-B endpoint returning 5xx since 7:00, bid responses down",outage
+CELL-02,2026-06-17,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-02,2026-06-23,New ops dashboard link shared in channel,noise
+CELL-02,2026-06-26,"Seeing timeouts on Bidder-F, monitoring",ambig_decoy
+CELL-02,2026-07-03,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-02,2026-07-07,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-02,2026-07-12,"Deploy v2.58 rolled out, no change in bid flow",benign
+CELL-02,2026-07-16,New ops dashboard link shared in channel,noise
+CELL-02,2026-07-21,"Deploy v2.50 rolled out, no change in bid flow",benign
+CELL-02,2026-07-22,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-02,2026-08-08,New ops dashboard link shared in channel,noise
+CELL-02,2026-08-12,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-02,2026-09-05,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-02,2026-09-08,Reminder: update sprint tickets,noise
+CELL-02,2026-09-09,Invoice reconciliation for last month done,noise
+CELL-02,2026-09-10,"Deploy v2.22 rolled out, no change in bid flow",benign
+CELL-02,2026-09-10,Weekly sync moved to 4pm,noise
+CELL-02,2026-09-11,"Bidder-E paused by their side, timeouts across our placements",outage
+CELL-02,2026-09-15,"Bidder-E bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-02,2026-09-20,Invoice reconciliation for last month done,noise
+CELL-03,2026-06-26,"New buyer onboarded on Bidder-G, seats ramping",shift
+CELL-03,2026-04-16,"Seeing timeouts on Bidder-E, monitoring",ambig_decoy
+CELL-03,2026-04-22,New ops dashboard link shared in channel,noise
+CELL-03,2026-04-26,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-03,2026-05-01,New ops dashboard link shared in channel,noise
+CELL-03,2026-05-01,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-03,2026-05-13,Invoice reconciliation for last month done,noise
+CELL-03,2026-05-14,Weekly sync moved to 4pm,noise
+CELL-03,2026-05-18,Weekly sync moved to 4pm,noise
+CELL-03,2026-05-28,Weekly sync moved to 4pm,noise
+CELL-03,2026-06-06,Reminder: update sprint tickets,noise
+CELL-03,2026-06-07,Invoice reconciliation for last month done,noise
+CELL-03,2026-06-09,Invoice reconciliation for last month done,noise
+CELL-03,2026-06-12,Reminder: update sprint tickets,noise
+CELL-03,2026-06-18,New ops dashboard link shared in channel,noise
+CELL-03,2026-06-22,New ops dashboard link shared in channel,noise
+CELL-03,2026-06-23,"Deploy v2.33 rolled out, no change in bid flow",benign
+CELL-03,2026-06-30,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-03,2026-07-03,Weekly sync moved to 4pm,noise
+CELL-03,2026-07-12,Reminder: update sprint tickets,noise
+CELL-03,2026-07-16,New ops dashboard link shared in channel,noise
+CELL-03,2026-07-27,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-03,2026-07-28,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-03,2026-08-12,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-03,2026-08-16,"Bidder-C bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-03,2026-08-25,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-03,2026-09-02,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-03,2026-09-18,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-03,2026-09-25,New ops dashboard link shared in channel,noise
+CELL-04,2026-04-03,"Deploy v2.45 rolled out, no change in bid flow",benign
+CELL-04,2026-04-06,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-04,2026-04-14,New ops dashboard link shared in channel,noise
+CELL-04,2026-04-15,Reminder: update sprint tickets,noise
+CELL-04,2026-05-04,Reminder: update sprint tickets,noise
+CELL-04,2026-05-06,"Bidder-F bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-04,2026-05-07,New ops dashboard link shared in channel,noise
+CELL-04,2026-05-09,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-04,2026-05-23,New ops dashboard link shared in channel,noise
+CELL-04,2026-05-24,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-04,2026-06-03,Reminder: update sprint tickets,noise
+CELL-04,2026-06-08,New ops dashboard link shared in channel,noise
+CELL-04,2026-07-05,Weekly sync moved to 4pm,noise
+CELL-04,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-04,2026-07-21,Invoice reconciliation for last month done,noise
+CELL-04,2026-07-23,Invoice reconciliation for last month done,noise
+CELL-04,2026-07-28,Weekly sync moved to 4pm,noise
+CELL-04,2026-08-03,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-04,2026-08-12,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-04,2026-08-16,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-04,2026-08-25,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-04,2026-08-26,Reminder: update sprint tickets,noise
+CELL-04,2026-08-30,Reminder: update sprint tickets,noise
+CELL-04,2026-09-04,Reminder: update sprint tickets,noise
+CELL-04,2026-09-05,Invoice reconciliation for last month done,noise
+CELL-04,2026-09-08,"Deploy v2.44 rolled out, no change in bid flow",benign
+CELL-04,2026-09-16,New ops dashboard link shared in channel,noise
+CELL-04,2026-09-22,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-04,2026-09-27,Invoice reconciliation for last month done,noise
+CELL-05,2026-04-02,New ops dashboard link shared in channel,noise
+CELL-05,2026-04-05,"Deploy v2.46 rolled out, no change in bid flow",benign
+CELL-05,2026-04-14,Invoice reconciliation for last month done,noise
+CELL-05,2026-04-15,New ops dashboard link shared in channel,noise
+CELL-05,2026-04-20,New ops dashboard link shared in channel,noise
+CELL-05,2026-04-22,Weekly sync moved to 4pm,noise
+CELL-05,2026-04-27,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-05,2026-05-03,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-05,2026-05-08,"Deploy v2.44 rolled out, no change in bid flow",benign
+CELL-05,2026-05-17,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-05,2026-05-23,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-05,2026-05-27,"Bidder-G has gone quiet since morning, checking with their AM",outage
+CELL-05,2026-06-04,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-05,2026-06-09,Invoice reconciliation for last month done,noise
+CELL-05,2026-06-19,Reminder: update sprint tickets,noise
+CELL-05,2026-06-24,"Deploy v2.24 rolled out, no change in bid flow",benign
+CELL-05,2026-07-11,"Deploy v2.26 rolled out, no change in bid flow",benign
+CELL-05,2026-07-12,"IPL match campaign goes live tomorrow, expect higher demand",surge
+CELL-05,2026-07-15,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-05,2026-07-17,Weekly sync moved to 4pm,noise
+CELL-05,2026-07-21,Weekly sync moved to 4pm,noise
+CELL-05,2026-07-27,Invoice reconciliation for last month done,noise
+CELL-05,2026-08-02,New ops dashboard link shared in channel,noise
+CELL-05,2026-08-26,New ops dashboard link shared in channel,noise
+CELL-05,2026-08-30,New ops dashboard link shared in channel,noise
+CELL-05,2026-09-04,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-05,2026-09-07,"Bidder-C bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-05,2026-09-09,"election results campaign goes live tomorrow, expect higher demand",surge
+CELL-05,2026-09-14,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-05,2026-09-16,Weekly sync moved to 4pm,noise
+CELL-05,2026-09-22,Reminder: update sprint tickets,noise
+CELL-06,2026-06-29,"New buyer onboarded on Bidder-A, seats ramping",shift
+CELL-06,2026-05-02,"Deploy v2.58 rolled out, no change in bid flow",benign
+CELL-06,2026-05-03,Weekly sync moved to 4pm,noise
+CELL-06,2026-05-11,Reminder: update sprint tickets,noise
+CELL-06,2026-05-12,Invoice reconciliation for last month done,noise
+CELL-06,2026-05-17,Weekly sync moved to 4pm,noise
+CELL-06,2026-05-22,New ops dashboard link shared in channel,noise
+CELL-06,2026-06-04,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-06,2026-06-06,New ops dashboard link shared in channel,noise
+CELL-06,2026-06-10,New ops dashboard link shared in channel,noise
+CELL-06,2026-06-15,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-06,2026-06-25,Invoice reconciliation for last month done,noise
+CELL-06,2026-06-28,Invoice reconciliation for last month done,noise
+CELL-06,2026-06-29,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-06,2026-07-01,Invoice reconciliation for last month done,noise
+CELL-06,2026-07-08,Reminder: update sprint tickets,noise
+CELL-06,2026-07-12,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-06,2026-07-18,Reminder: update sprint tickets,noise
+CELL-06,2026-07-22,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-06,2026-07-26,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-06,2026-07-26,Invoice reconciliation for last month done,noise
+CELL-06,2026-07-31,Weekly sync moved to 4pm,noise
+CELL-06,2026-08-07,Weekly sync moved to 4pm,noise
+CELL-06,2026-08-14,Weekly sync moved to 4pm,noise
+CELL-06,2026-08-22,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-06,2026-08-25,Reminder: update sprint tickets,noise
+CELL-06,2026-08-30,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-06,2026-08-30,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-06,2026-09-07,"Demand partner Bidder-B not bidding today, support ticket open",outage
+CELL-06,2026-09-14,Reminder: update sprint tickets,noise
+CELL-06,2026-09-24,New ops dashboard link shared in channel,noise
+CELL-06,2026-09-26,"festive sale campaign goes live tomorrow, expect higher demand",surge
+CELL-07,2026-04-17,Reminder: update sprint tickets,noise
+CELL-07,2026-04-24,Reminder: update sprint tickets,noise
+CELL-07,2026-04-30,"Bidder-D paused by their side, timeouts across our placements",outage
+CELL-07,2026-05-02,"Deploy v2.34 rolled out, no change in bid flow",benign
+CELL-07,2026-05-04,Invoice reconciliation for last month done,noise
+CELL-07,2026-05-19,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-07,2026-05-21,"Deploy v2.45 rolled out, no change in bid flow",benign
+CELL-07,2026-06-11,New ops dashboard link shared in channel,noise
+CELL-07,2026-06-18,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-07,2026-06-21,Reminder: update sprint tickets,noise
+CELL-07,2026-06-22,"Deploy v2.50 rolled out, no change in bid flow",benign
+CELL-07,2026-06-23,Invoice reconciliation for last month done,noise
+CELL-07,2026-07-01,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-07,2026-07-05,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-07,2026-07-07,Reminder: update sprint tickets,noise
+CELL-07,2026-07-12,Reminder: update sprint tickets,noise
+CELL-07,2026-07-16,"Bidder-G has gone quiet since morning, checking with their AM",outage
+CELL-07,2026-07-27,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-07,2026-07-29,Invoice reconciliation for last month done,noise
+CELL-07,2026-07-30,"Deploy v2.52 rolled out, no change in bid flow",benign
+CELL-07,2026-07-31,Reminder: update sprint tickets,noise
+CELL-07,2026-08-04,"Seeing timeouts on Bidder-G, monitoring",outage_ambig
+CELL-07,2026-08-06,"Bidder-D endpoint returning 5xx since 5:00, bid responses down",outage
+CELL-07,2026-08-11,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-07,2026-08-15,Reminder: update sprint tickets,noise
+CELL-07,2026-08-30,New ops dashboard link shared in channel,noise
+CELL-07,2026-09-10,New ops dashboard link shared in channel,noise
+CELL-07,2026-09-11,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-07,2026-09-20,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-07,2026-09-21,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-07,2026-09-24,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-07,2026-09-26,Weekly sync moved to 4pm,noise
+CELL-08,2026-08-10,"New buyer onboarded on Bidder-B, seats ramping",shift
+CELL-08,2026-04-07,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-08,2026-04-08,New ops dashboard link shared in channel,noise
+CELL-08,2026-04-13,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-08,2026-04-15,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-08,2026-04-18,"Deploy v2.16 rolled out, no change in bid flow",benign
+CELL-08,2026-04-25,Weekly sync moved to 4pm,noise
+CELL-08,2026-04-26,"Deploy v2.46 rolled out, no change in bid flow",benign
+CELL-08,2026-05-12,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-08,2026-05-14,Weekly sync moved to 4pm,noise
+CELL-08,2026-05-15,Invoice reconciliation for last month done,noise
+CELL-08,2026-05-20,New ops dashboard link shared in channel,noise
+CELL-08,2026-05-22,Invoice reconciliation for last month done,noise
+CELL-08,2026-05-25,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-08,2026-05-26,Weekly sync moved to 4pm,noise
+CELL-08,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-08,2026-07-16,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-08,2026-07-30,"election results campaign goes live tomorrow, expect higher demand",surge
+CELL-08,2026-08-03,New ops dashboard link shared in channel,noise
+CELL-08,2026-08-18,"Deploy v2.43 rolled out, no change in bid flow",benign
+CELL-08,2026-08-30,Weekly sync moved to 4pm,noise
+CELL-08,2026-09-02,"Deploy v2.55 rolled out, no change in bid flow",benign
+CELL-08,2026-09-10,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-08,2026-09-16,Reminder: update sprint tickets,noise
+CELL-08,2026-09-17,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-08,2026-09-17,"Seeing timeouts on Bidder-F, monitoring",ambig_decoy
+CELL-08,2026-09-18,"Demand partner Bidder-D not bidding today, support ticket open",outage
+CELL-08,2026-09-23,"Deploy v2.49 rolled out, no change in bid flow",benign
+CELL-09,2026-04-10,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-09,2026-04-15,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-09,2026-04-21,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-09,2026-05-06,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-09,2026-05-07,Weekly sync moved to 4pm,noise
+CELL-09,2026-05-11,New ops dashboard link shared in channel,noise
+CELL-09,2026-05-13,Reminder: update sprint tickets,noise
+CELL-09,2026-05-16,"Deploy v2.53 rolled out, no change in bid flow",benign
+CELL-09,2026-05-17,Invoice reconciliation for last month done,noise
+CELL-09,2026-05-22,Reminder: update sprint tickets,noise
+CELL-09,2026-06-19,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-09,2026-06-21,Reminder: update sprint tickets,noise
+CELL-09,2026-06-25,New ops dashboard link shared in channel,noise
+CELL-09,2026-06-27,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-09,2026-07-19,Reminder: update sprint tickets,noise
+CELL-09,2026-07-25,Invoice reconciliation for last month done,noise
+CELL-09,2026-07-26,Reminder: update sprint tickets,noise
+CELL-09,2026-07-27,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-09,2026-07-31,"Deploy v2.16 rolled out, no change in bid flow",benign
+CELL-09,2026-08-01,"Deploy v2.37 rolled out, no change in bid flow",benign
+CELL-09,2026-08-02,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-09,2026-08-05,Weekly sync moved to 4pm,noise
+CELL-09,2026-08-08,Invoice reconciliation for last month done,noise
+CELL-09,2026-08-21,"Deploy v2.19 rolled out, no change in bid flow",benign
+CELL-09,2026-08-21,New ops dashboard link shared in channel,noise
+CELL-09,2026-08-26,New ops dashboard link shared in channel,noise
+CELL-09,2026-09-12,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-09,2026-09-14,Weekly sync moved to 4pm,noise
+CELL-09,2026-09-17,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-10,2026-04-02,Invoice reconciliation for last month done,noise
+CELL-10,2026-04-08,"Seeing timeouts on Bidder-E, monitoring",ambig_decoy
+CELL-10,2026-04-14,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-10,2026-04-16,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-10,2026-04-23,Invoice reconciliation for last month done,noise
+CELL-10,2026-04-27,"Bidder-A bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-10,2026-05-06,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-10,2026-05-09,Invoice reconciliation for last month done,noise
+CELL-10,2026-05-15,"Bidder-B paused by their side, timeouts across our placements",outage
+CELL-10,2026-05-18,"Demand partner Bidder-B not bidding today, support ticket open",outage
+CELL-10,2026-05-24,New ops dashboard link shared in channel,noise
+CELL-10,2026-05-30,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-10,2026-06-04,Weekly sync moved to 4pm,noise
+CELL-10,2026-06-14,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-10,2026-06-15,"Demand partner Bidder-H not bidding today, support ticket open",outage
+CELL-10,2026-06-22,Reminder: update sprint tickets,noise
+CELL-10,2026-06-25,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-10,2026-06-27,Weekly sync moved to 4pm,noise
+CELL-10,2026-06-28,"Deploy v2.10 rolled out, no change in bid flow",benign
+CELL-10,2026-07-04,Reminder: update sprint tickets,noise
+CELL-10,2026-07-06,Invoice reconciliation for last month done,noise
+CELL-10,2026-07-12,Invoice reconciliation for last month done,noise
+CELL-10,2026-07-14,"Seeing timeouts on Bidder-A, monitoring",ambig_decoy
+CELL-10,2026-07-29,"Deploy v2.42 rolled out, no change in bid flow",benign
+CELL-10,2026-07-31,Invoice reconciliation for last month done,noise
+CELL-10,2026-08-05,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-10,2026-08-05,Invoice reconciliation for last month done,noise
+CELL-10,2026-08-05,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-10,2026-08-08,"Deploy v2.37 rolled out, no change in bid flow",benign
+CELL-10,2026-08-22,Reminder: update sprint tickets,noise
+CELL-10,2026-08-28,Invoice reconciliation for last month done,noise
+CELL-10,2026-08-31,Invoice reconciliation for last month done,noise
+CELL-10,2026-09-04,Weekly sync moved to 4pm,noise
+CELL-10,2026-09-13,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-10,2026-09-24,New ops dashboard link shared in channel,noise
+CELL-11,2026-04-12,Invoice reconciliation for last month done,noise
+CELL-11,2026-04-13,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-11,2026-04-14,"Deploy v2.13 rolled out, no change in bid flow",benign
+CELL-11,2026-04-16,New ops dashboard link shared in channel,noise
+CELL-11,2026-05-02,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-11,2026-05-02,Reminder: update sprint tickets,noise
+CELL-11,2026-05-12,Invoice reconciliation for last month done,noise
+CELL-11,2026-05-14,New ops dashboard link shared in channel,noise
+CELL-11,2026-05-16,Invoice reconciliation for last month done,noise
+CELL-11,2026-05-22,"Bidder-F paused by their side, timeouts across our placements",outage
+CELL-11,2026-05-22,Invoice reconciliation for last month done,noise
+CELL-11,2026-05-23,New ops dashboard link shared in channel,noise
+CELL-11,2026-05-29,Invoice reconciliation for last month done,noise
+CELL-11,2026-06-01,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-11,2026-06-07,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-11,2026-06-07,Invoice reconciliation for last month done,noise
+CELL-11,2026-06-12,"Bidder-A paused by their side, timeouts across our placements",outage
+CELL-11,2026-06-27,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-11,2026-06-29,Weekly sync moved to 4pm,noise
+CELL-11,2026-07-21,Invoice reconciliation for last month done,noise
+CELL-11,2026-07-31,"Deploy v2.16 rolled out, no change in bid flow",benign
+CELL-11,2026-08-09,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-11,2026-08-19,"Seeing timeouts on Bidder-B, monitoring",outage_ambig
+CELL-11,2026-08-23,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-11,2026-08-24,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-11,2026-08-27,New ops dashboard link shared in channel,noise
+CELL-11,2026-09-02,"Bidder-D bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-11,2026-09-04,New ops dashboard link shared in channel,noise
+CELL-11,2026-09-10,Reminder: update sprint tickets,noise
+CELL-11,2026-09-20,Weekly sync moved to 4pm,noise
+CELL-11,2026-09-23,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-11,2026-09-23,Invoice reconciliation for last month done,noise
+CELL-11,2026-09-25,Invoice reconciliation for last month done,noise
+CELL-12,2026-07-28,"New buyer onboarded on Bidder-B, seats ramping",shift
+CELL-12,2026-04-02,Weekly sync moved to 4pm,noise
+CELL-12,2026-04-02,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-12,2026-04-08,New ops dashboard link shared in channel,noise
+CELL-12,2026-04-14,Reminder: update sprint tickets,noise
+CELL-12,2026-04-17,New ops dashboard link shared in channel,noise
+CELL-12,2026-05-01,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-12,2026-05-07,New ops dashboard link shared in channel,noise
+CELL-12,2026-05-16,Invoice reconciliation for last month done,noise
+CELL-12,2026-05-18,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-12,2026-06-05,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-12,2026-06-07,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-12,2026-06-09,Reminder: update sprint tickets,noise
+CELL-12,2026-06-20,"Bidder-H endpoint returning 5xx since 7:00, bid responses down",outage
+CELL-12,2026-06-19,"Seeing timeouts on Bidder-A, monitoring",ambig_decoy
+CELL-12,2026-06-20,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-12,2026-06-23,New ops dashboard link shared in channel,noise
+CELL-12,2026-06-24,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-12,2026-06-28,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-12,2026-07-20,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-12,2026-07-29,Reminder: update sprint tickets,noise
+CELL-12,2026-08-03,"Deploy v2.38 rolled out, no change in bid flow",benign
+CELL-12,2026-08-09,Weekly sync moved to 4pm,noise
+CELL-12,2026-08-15,Weekly sync moved to 4pm,noise
+CELL-12,2026-09-02,"Deploy v2.17 rolled out, no change in bid flow",benign
+CELL-12,2026-09-26,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-13,2026-04-01,Invoice reconciliation for last month done,noise
+CELL-13,2026-04-05,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-13,2026-04-20,New ops dashboard link shared in channel,noise
+CELL-13,2026-04-28,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-13,2026-05-14,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-13,2026-05-19,Invoice reconciliation for last month done,noise
+CELL-13,2026-05-23,New ops dashboard link shared in channel,noise
+CELL-13,2026-05-30,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-13,2026-06-17,New ops dashboard link shared in channel,noise
+CELL-13,2026-06-19,Weekly sync moved to 4pm,noise
+CELL-13,2026-06-30,New ops dashboard link shared in channel,noise
+CELL-13,2026-07-03,Invoice reconciliation for last month done,noise
+CELL-13,2026-07-28,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-13,2026-07-29,Invoice reconciliation for last month done,noise
+CELL-13,2026-08-04,Weekly sync moved to 4pm,noise
+CELL-13,2026-08-11,Weekly sync moved to 4pm,noise
+CELL-13,2026-08-12,Reminder: update sprint tickets,noise
+CELL-13,2026-08-25,New ops dashboard link shared in channel,noise
+CELL-13,2026-08-27,"Bidder-D endpoint returning 5xx since 8:00, bid responses down",outage
+CELL-13,2026-08-28,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-13,2026-09-16,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-13,2026-09-17,"Deploy v2.50 rolled out, no change in bid flow",benign
+CELL-13,2026-09-22,Invoice reconciliation for last month done,noise
+CELL-13,2026-09-25,Reminder: update sprint tickets,noise
+CELL-13,2026-09-27,"Demand partner Bidder-C not bidding today, support ticket open",outage
+CELL-14,2026-08-28,Bidder-H changed their bidding strategy last night,shift
+CELL-14,2026-04-02,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-04-13,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-14,2026-04-30,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-14,2026-05-02,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-05-03,"Bidder-F endpoint returning 5xx since 11:00, bid responses down",outage
+CELL-14,2026-05-04,New ops dashboard link shared in channel,noise
+CELL-14,2026-05-10,"Seeing timeouts on Bidder-A, monitoring",outage_ambig
+CELL-14,2026-05-11,"Deploy v2.32 rolled out, no change in bid flow",benign
+CELL-14,2026-05-12,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-05-28,Weekly sync moved to 4pm,noise
+CELL-14,2026-05-29,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-06-02,"Deploy v2.56 rolled out, no change in bid flow",benign
+CELL-14,2026-06-07,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-14,2026-06-16,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-06-21,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-14,2026-06-29,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-06-30,"Deploy v2.18 rolled out, no change in bid flow",benign
+CELL-14,2026-07-09,Weekly sync moved to 4pm,noise
+CELL-14,2026-07-14,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-14,2026-07-18,Reminder: update sprint tickets,noise
+CELL-14,2026-07-22,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-14,2026-07-23,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-14,2026-08-18,New ops dashboard link shared in channel,noise
+CELL-14,2026-08-20,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-14,2026-08-26,"Seeing timeouts on Bidder-C, monitoring",outage_ambig
+CELL-14,2026-08-26,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-14,2026-08-28,New ops dashboard link shared in channel,noise
+CELL-14,2026-08-29,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-14,2026-09-10,Reminder: update sprint tickets,noise
+CELL-14,2026-09-13,Invoice reconciliation for last month done,noise
+CELL-14,2026-09-26,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-14,2026-09-26,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-15,2026-04-09,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-15,2026-04-12,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-15,2026-04-13,Reminder: update sprint tickets,noise
+CELL-15,2026-04-17,Invoice reconciliation for last month done,noise
+CELL-15,2026-04-27,New ops dashboard link shared in channel,noise
+CELL-15,2026-04-29,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-15,2026-05-02,"Deploy v2.32 rolled out, no change in bid flow",benign
+CELL-15,2026-05-04,Reminder: update sprint tickets,noise
+CELL-15,2026-05-06,New ops dashboard link shared in channel,noise
+CELL-15,2026-05-08,"Deploy v2.41 rolled out, no change in bid flow",benign
+CELL-15,2026-05-13,Reminder: update sprint tickets,noise
+CELL-15,2026-05-24,Weekly sync moved to 4pm,noise
+CELL-15,2026-06-04,New ops dashboard link shared in channel,noise
+CELL-15,2026-06-11,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-15,2026-06-16,Weekly sync moved to 4pm,noise
+CELL-15,2026-06-17,Reminder: update sprint tickets,noise
+CELL-15,2026-06-28,Weekly sync moved to 4pm,noise
+CELL-15,2026-07-06,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-15,2026-07-08,Reminder: update sprint tickets,noise
+CELL-15,2026-07-17,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-15,2026-07-23,New ops dashboard link shared in channel,noise
+CELL-15,2026-08-03,New ops dashboard link shared in channel,noise
+CELL-15,2026-08-05,New ops dashboard link shared in channel,noise
+CELL-15,2026-08-20,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-15,2026-08-22,"Bidder-A endpoint returning 5xx since 1:00, bid responses down",outage
+CELL-15,2026-08-28,"IPL match campaign goes live tomorrow, expect higher demand",surge
+CELL-15,2026-08-31,New ops dashboard link shared in channel,noise
+CELL-15,2026-09-01,Invoice reconciliation for last month done,noise
+CELL-15,2026-09-02,Reminder: update sprint tickets,noise
+CELL-15,2026-09-04,Invoice reconciliation for last month done,noise
+CELL-15,2026-09-11,New ops dashboard link shared in channel,noise
+CELL-15,2026-09-16,Reminder: update sprint tickets,noise
+CELL-16,2026-04-27,"New buyer onboarded on Bidder-G, seats ramping",shift
+CELL-16,2026-06-29,"New buyer onboarded on Bidder-A, seats ramping",shift
+CELL-16,2026-04-06,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-16,2026-04-07,Invoice reconciliation for last month done,noise
+CELL-16,2026-04-07,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-16,2026-04-08,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-16,2026-04-10,Reminder: update sprint tickets,noise
+CELL-16,2026-04-10,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-16,2026-04-11,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-16,2026-05-11,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-16,2026-05-12,New ops dashboard link shared in channel,noise
+CELL-16,2026-05-22,New ops dashboard link shared in channel,noise
+CELL-16,2026-05-24,Invoice reconciliation for last month done,noise
+CELL-16,2026-05-25,New ops dashboard link shared in channel,noise
+CELL-16,2026-05-25,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-16,2026-05-26,Reminder: update sprint tickets,noise
+CELL-16,2026-06-06,"Bidder-E endpoint returning 5xx since 9:00, bid responses down",outage
+CELL-16,2026-06-21,Invoice reconciliation for last month done,noise
+CELL-16,2026-07-05,"Demand partner Bidder-H not bidding today, support ticket open",outage
+CELL-16,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-16,2026-07-19,Weekly sync moved to 4pm,noise
+CELL-16,2026-07-20,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-16,2026-07-26,New ops dashboard link shared in channel,noise
+CELL-16,2026-07-30,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-16,2026-08-04,"Deploy v2.46 rolled out, no change in bid flow",benign
+CELL-16,2026-08-08,Weekly sync moved to 4pm,noise
+CELL-16,2026-08-09,Invoice reconciliation for last month done,noise
+CELL-16,2026-08-10,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-16,2026-08-11,Reminder: update sprint tickets,noise
+CELL-16,2026-08-15,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-16,2026-08-16,Invoice reconciliation for last month done,noise
+CELL-16,2026-08-20,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-16,2026-08-26,Invoice reconciliation for last month done,noise
+CELL-16,2026-08-28,Reminder: update sprint tickets,noise
+CELL-16,2026-09-23,Reminder: update sprint tickets,noise
+CELL-17,2026-04-01,Invoice reconciliation for last month done,noise
+CELL-17,2026-04-05,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-17,2026-04-12,"Seeing timeouts on Bidder-D, monitoring",outage_ambig
+CELL-17,2026-04-23,Invoice reconciliation for last month done,noise
+CELL-17,2026-04-30,Weekly sync moved to 4pm,noise
+CELL-17,2026-05-01,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-17,2026-05-17,Weekly sync moved to 4pm,noise
+CELL-17,2026-05-27,"IPL match campaign goes live tomorrow, expect higher demand",surge
+CELL-17,2026-05-29,New ops dashboard link shared in channel,noise
+CELL-17,2026-06-04,Invoice reconciliation for last month done,noise
+CELL-17,2026-06-15,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-17,2026-06-17,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-17,2026-06-20,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-17,2026-07-01,Reminder: update sprint tickets,noise
+CELL-17,2026-07-11,Reminder: update sprint tickets,noise
+CELL-17,2026-07-29,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-17,2026-07-29,Reminder: update sprint tickets,noise
+CELL-17,2026-08-11,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-17,2026-08-15,Invoice reconciliation for last month done,noise
+CELL-17,2026-08-19,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-17,2026-08-24,Invoice reconciliation for last month done,noise
+CELL-17,2026-08-31,New ops dashboard link shared in channel,noise
+CELL-17,2026-09-04,Reminder: update sprint tickets,noise
+CELL-17,2026-09-12,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-17,2026-09-24,"Bidder-A paused by their side, timeouts across our placements",outage
+CELL-17,2026-09-27,Reminder: update sprint tickets,noise
+CELL-18,2026-04-03,Invoice reconciliation for last month done,noise
+CELL-18,2026-04-09,New ops dashboard link shared in channel,noise
+CELL-18,2026-04-16,New ops dashboard link shared in channel,noise
+CELL-18,2026-05-06,Reminder: update sprint tickets,noise
+CELL-18,2026-05-23,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-18,2026-05-24,"Deploy v2.45 rolled out, no change in bid flow",benign
+CELL-18,2026-05-25,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-18,2026-06-01,Reminder: update sprint tickets,noise
+CELL-18,2026-06-03,New ops dashboard link shared in channel,noise
+CELL-18,2026-06-14,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-18,2026-06-16,New ops dashboard link shared in channel,noise
+CELL-18,2026-06-25,"Bidder-A bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-18,2026-07-05,Weekly sync moved to 4pm,noise
+CELL-18,2026-07-09,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-18,2026-07-12,Weekly sync moved to 4pm,noise
+CELL-18,2026-07-22,Reminder: update sprint tickets,noise
+CELL-18,2026-08-07,Invoice reconciliation for last month done,noise
+CELL-18,2026-08-08,Weekly sync moved to 4pm,noise
+CELL-18,2026-08-10,"Demand partner Bidder-A not bidding today, support ticket open",outage
+CELL-18,2026-08-13,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-18,2026-08-13,Weekly sync moved to 4pm,noise
+CELL-18,2026-08-18,Invoice reconciliation for last month done,noise
+CELL-18,2026-08-21,New ops dashboard link shared in channel,noise
+CELL-18,2026-08-30,Reminder: update sprint tickets,noise
+CELL-18,2026-09-03,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-18,2026-09-06,New ops dashboard link shared in channel,noise
+CELL-18,2026-09-20,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-18,2026-09-25,"Deploy v2.19 rolled out, no change in bid flow",benign
+CELL-19,2026-04-02,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-19,2026-04-03,Invoice reconciliation for last month done,noise
+CELL-19,2026-04-14,Reminder: update sprint tickets,noise
+CELL-19,2026-04-22,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-19,2026-04-30,"Deploy v2.29 rolled out, no change in bid flow",benign
+CELL-19,2026-05-12,"Seeing timeouts on Bidder-D, monitoring",outage_ambig
+CELL-19,2026-05-12,Weekly sync moved to 4pm,noise
+CELL-19,2026-05-31,"Deploy v2.58 rolled out, no change in bid flow",benign
+CELL-19,2026-05-31,New ops dashboard link shared in channel,noise
+CELL-19,2026-06-06,Reminder: update sprint tickets,noise
+CELL-19,2026-06-22,Invoice reconciliation for last month done,noise
+CELL-19,2026-06-26,New ops dashboard link shared in channel,noise
+CELL-19,2026-06-28,Reminder: update sprint tickets,noise
+CELL-19,2026-06-29,Invoice reconciliation for last month done,noise
+CELL-19,2026-07-07,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-19,2026-07-07,Reminder: update sprint tickets,noise
+CELL-19,2026-07-20,Weekly sync moved to 4pm,noise
+CELL-19,2026-07-31,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-19,2026-08-11,"Bidder-D bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-19,2026-08-15,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-19,2026-08-16,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-19,2026-08-21,Reminder: update sprint tickets,noise
+CELL-19,2026-08-23,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-19,2026-08-25,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-19,2026-08-28,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-19,2026-09-02,New ops dashboard link shared in channel,noise
+CELL-19,2026-09-03,Reminder: update sprint tickets,noise
+CELL-19,2026-09-25,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-19,2026-09-27,"Bidder-G paused by their side, timeouts across our placements",outage
+CELL-20,2026-04-08,Weekly sync moved to 4pm,noise
+CELL-20,2026-04-18,"Seeing timeouts on Bidder-A, monitoring",outage_ambig
+CELL-20,2026-04-23,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-20,2026-05-01,"Deploy v2.34 rolled out, no change in bid flow",benign
+CELL-20,2026-05-02,"Deploy v2.22 rolled out, no change in bid flow",benign
+CELL-20,2026-05-06,Reminder: update sprint tickets,noise
+CELL-20,2026-05-15,Weekly sync moved to 4pm,noise
+CELL-20,2026-05-16,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-20,2026-05-30,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-20,2026-06-01,Weekly sync moved to 4pm,noise
+CELL-20,2026-06-06,"election results campaign goes live tomorrow, expect higher demand",surge
+CELL-20,2026-06-10,"Bidder-D bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-20,2026-06-10,New ops dashboard link shared in channel,noise
+CELL-20,2026-06-13,Invoice reconciliation for last month done,noise
+CELL-20,2026-06-19,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-20,2026-06-22,New ops dashboard link shared in channel,noise
+CELL-20,2026-07-18,"Bidder-H bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-20,2026-07-18,"Bidder-G bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-20,2026-07-22,"Deploy v2.25 rolled out, no change in bid flow",benign
+CELL-20,2026-07-23,"Deploy v2.29 rolled out, no change in bid flow",benign
+CELL-20,2026-07-28,"Deploy v2.20 rolled out, no change in bid flow",benign
+CELL-20,2026-08-07,New ops dashboard link shared in channel,noise
+CELL-20,2026-08-11,Invoice reconciliation for last month done,noise
+CELL-20,2026-08-22,Invoice reconciliation for last month done,noise
+CELL-20,2026-09-01,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-20,2026-09-17,"Seeing timeouts on Bidder-F, monitoring",ambig_decoy
+CELL-20,2026-09-20,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-20,2026-09-23,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-20,2026-09-26,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-21,2026-04-05,Invoice reconciliation for last month done,noise
+CELL-21,2026-04-17,"Deploy v2.12 rolled out, no change in bid flow",benign
+CELL-21,2026-04-18,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-04-20,Reminder: update sprint tickets,noise
+CELL-21,2026-04-24,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-21,2026-04-26,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-05-02,Weekly sync moved to 4pm,noise
+CELL-21,2026-05-04,"Bidder-G endpoint returning 5xx since 9:00, bid responses down",outage
+CELL-21,2026-05-11,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-05-16,"Deploy v2.28 rolled out, no change in bid flow",benign
+CELL-21,2026-05-26,New ops dashboard link shared in channel,noise
+CELL-21,2026-05-29,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-21,2026-05-31,"Seeing timeouts on Bidder-H, monitoring",outage_ambig
+CELL-21,2026-06-05,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-21,2026-06-12,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-21,2026-06-16,Invoice reconciliation for last month done,noise
+CELL-21,2026-06-21,Reminder: update sprint tickets,noise
+CELL-21,2026-06-24,Invoice reconciliation for last month done,noise
+CELL-21,2026-06-28,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-21,2026-07-02,"election results campaign goes live tomorrow, expect higher demand",surge
+CELL-21,2026-07-07,Invoice reconciliation for last month done,noise
+CELL-21,2026-07-12,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-21,2026-07-14,"Bidder-H bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-21,2026-07-16,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-07-20,New ops dashboard link shared in channel,noise
+CELL-21,2026-07-21,New ops dashboard link shared in channel,noise
+CELL-21,2026-08-08,"Deploy v2.28 rolled out, no change in bid flow",benign
+CELL-21,2026-08-14,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-21,2026-08-23,"Bidder-H paused by their side, timeouts across our placements",outage
+CELL-21,2026-08-24,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-21,2026-08-26,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-09-03,Reminder: update sprint tickets,noise
+CELL-21,2026-09-13,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-21,2026-09-14,"Bidder-A endpoint returning 5xx since 1:00, bid responses down",outage
+CELL-22,2026-06-01,Bidder-B changed their bidding strategy last night,shift
+CELL-22,2026-04-03,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-22,2026-04-13,"election results campaign goes live tomorrow, expect higher demand",surge
+CELL-22,2026-04-18,Reminder: update sprint tickets,noise
+CELL-22,2026-04-29,Reminder: update sprint tickets,noise
+CELL-22,2026-05-09,Invoice reconciliation for last month done,noise
+CELL-22,2026-05-12,Reminder: update sprint tickets,noise
+CELL-22,2026-05-28,Weekly sync moved to 4pm,noise
+CELL-22,2026-05-29,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-22,2026-05-31,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-22,2026-06-07,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-22,2026-06-17,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-22,2026-06-23,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-22,2026-07-01,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-22,2026-07-06,New ops dashboard link shared in channel,noise
+CELL-22,2026-07-13,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-22,2026-07-14,Reminder: update sprint tickets,noise
+CELL-22,2026-07-20,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-22,2026-07-25,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-22,2026-07-28,New ops dashboard link shared in channel,noise
+CELL-22,2026-07-30,Reminder: update sprint tickets,noise
+CELL-22,2026-08-01,"Deploy v2.18 rolled out, no change in bid flow",benign
+CELL-22,2026-08-06,"Bidder-G bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-22,2026-08-07,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-22,2026-08-13,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-22,2026-08-28,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-22,2026-09-01,Weekly sync moved to 4pm,noise
+CELL-22,2026-09-03,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-22,2026-09-08,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-22,2026-09-22,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-22,2026-09-22,Weekly sync moved to 4pm,noise
+CELL-22,2026-09-27,"Bidder-H bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-23,2026-04-18,Bidder-F changed their bidding strategy last night,shift
+CELL-23,2026-04-13,Weekly sync moved to 4pm,noise
+CELL-23,2026-04-16,"Deploy v2.36 rolled out, no change in bid flow",benign
+CELL-23,2026-04-18,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-23,2026-04-23,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-23,2026-05-05,Invoice reconciliation for last month done,noise
+CELL-23,2026-05-18,New ops dashboard link shared in channel,noise
+CELL-23,2026-05-19,New ops dashboard link shared in channel,noise
+CELL-23,2026-05-22,Invoice reconciliation for last month done,noise
+CELL-23,2026-05-30,Weekly sync moved to 4pm,noise
+CELL-23,2026-06-02,"Deploy v2.10 rolled out, no change in bid flow",benign
+CELL-23,2026-06-02,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-23,2026-06-09,"Bidder-B has gone quiet since morning, checking with their AM",outage
+CELL-23,2026-06-11,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-23,2026-06-14,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-23,2026-06-20,Weekly sync moved to 4pm,noise
+CELL-23,2026-06-21,Invoice reconciliation for last month done,noise
+CELL-23,2026-06-22,Reminder: update sprint tickets,noise
+CELL-23,2026-07-01,Reminder: update sprint tickets,noise
+CELL-23,2026-07-10,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-23,2026-07-13,Weekly sync moved to 4pm,noise
+CELL-23,2026-07-16,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-23,2026-07-20,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-23,2026-07-21,Reminder: update sprint tickets,noise
+CELL-23,2026-07-21,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-23,2026-07-29,Reminder: update sprint tickets,noise
+CELL-23,2026-07-30,"Deploy v2.54 rolled out, no change in bid flow",benign
+CELL-23,2026-08-01,"Deploy v2.51 rolled out, no change in bid flow",benign
+CELL-23,2026-08-17,Invoice reconciliation for last month done,noise
+CELL-23,2026-08-27,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-23,2026-09-05,Reminder: update sprint tickets,noise
+CELL-23,2026-09-14,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-23,2026-09-25,Reminder: update sprint tickets,noise
+CELL-23,2026-09-26,Reminder: update sprint tickets,noise
+CELL-24,2026-04-08,Invoice reconciliation for last month done,noise
+CELL-24,2026-04-12,Invoice reconciliation for last month done,noise
+CELL-24,2026-04-15,New ops dashboard link shared in channel,noise
+CELL-24,2026-04-25,Invoice reconciliation for last month done,noise
+CELL-24,2026-04-29,New ops dashboard link shared in channel,noise
+CELL-24,2026-05-21,New ops dashboard link shared in channel,noise
+CELL-24,2026-05-24,Invoice reconciliation for last month done,noise
+CELL-24,2026-06-11,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-24,2026-06-13,"Bidder-A paused by their side, timeouts across our placements",outage
+CELL-24,2026-06-14,Invoice reconciliation for last month done,noise
+CELL-24,2026-06-17,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-24,2026-06-20,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-24,2026-06-25,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-24,2026-06-26,Reminder: update sprint tickets,noise
+CELL-24,2026-06-29,Weekly sync moved to 4pm,noise
+CELL-24,2026-07-05,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-24,2026-07-31,Weekly sync moved to 4pm,noise
+CELL-24,2026-08-04,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-24,2026-08-18,Invoice reconciliation for last month done,noise
+CELL-24,2026-08-19,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-24,2026-08-20,"Deploy v2.55 rolled out, no change in bid flow",benign
+CELL-24,2026-09-02,New ops dashboard link shared in channel,noise
+CELL-24,2026-09-05,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-24,2026-09-10,Invoice reconciliation for last month done,noise
+CELL-24,2026-09-15,Invoice reconciliation for last month done,noise
+CELL-24,2026-09-16,"Bidder-G bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-25,2026-04-10,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-25,2026-04-13,Reminder: update sprint tickets,noise
+CELL-25,2026-04-15,Invoice reconciliation for last month done,noise
+CELL-25,2026-04-24,Weekly sync moved to 4pm,noise
+CELL-25,2026-04-28,Weekly sync moved to 4pm,noise
+CELL-25,2026-05-27,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-25,2026-05-28,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-05-30,Invoice reconciliation for last month done,noise
+CELL-25,2026-06-01,Reminder: update sprint tickets,noise
+CELL-25,2026-06-11,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-25,2026-06-19,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-25,2026-06-22,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-25,2026-06-23,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-06-25,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-25,2026-06-29,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-07-06,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-07-10,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-07-21,"Deploy v2.50 rolled out, no change in bid flow",benign
+CELL-25,2026-07-28,"Seeing timeouts on Bidder-E, monitoring",outage_ambig
+CELL-25,2026-08-05,Weekly sync moved to 4pm,noise
+CELL-25,2026-08-06,Invoice reconciliation for last month done,noise
+CELL-25,2026-08-09,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-08-27,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-25,2026-08-27,New ops dashboard link shared in channel,noise
+CELL-25,2026-09-13,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-26,2026-04-22,Bidder-B changed their bidding strategy last night,shift
+CELL-26,2026-04-02,New ops dashboard link shared in channel,noise
+CELL-26,2026-04-04,Reminder: update sprint tickets,noise
+CELL-26,2026-04-17,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-26,2026-05-03,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-26,2026-05-10,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-26,2026-06-02,Reminder: update sprint tickets,noise
+CELL-26,2026-06-07,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-26,2026-06-20,New ops dashboard link shared in channel,noise
+CELL-26,2026-06-21,Invoice reconciliation for last month done,noise
+CELL-26,2026-06-26,"Deploy v2.42 rolled out, no change in bid flow",benign
+CELL-26,2026-07-12,Weekly sync moved to 4pm,noise
+CELL-26,2026-07-13,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-26,2026-07-17,New ops dashboard link shared in channel,noise
+CELL-26,2026-07-19,Invoice reconciliation for last month done,noise
+CELL-26,2026-07-22,New ops dashboard link shared in channel,noise
+CELL-26,2026-07-24,"Bidder-G paused by their side, timeouts across our placements",outage
+CELL-26,2026-07-28,Invoice reconciliation for last month done,noise
+CELL-26,2026-08-03,Invoice reconciliation for last month done,noise
+CELL-26,2026-08-11,"Deploy v2.31 rolled out, no change in bid flow",benign
+CELL-26,2026-08-27,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-26,2026-08-29,Reminder: update sprint tickets,noise
+CELL-26,2026-09-24,Invoice reconciliation for last month done,noise
+CELL-27,2026-09-25,Bidder-H changed their bidding strategy last night,shift
+CELL-27,2026-04-05,Reminder: update sprint tickets,noise
+CELL-27,2026-04-08,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-27,2026-04-23,Invoice reconciliation for last month done,noise
+CELL-27,2026-04-28,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-27,2026-04-30,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-27,2026-05-06,Invoice reconciliation for last month done,noise
+CELL-27,2026-05-22,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-27,2026-06-04,New ops dashboard link shared in channel,noise
+CELL-27,2026-06-06,Invoice reconciliation for last month done,noise
+CELL-27,2026-06-11,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-27,2026-06-18,Invoice reconciliation for last month done,noise
+CELL-27,2026-06-25,Reminder: update sprint tickets,noise
+CELL-27,2026-07-22,Reminder: update sprint tickets,noise
+CELL-27,2026-07-25,"Deploy v2.56 rolled out, no change in bid flow",benign
+CELL-27,2026-08-01,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-27,2026-08-03,Reminder: update sprint tickets,noise
+CELL-27,2026-08-10,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-27,2026-08-16,Invoice reconciliation for last month done,noise
+CELL-27,2026-08-18,Weekly sync moved to 4pm,noise
+CELL-27,2026-09-03,Reminder: update sprint tickets,noise
+CELL-27,2026-09-13,Reminder: update sprint tickets,noise
+CELL-27,2026-09-21,"Seeing timeouts on Bidder-E, monitoring",ambig_decoy
+CELL-27,2026-09-21,Invoice reconciliation for last month done,noise
+CELL-27,2026-09-22,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-27,2026-09-27,"Deploy v2.52 rolled out, no change in bid flow",benign
+CELL-28,2026-04-25,Bidder-E changed their bidding strategy last night,shift
+CELL-28,2026-04-01,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-28,2026-04-23,New ops dashboard link shared in channel,noise
+CELL-28,2026-05-19,"Deploy v2.51 rolled out, no change in bid flow",benign
+CELL-28,2026-05-27,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-28,2026-05-30,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-28,2026-06-02,Weekly sync moved to 4pm,noise
+CELL-28,2026-06-05,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-28,2026-06-05,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-28,2026-06-05,"festive sale campaign goes live tomorrow, expect higher demand",surge
+CELL-28,2026-06-07,Weekly sync moved to 4pm,noise
+CELL-28,2026-06-09,Reminder: update sprint tickets,noise
+CELL-28,2026-06-14,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-28,2026-06-15,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-28,2026-06-22,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-28,2026-06-24,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-28,2026-06-27,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-28,2026-07-04,Invoice reconciliation for last month done,noise
+CELL-28,2026-07-12,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-28,2026-07-17,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-28,2026-07-18,Weekly sync moved to 4pm,noise
+CELL-28,2026-07-20,"Deploy v2.12 rolled out, no change in bid flow",benign
+CELL-28,2026-07-22,New ops dashboard link shared in channel,noise
+CELL-28,2026-08-03,Weekly sync moved to 4pm,noise
+CELL-28,2026-08-18,Invoice reconciliation for last month done,noise
+CELL-28,2026-08-20,Weekly sync moved to 4pm,noise
+CELL-28,2026-08-24,Reminder: update sprint tickets,noise
+CELL-28,2026-09-06,Weekly sync moved to 4pm,noise
+CELL-28,2026-09-07,New ops dashboard link shared in channel,noise
+CELL-28,2026-09-08,Invoice reconciliation for last month done,noise
+CELL-28,2026-09-11,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-29,2026-04-19,"Seeing timeouts on Bidder-E, monitoring",ambig_decoy
+CELL-29,2026-04-20,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-29,2026-04-28,Invoice reconciliation for last month done,noise
+CELL-29,2026-05-11,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-29,2026-05-18,"Deploy v2.39 rolled out, no change in bid flow",benign
+CELL-29,2026-05-20,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-29,2026-06-07,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-29,2026-06-12,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-29,2026-06-20,"Deploy v2.46 rolled out, no change in bid flow",benign
+CELL-29,2026-06-22,Invoice reconciliation for last month done,noise
+CELL-29,2026-06-24,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-29,2026-07-07,Invoice reconciliation for last month done,noise
+CELL-29,2026-07-16,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-29,2026-07-28,New ops dashboard link shared in channel,noise
+CELL-29,2026-08-01,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-29,2026-08-02,Reminder: update sprint tickets,noise
+CELL-29,2026-08-15,"Bidder-A paused by their side, timeouts across our placements",outage
+CELL-29,2026-08-17,"Deploy v2.19 rolled out, no change in bid flow",benign
+CELL-29,2026-08-20,Weekly sync moved to 4pm,noise
+CELL-29,2026-08-26,New ops dashboard link shared in channel,noise
+CELL-29,2026-08-27,Invoice reconciliation for last month done,noise
+CELL-29,2026-09-02,Weekly sync moved to 4pm,noise
+CELL-29,2026-09-12,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-29,2026-09-12,Invoice reconciliation for last month done,noise
+CELL-29,2026-09-26,"Deploy v2.11 rolled out, no change in bid flow",benign
+CELL-30,2026-04-10,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-30,2026-04-14,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-30,2026-04-20,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-30,2026-04-27,Reminder: update sprint tickets,noise
+CELL-30,2026-04-28,Weekly sync moved to 4pm,noise
+CELL-30,2026-05-08,Reminder: update sprint tickets,noise
+CELL-30,2026-05-11,"Deploy v2.22 rolled out, no change in bid flow",benign
+CELL-30,2026-05-14,Weekly sync moved to 4pm,noise
+CELL-30,2026-05-15,Reminder: update sprint tickets,noise
+CELL-30,2026-05-17,Invoice reconciliation for last month done,noise
+CELL-30,2026-05-18,Reminder: update sprint tickets,noise
+CELL-30,2026-05-22,Weekly sync moved to 4pm,noise
+CELL-30,2026-05-27,"Demand partner Bidder-F not bidding today, support ticket open",outage
+CELL-30,2026-05-26,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-30,2026-05-27,New ops dashboard link shared in channel,noise
+CELL-30,2026-06-02,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-30,2026-06-04,Invoice reconciliation for last month done,noise
+CELL-30,2026-06-14,Invoice reconciliation for last month done,noise
+CELL-30,2026-06-15,Reminder: update sprint tickets,noise
+CELL-30,2026-06-21,Reminder: update sprint tickets,noise
+CELL-30,2026-06-29,Reminder: update sprint tickets,noise
+CELL-30,2026-07-04,Reminder: update sprint tickets,noise
+CELL-30,2026-07-05,New ops dashboard link shared in channel,noise
+CELL-30,2026-07-06,New ops dashboard link shared in channel,noise
+CELL-30,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-30,2026-07-23,Weekly sync moved to 4pm,noise
+CELL-30,2026-08-15,Weekly sync moved to 4pm,noise
+CELL-30,2026-08-20,Invoice reconciliation for last month done,noise
+CELL-30,2026-09-01,"Deploy v2.27 rolled out, no change in bid flow",benign
+CELL-30,2026-09-08,Weekly sync moved to 4pm,noise
+CELL-30,2026-09-18,Weekly sync moved to 4pm,noise
+CELL-30,2026-09-19,Reminder: update sprint tickets,noise
+CELL-30,2026-09-19,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-30,2026-09-23,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-30,2026-09-24,Invoice reconciliation for last month done,noise
+CELL-30,2026-09-26,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-31,2026-04-01,Invoice reconciliation for last month done,noise
+CELL-31,2026-04-15,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-31,2026-04-30,Invoice reconciliation for last month done,noise
+CELL-31,2026-05-01,Invoice reconciliation for last month done,noise
+CELL-31,2026-05-06,"Bidder-B bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-31,2026-05-08,Weekly sync moved to 4pm,noise
+CELL-31,2026-05-10,"Deploy v2.13 rolled out, no change in bid flow",benign
+CELL-31,2026-05-10,Reminder: update sprint tickets,noise
+CELL-31,2026-05-21,Invoice reconciliation for last month done,noise
+CELL-31,2026-05-25,Reminder: update sprint tickets,noise
+CELL-31,2026-05-28,Reminder: update sprint tickets,noise
+CELL-31,2026-06-04,New ops dashboard link shared in channel,noise
+CELL-31,2026-06-04,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-31,2026-06-08,Weekly sync moved to 4pm,noise
+CELL-31,2026-06-22,"Bidder-A endpoint returning 5xx since 4:00, bid responses down",outage
+CELL-31,2026-06-27,"Bidder-A has gone quiet since morning, checking with their AM",outage
+CELL-31,2026-06-26,Weekly sync moved to 4pm,noise
+CELL-31,2026-07-09,New ops dashboard link shared in channel,noise
+CELL-31,2026-07-10,Weekly sync moved to 4pm,noise
+CELL-31,2026-07-18,Invoice reconciliation for last month done,noise
+CELL-31,2026-07-22,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-31,2026-07-24,Invoice reconciliation for last month done,noise
+CELL-31,2026-07-30,"Demand partner Bidder-A not bidding today, support ticket open",outage
+CELL-31,2026-08-13,Weekly sync moved to 4pm,noise
+CELL-31,2026-08-16,Weekly sync moved to 4pm,noise
+CELL-31,2026-09-01,"Deploy v2.36 rolled out, no change in bid flow",benign
+CELL-31,2026-09-13,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-31,2026-09-13,New ops dashboard link shared in channel,noise
+CELL-31,2026-09-14,Reminder: update sprint tickets,noise
+CELL-31,2026-09-24,Reminder: update sprint tickets,noise
+CELL-32,2026-04-04,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-32,2026-04-10,Invoice reconciliation for last month done,noise
+CELL-32,2026-05-01,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-32,2026-05-08,"Bidder-D bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-32,2026-05-08,Weekly sync moved to 4pm,noise
+CELL-32,2026-05-11,New ops dashboard link shared in channel,noise
+CELL-32,2026-05-14,"Deploy v2.15 rolled out, no change in bid flow",benign
+CELL-32,2026-05-19,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-32,2026-05-22,"Bidder-D has gone quiet since morning, checking with their AM",outage
+CELL-32,2026-05-24,New ops dashboard link shared in channel,noise
+CELL-32,2026-05-27,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-32,2026-06-04,New ops dashboard link shared in channel,noise
+CELL-32,2026-06-08,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-32,2026-06-19,New ops dashboard link shared in channel,noise
+CELL-32,2026-06-26,Weekly sync moved to 4pm,noise
+CELL-32,2026-06-28,Weekly sync moved to 4pm,noise
+CELL-32,2026-07-08,"cricket final campaign goes live tomorrow, expect higher demand",surge
+CELL-32,2026-07-11,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-32,2026-07-19,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-32,2026-07-24,"Deploy v2.34 rolled out, no change in bid flow",benign
+CELL-32,2026-08-02,"Big IPL match traffic expected tomorrow, buyers ramping spend",surge
+CELL-32,2026-08-03,New ops dashboard link shared in channel,noise
+CELL-32,2026-08-05,Invoice reconciliation for last month done,noise
+CELL-32,2026-08-06,Reminder: update sprint tickets,noise
+CELL-32,2026-08-08,Weekly sync moved to 4pm,noise
+CELL-32,2026-08-13,Weekly sync moved to 4pm,noise
+CELL-32,2026-08-26,"Deploy v2.42 rolled out, no change in bid flow",benign
+CELL-32,2026-09-01,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-32,2026-09-06,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-32,2026-09-11,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-32,2026-09-11,New ops dashboard link shared in channel,noise
+CELL-32,2026-09-15,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-32,2026-09-15,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-33,2026-04-04,"Bidder-A bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-33,2026-04-06,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-33,2026-04-17,Weekly sync moved to 4pm,noise
+CELL-33,2026-05-08,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-05-12,Reminder: update sprint tickets,noise
+CELL-33,2026-05-15,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-33,2026-05-20,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-33,2026-05-27,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-06-06,Invoice reconciliation for last month done,noise
+CELL-33,2026-06-16,Invoice reconciliation for last month done,noise
+CELL-33,2026-06-25,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-33,2026-06-27,Invoice reconciliation for last month done,noise
+CELL-33,2026-06-29,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-07-03,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-07-11,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-33,2026-07-25,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-33,2026-08-03,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-33,2026-08-26,"Bidder-A latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-08-30,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-33,2026-09-07,"Deploy v2.14 rolled out, no change in bid flow",benign
+CELL-33,2026-09-14,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-33,2026-09-16,"Seeing timeouts on Bidder-D, monitoring",ambig_decoy
+CELL-33,2026-09-17,"Deploy v2.45 rolled out, no change in bid flow",benign
+CELL-33,2026-09-22,Invoice reconciliation for last month done,noise
+CELL-34,2026-04-16,New ops dashboard link shared in channel,noise
+CELL-34,2026-05-09,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-34,2026-05-09,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-34,2026-05-15,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-34,2026-05-26,New ops dashboard link shared in channel,noise
+CELL-34,2026-06-01,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-34,2026-06-08,"Deploy v2.25 rolled out, no change in bid flow",benign
+CELL-34,2026-07-05,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-34,2026-07-26,"Bidder-B bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-34,2026-08-03,Invoice reconciliation for last month done,noise
+CELL-34,2026-08-04,Weekly sync moved to 4pm,noise
+CELL-34,2026-08-13,"Big election results traffic expected tomorrow, buyers ramping spend",surge
+CELL-34,2026-08-20,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-34,2026-08-23,Reminder: update sprint tickets,noise
+CELL-34,2026-08-25,New ops dashboard link shared in channel,noise
+CELL-34,2026-08-28,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-34,2026-08-29,"Deploy v2.10 rolled out, no change in bid flow",benign
+CELL-34,2026-09-08,Reminder: update sprint tickets,noise
+CELL-34,2026-09-22,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-35,2026-04-03,Invoice reconciliation for last month done,noise
+CELL-35,2026-04-07,New ops dashboard link shared in channel,noise
+CELL-35,2026-04-11,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-35,2026-04-12,Weekly sync moved to 4pm,noise
+CELL-35,2026-04-18,"Seeing timeouts on Bidder-C, monitoring",outage_ambig
+CELL-35,2026-04-17,"Deploy v2.33 rolled out, no change in bid flow",benign
+CELL-35,2026-04-22,Weekly sync moved to 4pm,noise
+CELL-35,2026-04-30,"Bidder-C bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-35,2026-05-01,New ops dashboard link shared in channel,noise
+CELL-35,2026-05-04,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-35,2026-05-07,Invoice reconciliation for last month done,noise
+CELL-35,2026-05-14,Reminder: update sprint tickets,noise
+CELL-35,2026-05-15,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-35,2026-05-17,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-35,2026-05-20,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-35,2026-05-20,Reminder: update sprint tickets,noise
+CELL-35,2026-05-23,Reminder: update sprint tickets,noise
+CELL-35,2026-05-24,"Bidder-H timeout spike cleared, no impact on fill",benign
+CELL-35,2026-05-29,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-35,2026-05-29,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-35,2026-06-02,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-35,2026-06-07,"Deploy v2.42 rolled out, no change in bid flow",benign
+CELL-35,2026-06-08,Invoice reconciliation for last month done,noise
+CELL-35,2026-06-15,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-35,2026-06-21,"Deploy v2.26 rolled out, no change in bid flow",benign
+CELL-35,2026-06-30,"Deploy v2.41 rolled out, no change in bid flow",benign
+CELL-35,2026-07-04,New ops dashboard link shared in channel,noise
+CELL-35,2026-07-10,"Deploy v2.14 rolled out, no change in bid flow",benign
+CELL-35,2026-07-11,New ops dashboard link shared in channel,noise
+CELL-35,2026-07-14,Reminder: update sprint tickets,noise
+CELL-35,2026-07-21,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-35,2026-07-22,Weekly sync moved to 4pm,noise
+CELL-35,2026-08-08,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy
+CELL-35,2026-08-10,Reminder: update sprint tickets,noise
+CELL-35,2026-08-13,"Bidder-B has gone quiet since morning, checking with their AM",outage
+CELL-35,2026-08-14,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-35,2026-08-27,Reminder: update sprint tickets,noise
+CELL-35,2026-09-02,"Bidder-B timeout spike cleared, no impact on fill",benign
+CELL-35,2026-09-12,"Deploy v2.16 rolled out, no change in bid flow",benign
+CELL-35,2026-09-13,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-35,2026-09-17,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-35,2026-09-19,Weekly sync moved to 4pm,noise
+CELL-35,2026-09-24,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-36,2026-08-24,Bidder-B changed their bidding strategy last night,shift
+CELL-36,2026-09-22,"New buyer onboarded on Bidder-C, seats ramping",shift
+CELL-36,2026-04-18,"IPL match campaign goes live tomorrow, expect higher demand",surge
+CELL-36,2026-05-09,"Bidder-E bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-36,2026-05-13,"Seeing timeouts on Bidder-H, monitoring",ambig_decoy
+CELL-36,2026-05-17,New ops dashboard link shared in channel,noise
+CELL-36,2026-05-21,New ops dashboard link shared in channel,noise
+CELL-36,2026-05-25,Invoice reconciliation for last month done,noise
+CELL-36,2026-05-27,"Bidder-B endpoint returning 5xx since 7:00, bid responses down",outage
+CELL-36,2026-05-26,New ops dashboard link shared in channel,noise
+CELL-36,2026-05-30,Weekly sync moved to 4pm,noise
+CELL-36,2026-06-03,Invoice reconciliation for last month done,noise
+CELL-36,2026-06-05,"Bidder-F timeout spike cleared, no impact on fill",benign
+CELL-36,2026-06-09,"Bidder-G bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-36,2026-06-13,New ops dashboard link shared in channel,noise
+CELL-36,2026-06-27,New ops dashboard link shared in channel,noise
+CELL-36,2026-06-30,"Deploy v2.32 rolled out, no change in bid flow",benign
+CELL-36,2026-07-03,"Bidder-G paused by their side, timeouts across our placements",outage
+CELL-36,2026-07-07,"Bidder-B latency alert auto-resolved in 5 min, no impact",benign
+CELL-36,2026-07-08,Invoice reconciliation for last month done,noise
+CELL-36,2026-07-13,"Bidder-C bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-36,2026-07-24,"Deploy v2.29 rolled out, no change in bid flow",benign
+CELL-36,2026-07-27,"Deploy v2.51 rolled out, no change in bid flow",benign
+CELL-36,2026-07-27,Invoice reconciliation for last month done,noise
+CELL-36,2026-08-03,Weekly sync moved to 4pm,noise
+CELL-36,2026-09-02,Weekly sync moved to 4pm,noise
+CELL-36,2026-09-17,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-36,2026-09-18,Invoice reconciliation for last month done,noise
+CELL-36,2026-09-19,"Seeing timeouts on Bidder-E, monitoring",ambig_decoy
+CELL-36,2026-09-20,"Bidder-G timeout spike cleared, no impact on fill",benign
+CELL-36,2026-09-27,New ops dashboard link shared in channel,noise
+CELL-37,2026-04-16,Reminder: update sprint tickets,noise
+CELL-37,2026-04-20,Reminder: update sprint tickets,noise
+CELL-37,2026-04-22,New ops dashboard link shared in channel,noise
+CELL-37,2026-04-27,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-37,2026-05-07,"Bidder-F bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-37,2026-05-07,Invoice reconciliation for last month done,noise
+CELL-37,2026-05-10,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-37,2026-05-14,Weekly sync moved to 4pm,noise
+CELL-37,2026-05-17,Invoice reconciliation for last month done,noise
+CELL-37,2026-05-18,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-37,2026-05-22,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-37,2026-05-25,Weekly sync moved to 4pm,noise
+CELL-37,2026-05-28,"Deploy v2.29 rolled out, no change in bid flow",benign
+CELL-37,2026-06-05,"Demand partner Bidder-G not bidding today, support ticket open",outage
+CELL-37,2026-06-04,Weekly sync moved to 4pm,noise
+CELL-37,2026-06-06,Weekly sync moved to 4pm,noise
+CELL-37,2026-06-07,Invoice reconciliation for last month done,noise
+CELL-37,2026-06-09,"Bidder-D latency alert auto-resolved in 5 min, no impact",benign
+CELL-37,2026-06-09,Invoice reconciliation for last month done,noise
+CELL-37,2026-06-16,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-37,2026-06-18,Invoice reconciliation for last month done,noise
+CELL-37,2026-06-27,"Seeing timeouts on Bidder-B, monitoring",ambig_decoy
+CELL-37,2026-06-30,New ops dashboard link shared in channel,noise
+CELL-37,2026-07-11,Invoice reconciliation for last month done,noise
+CELL-37,2026-07-18,Reminder: update sprint tickets,noise
+CELL-37,2026-07-25,Reminder: update sprint tickets,noise
+CELL-37,2026-07-28,Weekly sync moved to 4pm,noise
+CELL-37,2026-08-06,Weekly sync moved to 4pm,noise
+CELL-37,2026-08-09,New ops dashboard link shared in channel,noise
+CELL-37,2026-08-10,"Bidder-D timeout spike cleared, no impact on fill",benign
+CELL-37,2026-08-13,Weekly sync moved to 4pm,noise
+CELL-37,2026-08-14,New ops dashboard link shared in channel,noise
+CELL-37,2026-08-15,"Bidder-C timeout spike cleared, no impact on fill",benign
+CELL-37,2026-08-22,Reminder: update sprint tickets,noise
+CELL-37,2026-09-02,"Bidder-E timeout spike cleared, no impact on fill",benign
+CELL-37,2026-09-12,Reminder: update sprint tickets,noise
+CELL-37,2026-09-22,Weekly sync moved to 4pm,noise
+CELL-37,2026-09-25,New ops dashboard link shared in channel,noise
+CELL-38,2026-06-04,Bidder-H changed their bidding strategy last night,shift
+CELL-38,2026-06-18,"New buyer onboarded on Bidder-A, seats ramping",shift
+CELL-38,2026-04-02,"Bidder-F latency alert auto-resolved in 5 min, no impact",benign
+CELL-38,2026-04-03,Reminder: update sprint tickets,noise
+CELL-38,2026-04-05,New ops dashboard link shared in channel,noise
+CELL-38,2026-04-09,"Big cricket final traffic expected tomorrow, buyers ramping spend",surge
+CELL-38,2026-04-12,New ops dashboard link shared in channel,noise
+CELL-38,2026-04-23,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-38,2026-05-14,"Bidder-G endpoint returning 5xx since 3:00, bid responses down",outage
+CELL-38,2026-05-18,New ops dashboard link shared in channel,noise
+CELL-38,2026-05-27,Reminder: update sprint tickets,noise
+CELL-38,2026-05-29,Reminder: update sprint tickets,noise
+CELL-38,2026-06-08,New ops dashboard link shared in channel,noise
+CELL-38,2026-06-16,"Bidder-G endpoint returning 5xx since 4:00, bid responses down",outage
+CELL-38,2026-06-19,Invoice reconciliation for last month done,noise
+CELL-38,2026-06-23,"Bidder-H bid rate looks a bit low, keeping an eye on it",ambig_decoy
+CELL-38,2026-06-27,"Bidder-G bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-38,2026-06-29,"Deploy v2.23 rolled out, no change in bid flow",benign
+CELL-38,2026-07-10,Reminder: update sprint tickets,noise
+CELL-38,2026-07-15,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-38,2026-07-15,Invoice reconciliation for last month done,noise
+CELL-38,2026-07-20,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-38,2026-07-27,New ops dashboard link shared in channel,noise
+CELL-38,2026-08-05,"Reporting pipeline delayed, impression counts for yesterday look short",glitch
+CELL-38,2026-08-06,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-38,2026-08-07,"Seeing timeouts on Bidder-F, monitoring",ambig_decoy
+CELL-38,2026-08-20,Reminder: update sprint tickets,noise
+CELL-38,2026-08-28,"ClickHouse ingestion lag, today numbers incomplete, backfill pending",glitch
+CELL-38,2026-08-29,New ops dashboard link shared in channel,noise
+CELL-38,2026-09-06,"Bidder-H latency alert auto-resolved in 5 min, no impact",benign
+CELL-38,2026-09-09,Reminder: update sprint tickets,noise
+CELL-38,2026-09-22,"Bidder-A timeout spike cleared, no impact on fill",benign
+CELL-38,2026-09-27,New ops dashboard link shared in channel,noise
+CELL-39,2026-08-05,"New buyer onboarded on Bidder-C, seats ramping",shift
+CELL-39,2026-04-09,Invoice reconciliation for last month done,noise
+CELL-39,2026-04-17,"Deploy v2.44 rolled out, no change in bid flow",benign
+CELL-39,2026-04-23,New ops dashboard link shared in channel,noise
+CELL-39,2026-05-02,New ops dashboard link shared in channel,noise
+CELL-39,2026-05-03,"Deploy v2.11 rolled out, no change in bid flow",benign
+CELL-39,2026-05-07,New ops dashboard link shared in channel,noise
+CELL-39,2026-05-12,New ops dashboard link shared in channel,noise
+CELL-39,2026-05-15,New ops dashboard link shared in channel,noise
+CELL-39,2026-05-22,Weekly sync moved to 4pm,noise
+CELL-39,2026-05-28,Reminder: update sprint tickets,noise
+CELL-39,2026-06-01,"Bidder-G latency alert auto-resolved in 5 min, no impact",benign
+CELL-39,2026-06-03,New ops dashboard link shared in channel,noise
+CELL-39,2026-06-16,Invoice reconciliation for last month done,noise
+CELL-39,2026-06-27,"Seeing timeouts on Bidder-C, monitoring",ambig_decoy
+CELL-39,2026-07-30,"Bidder-C endpoint returning 5xx since 9:00, bid responses down",outage
+CELL-39,2026-07-31,"Bidder-D bid rate looks a bit low, keeping an eye on it",outage_ambig
+CELL-39,2026-08-15,Invoice reconciliation for last month done,noise
+CELL-39,2026-08-18,"Deploy v2.40 rolled out, no change in bid flow",benign
+CELL-39,2026-08-22,"Bidder-E latency alert auto-resolved in 5 min, no impact",benign
+CELL-39,2026-08-26,New ops dashboard link shared in channel,noise
+CELL-39,2026-08-27,"Bidder-C latency alert auto-resolved in 5 min, no impact",benign
+CELL-39,2026-08-28,"Bidder-A paused by their side, timeouts across our placements",outage
+CELL-39,2026-09-01,New ops dashboard link shared in channel,noise
+CELL-39,2026-09-14,New ops dashboard link shared in channel,noise
+CELL-39,2026-09-21,"Big festive sale traffic expected tomorrow, buyers ramping spend",surge
+CELL-39,2026-09-25,"Seeing timeouts on Bidder-G, monitoring",ambig_decoy

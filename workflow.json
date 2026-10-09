@@ -1,0 +1,53 @@
+{
+  "name": "PLUMB floor-pricing workflow",
+  "data": "synthetic only (src/sim.py); no real ad-stack data",
+  "steps": [
+    {
+      "id": "observe",
+      "what": "daily revenue per 1k requests and floor per placement (cell)"
+    },
+    {
+      "id": "stats",
+      "what": "OLS quadratic fit of revenue vs ln(floor/current), 21-day window; returns proposed floor, gain, standard error",
+      "module": "src/engine.py:stats_fit"
+    },
+    {
+      "id": "agent",
+      "what": "reads ops notes, returns trust plan JSON {hold_reason, exclude_last, window, direction, step_scale, evidence, strength}; never writes a price",
+      "module": "src/agents.py",
+      "backends": [
+        "heuristic_agent (offline, produced all results)",
+        "make_llm_agent (Claude; mock-tested only)"
+      ]
+    },
+    {
+      "id": "engine",
+      "what": "applies plan deterministically: data-quality gates, confidence-scaled step capped at +/-0.25 log",
+      "module": "src/engine.py:decide_system"
+    },
+    {
+      "id": "human",
+      "what": "ops accepts, holds or overrides; refusals return to ops with the reason",
+      "module": "src/engine.py:human_step"
+    },
+    {
+      "id": "evaluate",
+      "what": "closed loop, common random numbers, 60-day burn-in, days 60-179, cluster bootstrap; gates tuned on world 1 dev cells, scored on fresh world 2",
+      "module": "src/evaluate.py"
+    },
+    {
+      "id": "pilot_simulation",
+      "what": "simulates the pilot plan: matched pairs, shadow week, DiD lift, harm vs control, override rate, A/A false-positive rate",
+      "module": "src/pilot_sim.py"
+    }
+  ],
+  "agent_plan_schema": {
+    "hold_reason": "string|null",
+    "exclude_last": "int",
+    "window": "int",
+    "direction": "both|up|down",
+    "step_scale": "float 0-1",
+    "evidence": "[[note, why]]",
+    "strength": "float"
+  }
+}

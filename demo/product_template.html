@@ -1,0 +1,772 @@
+<title>PLUMB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Product console: black top bar, white working surface, one orange for everything that is actionable or recommended. Red is reserved for warnings and misses. */
+:root {
+  --bg: #f6f6f5;
+  --surface: #ffffff;
+  --surface-2: #fafaf9;
+  --ink: #0b0b0c;
+  --muted: #5d5d63;
+  --faint: #8c8c93;
+  --line: #e4e4e1;
+  --line-strong: #cfcfcb;
+  --accent: #ff5b14;
+  --accent-ink: #c93d00;
+  --accent-soft: #fff0e7;
+  --red: #d92d20;
+  --red-soft: #fdecea;
+  --font-ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; padding: 0; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+/* top bar */
+.topbar { background: var(--ink); color: #fff; padding: 0 16px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; }
+.topin { max-width: 1280px; margin-inline: auto; display: flex; align-items: center; gap: 12px 28px; flex-wrap: wrap; min-height: 56px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.16em; font-size: 17px; }
+.logo svg { display: block; }
+.navtabs { display: flex; gap: 2px; overflow-x: auto; flex: 1 1 auto; min-width: 0; }
+.navtabs button { background: transparent; border: 0; color: #b9b9bf; padding: 18px 14px 15px; font-weight: 500; border-bottom: 3px solid transparent; white-space: nowrap; }
+.navtabs button:hover { color: #fff; }
+.navtabs button[aria-selected="true"] { color: #fff; border-bottom-color: var(--accent); }
+.envchip { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+
+.page { max-width: 1280px; margin-inline: auto; padding-inline: 16px; padding-block: 24px 48px; display: flex; flex-direction: column; gap: 20px; }
+.page[hidden] { display: none; }
+
+/* pilot */
+.tl { display: flex; gap: 4px; }
+.tseg { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 8px; font-size: 12.5px; flex: 1 1 0; min-width: 0; }
+.tseg b { font-size: 13px; }
+.tseg.s1 { background: var(--surface-2); border: 1px solid var(--line); }
+.tseg.s2 { background: var(--accent-soft); border: 1px solid #ffd2b8; color: var(--accent-ink); }
+.tseg.s3 { background: var(--ink); color: #fff; }
+ul.plain, ol.plain { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* shared */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; min-width: 0; }
+.eyebrow { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); }
+.label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.btn { border-radius: 10px; padding: 10px 16px; font-weight: 600; border: 1px solid var(--ink); background: var(--surface); }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+.btn.dark { background: var(--ink); color: #fff; }
+.btn.dark:hover { background: #26262a; }
+.btn.small { padding: 7px 12px; font-size: 13.5px; border-radius: 8px; }
+.btn[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: 1px; }
+.btn[disabled] { opacity: 0.45; cursor: default; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.pill.rec { background: var(--accent-soft); color: var(--accent-ink); }
+.pill.hold { background: var(--ink); color: #fff; }
+.pill.flag { background: var(--red-soft); color: var(--red); }
+.pill.plain { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.tag { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line); color: var(--muted); }
+.tag.assume { background: var(--accent-soft); border-color: #ffd2b8; color: var(--accent-ink); }
+
+/* overview */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+.hero h1 { font-size: clamp(30px, 4.2vw, 46px); font-weight: 700; letter-spacing: -0.03em; }
+.hero p.lead { color: var(--muted); font-size: 17px; margin-top: 14px; max-width: 54ch; }
+.hero .ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.heroviz { background: var(--ink); color: #fff; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.heroviz .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid #2c2c30; font-size: 14px; }
+.heroviz .row:last-child { border-bottom: 0; }
+.heroviz .nm { color: #d6d6da; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.kpi { display: flex; flex-direction: column; gap: 6px; }
+.kpi .big { font-size: 34px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+.kpi .big small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.kpi .vs { color: var(--muted); font-size: 13.5px; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.step { display: flex; flex-direction: column; gap: 8px; }
+.step .n { width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+.step h3 { font-size: 18px; }
+.step p { color: var(--muted); font-size: 14.5px; }
+.sectionhead { display: flex; flex-direction: column; gap: 4px; }
+.sectionhead h2 { font-size: 24px; letter-spacing: -0.02em; }
+.sectionhead p { color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+table.t { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.t th { text-align: left; font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px 12px; border-bottom: 1px solid var(--line-strong); background: var(--surface); }
+table.t td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.t td.r, table.t th.r { text-align: right; }
+.callout { border: 1px solid var(--ink); border-radius: 12px; padding: 14px 16px; background: var(--surface); display: flex; gap: 12px; align-items: flex-start; }
+.callout b { font-weight: 700; }
+.callout .mark { width: 8px; align-self: stretch; background: var(--accent); border-radius: 4px; flex: none; }
+
+/* floor desk */
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+.toolbar .left { display: flex; flex-direction: column; gap: 4px; }
+.toolbar h2 { font-size: 24px; letter-spacing: -0.02em; }
+.toolbar .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+select { font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); }
+.statusline { font-size: 14px; color: var(--muted); min-height: 21px; }
+.statusline b { color: var(--ink); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 6px 13px; font-weight: 500; font-size: 14px; }
+.chip[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip .c { color: var(--faint); margin-left: 5px; font-family: var(--font-num); font-size: 12.5px; }
+.chip[aria-pressed="true"] .c { color: #b9b9bf; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.queue { padding: 0; overflow: hidden; }
+.queuescroll { max-height: 680px; overflow: auto; }
+table.q { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 14px; }
+table.q th { position: sticky; top: 0; background: var(--surface-2); z-index: 2; text-align: left; font-size: 11.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+table.q td { padding: 9px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.q tr.row { cursor: pointer; }
+table.q tr.row:hover td { background: var(--surface-2); }
+table.q tr.row[aria-selected="true"] td { background: var(--accent-soft); }
+table.q tr.row[aria-selected="true"] td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+table.q .r { text-align: right; }
+table.q.wrap th { white-space: normal; min-width: 90px; }
+table.q.wrap td { white-space: normal; }
+.cn { font-weight: 600; }
+.cs { color: var(--faint); font-size: 12.5px; }
+.st-pending { color: var(--faint); }
+.st-done { color: var(--accent-ink); font-weight: 600; }
+.detail { position: sticky; top: calc(72px + env(safe-area-inset-top, 0px)); display: flex; flex-direction: column; gap: 14px; }
+.detailhead { display: flex; flex-direction: column; gap: 4px; }
+.detailhead h3 { font-size: 22px; letter-spacing: -0.02em; }
+.detailhead .meta { color: var(--muted); font-size: 13.5px; display: flex; gap: 4px 14px; flex-wrap: wrap; }
+.callbox { border: 1px solid var(--line-strong); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.callbox.rec { border-color: var(--accent); background: var(--accent-soft); }
+.callbox .big { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.callbox .big.rec { color: var(--accent-ink); }
+.callbox .why { color: var(--muted); font-size: 14px; }
+dl.facts { display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; margin: 0; font-size: 13.5px; }
+dl.facts dt { color: var(--muted); }
+dl.facts dd { margin: 0; text-align: right; }
+.notes { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.notes li { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--surface-2); font-size: 13.5px; display: flex; flex-direction: column; gap: 3px; }
+.notes .age { font-size: 11px; color: var(--faint); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+.notes .read { font-size: 12.5px; color: var(--accent-ink); font-weight: 600; }
+.empty { color: var(--faint); font-size: 13.5px; }
+.decide .row { display: flex; flex-wrap: wrap; gap: 8px; }
+.custom { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); margin-top: 10px; }
+.custom input[type="range"] { flex: 1 1 140px; accent-color: var(--accent); min-width: 0; }
+svg.chart { width: 100%; height: auto; display: block; }
+svg text { font-family: var(--font-num); font-size: 11px; fill: var(--muted); }
+svg .axis { stroke: var(--line-strong); }
+svg .grid { stroke: var(--line); stroke-dasharray: 2 4; }
+svg .fit { stroke: var(--accent); stroke-width: 2.6; fill: none; }
+svg .fitraw { stroke: var(--faint); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+svg .pt { fill: var(--ink); opacity: 0.85; }
+svg .ptx { fill: var(--surface); stroke: var(--red); stroke-width: 1.8; }
+svg .now { stroke: var(--ink); stroke-width: 1.4; }
+svg .sys { stroke: var(--accent); stroke-width: 2; }
+svg .man { stroke: var(--faint); stroke-width: 1.6; stroke-dasharray: 4 3; }
+svg .best { stroke: var(--red); stroke-width: 1.4; stroke-dasharray: 2 3; }
+svg text.l-now { fill: var(--ink); font-weight: 500; }
+svg text.l-sys { fill: var(--accent-ink); font-weight: 500; }
+svg text.l-man { fill: var(--muted); }
+.daysummary { display: flex; flex-direction: column; gap: 12px; }
+.sumrow { display: grid; grid-template-columns: minmax(130px, 200px) minmax(0, 1fr) 150px; gap: 6px 14px; align-items: center; font-size: 14px; }
+.sumrow .bar { height: 14px; border-radius: 4px; background: var(--line); position: relative; }
+.sumrow .bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--faint); }
+.sumrow.you .bar i { background: var(--accent); }
+.sumrow.best .bar i { background: var(--ink); }
+.sumrow .v { text-align: right; font-family: var(--font-num); font-size: 13px; }
+.sumrow.you { font-weight: 700; }
+.resulttable td.r { text-align: right; white-space: nowrap; }
+.resulttable tr.you td { font-weight: 700; background: var(--accent-soft); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+
+/* results */
+.arm { display: grid; grid-template-columns: minmax(170px, 260px) minmax(0, 1fr) 190px; gap: 6px 14px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.arm:last-child { border-bottom: 0; }
+.arm .nm { font-weight: 500; }
+.arm .barbig { height: 20px; border-radius: 4px; background: var(--line); position: relative; }
+.arm .barbig i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; }
+.arm .barbig b { position: absolute; top: 6px; bottom: 6px; background: var(--ink); opacity: 0.35; border-radius: 2px; }
+.arm .vals { font-family: var(--font-num); font-size: 12.5px; text-align: right; color: var(--muted); line-height: 1.35; }
+.arm .vals strong { color: var(--ink); font-size: 14px; }
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.verdict { border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); }
+.verdict h3 { font-size: 16px; }
+.verdict p { color: var(--muted); font-size: 14px; }
+.vs { align-self: flex-start; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; }
+.vs.yes { background: var(--ink); color: #fff; }
+.vs.no { background: var(--red-soft); color: var(--red); }
+.vs.mix { background: var(--accent-soft); color: var(--accent-ink); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+td.heat { text-align: center; font-family: var(--font-num); }
+td.best { font-weight: 700; color: var(--accent-ink); }
+
+/* case study */
+.article { max-width: 760px; margin-inline: auto; display: flex; flex-direction: column; gap: 18px; width: 100%; }
+.article h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 700; letter-spacing: -0.03em; }
+.article h2 { font-size: 24px; letter-spacing: -0.02em; margin-top: 14px; }
+.article p, .article li { color: #2a2a2e; font-size: 16.5px; line-height: 1.6; }
+.article ul, .article ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+.byline { color: var(--muted); font-size: 14px; display: flex; gap: 6px 16px; flex-wrap: wrap; }
+.facts4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.facts4 > div { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--surface); display: flex; flex-direction: column; gap: 2px; }
+.facts4 b { font-size: 22px; letter-spacing: -0.02em; }
+.facts4 span { color: var(--muted); font-size: 13px; }
+.iter { display: flex; flex-direction: column; gap: 10px; }
+.iter .it { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; }
+.iter .it h3 { font-size: 16.5px; }
+.iter .it p { font-size: 15.5px; }
+
+/* architecture */
+.flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+.node { border: 1px solid var(--line-strong); border-radius: 12px; padding: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 6px; position: relative; margin-right: 26px; }
+.node:last-child { margin-right: 0; }
+.node:not(:last-child)::after { content: ""; position: absolute; right: -26px; top: 50%; width: 26px; height: 2px; background: var(--ink); }
+.node:not(:last-child)::before { content: ""; position: absolute; right: -27px; top: calc(50% - 4px); border-left: 7px solid var(--ink); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.node.hot { border-color: var(--accent); background: var(--accent-soft); }
+.node.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.node h3 { font-size: 15.5px; }
+.node p { font-size: 13px; color: var(--muted); }
+.node.dark p { color: #c7c7cc; }
+pre.code { background: var(--ink); color: #f2f2f3; border-radius: 12px; padding: 16px; font-family: var(--font-num); font-size: 12.5px; line-height: 1.55; overflow-x: auto; margin: 0; }
+pre.code .k { color: #ffa77a; }
+.layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.layers .card { display: flex; flex-direction: column; gap: 8px; }
+.layers h3 { font-size: 18px; }
+.layers p, .layers li { font-size: 14.5px; color: var(--muted); }
+.layers ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+footer.foot { color: var(--muted); font-size: 13px; padding-block: 4px; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding: 22px; }
+  .workspace { grid-template-columns: minmax(0, 1fr); }
+  .detail { position: static; }
+  .flow { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .node { margin-right: 0; }
+  .node:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -26px; width: 2px; height: 26px; }
+  .node:not(:last-child)::before { right: auto; left: calc(50% - 4px); top: auto; bottom: -27px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--ink); border-bottom: 0; }
+}
+@media (max-width: 640px) {
+  .arm { grid-template-columns: minmax(0, 1fr); }
+  .arm .vals { text-align: left; }
+  .sumrow { grid-template-columns: minmax(0, 1fr); }
+  .sumrow .v { text-align: left; }
+  .hide-s { display: none; }
+  .card { padding: 16px; }
+}
+</style>
+
+<div class="topbar">
+  <div class="topin">
+    <div class="logo">
+      <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><line x1="11" y1="0" x2="11" y2="10" stroke="#fff" stroke-width="2"/><path d="M11 10 L19 19 L11 26 L3 19 Z" fill="#ff5b14"/></svg>
+      PLUMB
+    </div>
+    <nav class="navtabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="tab-overview" aria-selected="true" type="button">Overview</button>
+      <button role="tab" id="tab-desk" aria-selected="false" type="button">Floor desk</button>
+      <button role="tab" id="tab-results" aria-selected="false" type="button">Results</button>
+      <button role="tab" id="tab-pilot" aria-selected="false" type="button">Pilot</button>
+      <button role="tab" id="tab-case" aria-selected="false" type="button">Case study</button>
+      <button role="tab" id="tab-arch" aria-selected="false" type="button">Architecture</button>
+    </nav>
+    <span class="envchip">Simulation &middot; synthetic data</span>
+  </div>
+</div>
+
+<main class="page" id="p-overview" role="tabpanel"></main>
+<main class="page" id="p-desk" role="tabpanel" hidden></main>
+<main class="page" id="p-results" role="tabpanel" hidden></main>
+<main class="page" id="p-pilot" role="tabpanel" hidden></main>
+<main class="page" id="p-case" role="tabpanel" hidden></main>
+<main class="page" id="p-arch" role="tabpanel" hidden></main>
+<div class="page" style="padding-block: 0 28px"><footer class="foot">Every number in this product comes from a simulator, not from any real ad stack or customer. Items tagged Assumption are estimates derived from the simulation and the original proposal, not measurements.</footer></div>
+
+<script>
+const DAYS = /*DAYS*/;
+const RES = /*RESULTS*/;
+const PIL = /*PILOT*/;
+const $ = (id) => document.getElementById(id);
+const f2 = (v) => v.toFixed(2);
+const money = (v) => "$" + Math.round(v).toLocaleString("en-US");
+const pc = (v, d = 1) => (v * 100).toFixed(d) + "%";
+const pts = (v) => (v >= 0 ? "+" : "−") + Math.abs(v * 100).toFixed(1);
+const lin = (d0, d1, r0, r1) => (v) => r0 + ((v - d0) / (d1 - d0)) * (r1 - r0);
+const state = { day: 1, sel: 0, filter: "all", sort: "gain", dec: [{}, {}, {}], revealed: [false, false, false], note: "", touring: false, tok: 0 };
+
+/* ---------- derived numbers (all from RES so the pages agree) ---------- */
+const A = RES.arms, D = RES.diffs;
+const opsCap = A.ops.capture, sysCap = A.agent.capture;
+const recovered = (sysCap - opsCap) / (1 - opsCap);
+const monthLo = 50000 * 0.05 * recovered, monthHi = 50000 * 0.10 * recovered;
+
+/* ---------- cell helpers ---------- */
+const cells = () => DAYS[state.day].cells;
+const cellP = (p) => cells().find((c) => c.p === p);
+const perK = (c) => c.req / 1000;
+function revAt(c, f) {
+  const k = c.curve, lf = Math.log(f);
+  if (lf <= Math.log(k[0][0])) return k[0][1];
+  if (lf >= Math.log(k[k.length - 1][0])) return k[k.length - 1][1];
+  for (let i = 1; i < k.length; i++) {
+    const a = Math.log(k[i - 1][0]), b = Math.log(k[i][0]);
+    if (lf <= b) return k[i - 1][1] + ((lf - a) / (b - a)) * (k[i][1] - k[i - 1][1]);
+  }
+  return k[k.length - 1][1];
+}
+const bestRev = (c) => Math.max(...c.curve.map((x) => x[1]));
+const estGain = (c) => (c.refused || c.gain == null ? 0 : Math.max(c.gain, 0) * perK(c));
+function flagOf(c) {
+  const t = (c.evidence[0] || [""])[0];
+  if (t.startsWith("outage")) return ["Outage", "flag"];
+  if (t.startsWith("data")) return ["Data lag", "flag"];
+  if (t.startsWith("demand")) return ["Surge", "rec"];
+  if (t.startsWith("regime")) return ["Regime shift", "plain"];
+  if (t.startsWith("ambiguous")) return ["Warning", "plain"];
+  if (t.startsWith("benign")) return ["Benign alert", "plain"];
+  return c.notes.length ? ["Note", "plain"] : null;
+}
+const decOf = (c) => state.dec[state.day][c.p];
+function decFloor(c) { const d = decOf(c); return d ? d.f : c.manual; }
+function reasonText(r) {
+  const t = r.includes(":") ? r.split(":")[1].trim() : r;
+  const head = r.startsWith("insufficient_signal") ? "Insufficient signal. " : r.startsWith("hold") ? "Holding. " : "";
+  return head + t.charAt(0).toUpperCase() + t.slice(1) + (t.endsWith(".") ? "" : ".");
+}
+const ageText = (a) => (a <= 0 ? "Today" : a === 1 ? "Yesterday" : a + " days ago");
+const dateStr = (s) => new Date(s + "T00:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+
+/* ---------- tabs ---------- */
+const TABS = ["overview", "desk", "results", "pilot", "case", "arch"];
+function showTab(t, push = true) {
+  if (!TABS.includes(t)) t = "overview";
+  TABS.forEach((k) => { $("p-" + k).hidden = k !== t; $("tab-" + k).setAttribute("aria-selected", String(k === t)); });
+  if (push) { try { history.replaceState(null, "", "#" + t); } catch (e) { try { location.hash = t; } catch (e2) { /* ignore */ } } }
+  window.scrollTo(0, 0);
+}
+document.addEventListener("click", (e) => { if (e.target && e.target.id === "goPilot") { stopTour(); showTab("pilot"); } });
+TABS.forEach((k) => $("tab-" + k).addEventListener("click", () => { stopTour(); showTab(k); }));
+
+/* ---------- overview ---------- */
+function renderOverview() {
+  const day = DAYS.map((d) => d.cells.filter((c) => c.refused || c.evidence.some((e) => !e[0].startsWith("benign"))).length);
+  const look = Math.round(day.reduce((a, b) => a + b, 0) / day.length);
+  $("p-overview").innerHTML = `
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Floor pricing for ad operations</span>
+      <h1 style="margin-top:10px">A floor price you can defend, or a plain “not enough signal.”</h1>
+      <p class="lead">Ad ops set CPM floors by hand across dozens of placements every day. PLUMB proposes each floor from your own history, explains it, and refuses when the data cannot support a move. The person stays in charge.</p>
+      <div class="ctas"><button class="btn primary" data-go="desk" type="button">Open the floor desk</button><button class="btn" data-go="case" type="button">Read the case study</button></div>
+    </div>
+    <div class="heroviz" aria-label="Sample of today's queue">
+      <span class="label" style="color:#b9b9bf">Today’s queue, sample</span>
+      ${DAYS[1].cells.slice(0, 6).map((c) => { const fl = flagOf(c); return `<div class="row"><span class="nm">${c.name}</span>${c.refused ? '<span class="pill hold">Hold</span>' : `<span class="pill rec num">${c.target < c.cur ? "▼" : "▲"} ${f2(c.target)}</span>`}</div>`; }).join("")}
+      <span style="color:#9a9aa2;font-size:12.5px">34 more cells in the floor desk</span>
+    </div>
+  </section>
+  <section class="kpis">
+    <div class="card kpi"><span class="label">Revenue vs best possible floor</span><span class="big">${pc(sysCap)}</span><span class="vs">manual pricing: ${pc(opsCap)}</span><span><span class="tag">Simulated, held out</span></span></div>
+    <div class="card kpi"><span class="label">Harmful floor moves</span><span class="big">${pc(A.agent.harmful_move_rate)}</span><span class="vs">manual pricing: ${pc(A.ops.harmful_move_rate)}</span><span><span class="tag">Simulated, held out</span></span></div>
+    <div class="card kpi"><span class="label">Daily pricing time</span><span class="big">~30 min <small>from ~2 h</small></span><span class="vs">${look} of 40 cells need a look on a busy day</span><span><span class="tag assume">Assumption</span></span></div>
+    <div class="card kpi"><span class="label">Yield recovered on $50K a month</span><span class="big">${money(monthLo)}–${money(monthHi)}<small> /mo</small></span><span class="vs">${pc(recovered, 0)} of manual loss recovered</span><span><span class="tag assume">Assumption-based</span></span></div>
+  </section>
+  <section class="card"><div class="sectionhead"><h2>How a floor gets set</h2><p>Three layers, always in this order.</p></div>
+    <div class="steps" style="margin-top:16px">
+      <div class="step"><span class="n">1</span><h3>Statistics, no model</h3><p>Fits revenue against floor over the last 21 days. Returns a proposed floor, a predicted gain and an uncertainty band. Arithmetic, not judgment.</p></div>
+      <div class="step"><span class="n">2</span><h3>Agent, judgment only</h3><p>Reads the ops notes and decides how far to trust the proposal: hold on an outage, drop a bad reporting day, allow only a raise before a surge. It never writes a price.</p></div>
+      <div class="step"><span class="n">3</span><h3>The person decides</h3><p>Ops accepts, holds, or sets their own floor. Every call that was refused comes back to a human with the reason attached.</p></div>
+    </div></section>
+  <section class="card"><div class="sectionhead"><h2>Assumptions behind the numbers</h2><p>Where a figure is not measured in the simulation, this is how it was filled in.</p></div>
+    <div class="tablewrap" style="margin-top:12px"><table class="t"><thead><tr><th>Item</th><th class="r">Value</th><th>Basis</th></tr></thead><tbody>
+      <tr><td>Manual pricing time</td><td class="r num">~2 h / day</td><td>Estimate in the original proposal. Not timed.</td></tr>
+      <tr><td>Time with PLUMB</td><td class="r num">~30 min / day</td><td>${look} cells per busy day need a look (holds plus notes that changed the call), about 2 min each, plus 5 min for the queue.</td></tr>
+      <tr><td>Yield lost to manual pricing</td><td class="r num">5–10%</td><td>Estimate in the original proposal. Not measured.</td></tr>
+      <tr><td>Share of that loss recovered</td><td class="r num">${pc(recovered, 0)}</td><td>Simulation: (${pc(sysCap)} − ${pc(opsCap)}) ÷ (100% − ${pc(opsCap)}).</td></tr>
+      <tr><td>In-scope revenue</td><td class="r num">$50K / month</td><td>Illustrative figure from the original proposal.</td></tr>
+      <tr><td>Resulting range</td><td class="r num">${money(monthLo)}–${money(monthHi)} / mo</td><td>$50K × 5–10% × ${pc(recovered, 0)}. Replace with real figures before relying on it.</td></tr>
+    </tbody></table></div>
+    <div class="callout" style="margin-top:16px"><span class="mark"></span><div><b>Validation status.</b> Simulation only. No user interviews, no pilot and no signed commitment yet. The pilot plan in the case study defines what would count as proof.</div></div>
+  </section>`;
+  $("p-overview").querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.go)));
+}
+
+/* ---------- floor desk ---------- */
+function stageW(id, fallback) { const el = $(id); return el ? el.clientWidth : fallback; }
+function chart1(c) {
+  const W = window.innerWidth < 700 ? 340 : 500, H = W < 460 ? 250 : 280, m = { l: 44, r: 12, t: 54, b: 38 };
+  const xs = c.hist_f.map((f) => Math.log(f / c.cur));
+  const X = lin(-0.6, 0.6, m.l, W - m.r);
+  const lo = Math.min(...xs, -0.25) - 0.03, hi = Math.max(...xs, 0.25) + 0.03;
+  const fit = (b, x) => b[0] + b[1] * x + b[2] * x * x;
+  const curve = []; for (let x = lo; x <= hi + 1e-9; x += (hi - lo) / 60) curve.push([x, fit(c.beta, x)]);
+  const raw = c.exclude_last && c.beta_raw ? curve.map(([x]) => [x, fit(c.beta_raw, x)]) : null;
+  const yv = [...c.hist_R, ...curve.map((p) => p[1])];
+  let y0 = Math.min(...yv), y1 = Math.max(...yv); const pad = (y1 - y0) * 0.12 || 0.1; y0 = Math.max(0, y0 - pad); y1 += pad;
+  const Y = lin(y0, y1, H - m.b, m.t);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const v = y0 + ((y1 - y0) * i) / 4; g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l - 7}" y="${Y(v) + 4}" text-anchor="end">${v.toFixed(2)}</text>`; }
+  [-0.5, -0.25, 0, 0.25, 0.5].forEach((x) => { g += `<line class="axis" x1="${X(x)}" x2="${X(x)}" y1="${H - m.b}" y2="${H - m.b + 4}"/><text x="${X(x)}" y="${H - m.b + 16}" text-anchor="middle">${f2(c.cur * Math.exp(x))}</text>`; });
+  g += `<line class="axis" x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}"/>`;
+  const path = (k) => k.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("");
+  if (raw) g += `<path class="fitraw" d="${path(raw)}"/>`;
+  g += `<path class="fit" d="${path(curve)}"/>`;
+  xs.forEach((x, i) => { const bad = i >= xs.length - c.exclude_last; g += `<circle class="${bad ? "ptx" : "pt"}" cx="${X(x)}" cy="${Y(c.hist_R[i])}" r="${bad ? 4.2 : 3.1}"/>`; });
+  const mk = (x, cls, lcls, label, row) => `<line class="${cls}" x1="${X(x)}" x2="${X(x)}" y1="${m.t - 4}" y2="${H - m.b}"/><text class="${lcls}" x="${Math.min(Math.max(X(x), m.l + 34), W - m.r - 34)}" y="${m.t - 10 - row * 14}" text-anchor="middle">${label}</text>`;
+  g += mk(0, "now", "l-now", "now " + f2(c.cur), 0);
+  const xm = Math.log(c.manual / c.cur); if (Math.abs(xm) < 0.58 && Math.abs(xm) > 0.004) g += mk(xm, "man", "l-man", "habit " + f2(c.manual), 1);
+  const xt = Math.log(c.target / c.cur); if (!c.refused && Math.abs(xt) > 0.005) g += mk(xt, "sys", "l-sys", "PLUMB " + f2(c.target), 2);
+  g += `<text x="${W / 2}" y="${H - 3}" text-anchor="middle">floor, CPM $ (log scale)</text><text x="10" y="${m.t - 32}">$ per 1,000 requests</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Last 21 days of floor against revenue with the fitted curve">${g}</svg>`;
+}
+function chart2(c, yourF) {
+  const W = window.innerWidth < 700 ? 340 : 500, H = W < 460 ? 210 : 230, m = { l: 44, r: 12, t: 14, b: 36 };
+  const k = c.curve.map((p) => [Math.log(p[0] / c.cur), p[1] / perK(c)]);
+  const X = lin(k[0][0], k[k.length - 1][0], m.l, W - m.r);
+  const ymax = Math.max(...k.map((p) => p[1])) * 1.1; const Y = lin(0, ymax, H - m.b, m.t);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const v = (ymax * i) / 4; g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l - 7}" y="${Y(v) + 4}" text-anchor="end">${v.toFixed(2)}</text>`; }
+  [0.5, 1, 2].forEach((q) => { const x = Math.log(q); if (x > k[0][0] && x < k[k.length - 1][0]) g += `<text x="${X(x)}" y="${H - m.b + 16}" text-anchor="middle">${f2(c.cur * q)}</text>`; });
+  g += `<line class="axis" x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}"/>`;
+  g += `<path class="fit" d="${k.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join("")}"/>`;
+  g += `<line class="best" x1="${X(Math.log(c.best / c.cur))}" x2="${X(Math.log(c.best / c.cur))}" y1="${m.t}" y2="${H - m.b}"/>`;
+  const dot = (f, col, r) => `<circle cx="${X(Math.log(f / c.cur))}" cy="${Y(revAt(c, f) / perK(c))}" r="${r}" style="fill:${col};stroke:#fff;stroke-width:2"/>`;
+  g += dot(c.manual, "var(--faint)", 5) + dot(c.cur, "var(--muted)", 5) + dot(c.target, "var(--ink)", 6) + dot(yourF, "var(--accent)", 6);
+  g += `<text x="${W / 2}" y="${H - 3}" text-anchor="middle">floor, CPM $ (log scale)${W > 470 ? ", tomorrow’s true curve" : ""}</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Tomorrow's true revenue against floor with each option marked">${g}</svg>`;
+}
+
+function visible() {
+  let a = cells().slice();
+  if (state.filter === "rec") a = a.filter((c) => !c.refused);
+  else if (state.filter === "hold") a = a.filter((c) => c.refused);
+  else if (state.filter === "notes") a = a.filter((c) => c.notes.length);
+  if (state.sort === "gain") a.sort((x, y) => estGain(y) - estGain(x) || x.p - y.p);
+  else if (state.sort === "req") a.sort((x, y) => y.req - x.req);
+  else a.sort((x, y) => x.p - y.p);
+  return a;
+}
+function totals() {
+  const cs = cells(); const t = { hold: 0, habit: 0, sys: 0, you: 0, best: 0 };
+  cs.forEach((c) => { t.hold += revAt(c, c.cur); t.habit += revAt(c, c.manual); t.sys += revAt(c, c.target); t.you += revAt(c, decFloor(c)); t.best += bestRev(c); });
+  return t;
+}
+function statusLine() {
+  const cs = cells(); const done = cs.filter((c) => decOf(c)).length;
+  const rec = cs.filter((c) => !c.refused).length, hold = cs.length - rec;
+  return state.note || `<b>${rec}</b> calls and <b>${hold}</b> holds for ${dateStr(DAYS[state.day].date)}. <b>${done}</b> of ${cs.length} decided.`;
+}
+
+function renderDesk() {
+  const cs = cells(); const rows = visible();
+  const rec = cs.filter((c) => !c.refused).length, hold = cs.length - rec, nt = cs.filter((c) => c.notes.length).length;
+  const rv = state.revealed[state.day];
+  const chip = (k, lbl, n) => `<button class="chip" data-f="${k}" aria-pressed="${state.filter === k}" type="button">${lbl}<span class="c">${n}</span></button>`;
+  let summary = "";
+  if (rv) {
+    const t = totals(), top = t.best;
+    const row = (cls, nm, v) => `<div class="sumrow ${cls}"><span>${nm}</span><div class="bar"><i style="width:${(v / top) * 100}%"></i></div><span class="v">${money(v)} · ${Math.round((v / top) * 100)}%</span></div>`;
+    summary = `<section class="card daysummary"><div><span class="label">Tomorrow, revealed</span><h3 style="font-size:20px;margin-top:4px">Your decisions captured ${Math.round((t.you / top) * 100)}% of the best possible day across 40 cells</h3><p style="color:var(--muted);font-size:14px;margin-top:4px">Cells you did not decide use the usual manual habit. Revenue is the simulated day’s total.</p></div>
+      ${row("", "Hold every floor", t.hold)}${row("", "Usual manual habit", t.habit)}${row("", "PLUMB calls as proposed", t.sys)}${row("you", "Your decisions", t.you)}${row("best", "Best possible", t.best)}</section>`;
+  }
+  const head = `<th>Cell</th><th class="r hide-s">Req / day</th><th class="r">Floor now</th><th>PLUMB call</th><th class="r hide-s">Est. gain / day</th><th class="hide-s">Flag</th><th>Status</th>${rv ? '<th class="r">% of best</th>' : ""}`;
+  const body = rows.map((c) => {
+    const d = decOf(c), fl = flagOf(c);
+    const call = c.refused ? '<span class="pill hold">Hold</span>' : `<span class="pill rec num">${c.target < c.cur ? "▼" : "▲"} ${f2(c.target)} (${c.target >= c.cur ? "+" : "−"}${Math.abs(Math.round((c.target / c.cur - 1) * 100))}%)</span>`;
+    const st = d ? `<span class="st-done">${d.how}</span>` : '<span class="st-pending">Pending</span>';
+    const res = rv ? `<td class="r num">${Math.round((revAt(c, decFloor(c)) / bestRev(c)) * 100)}%</td>` : "";
+    return `<tr class="row" tabindex="0" data-p="${c.p}" aria-selected="${c.p === state.sel}"><td><div class="cn">${c.name}</div><div class="cs">${c.tier} traffic · CELL-${String(c.p).padStart(2, "0")}</div></td><td class="r num hide-s">${c.req.toLocaleString("en-US")}</td><td class="r num">${f2(c.cur)}</td><td>${call}</td><td class="r num hide-s">${c.refused ? "—" : money(estGain(c))}</td><td class="hide-s">${fl ? `<span class="pill ${fl[1]}">${fl[0]}</span>` : '<span class="st-pending">—</span>'}</td><td>${st}</td>${res}</tr>`;
+  }).join("");
+  $("p-desk").innerHTML = `
+  <div class="toolbar">
+    <div class="left"><h2>Floor desk</h2><div class="statusline" id="status" aria-live="polite">${statusLine()}</div></div>
+    <div class="actions">
+      <label for="daysel" class="label">Day</label>
+      <select id="daysel">${DAYS.map((d, i) => `<option value="${i}" ${i === state.day ? "selected" : ""}>${dateStr(d.date)}</option>`).join("")}</select>
+      <button class="btn primary" id="applyall" type="button">Apply PLUMB calls to all</button>
+      <button class="btn dark" id="reveal" type="button" ${rv ? "disabled" : ""}>Reveal tomorrow</button>
+      <button class="btn" id="reset" type="button">Reset</button>
+      <button class="btn" id="walk" type="button">${state.touring ? "Stop walkthrough" : "Play walkthrough"}</button>
+    </div>
+  </div>
+  <div class="filters"><div class="chips">${chip("all", "All cells", cs.length)}${chip("rec", "Recommend", rec)}${chip("hold", "Hold", hold)}${chip("notes", "Has notes", nt)}</div>
+    <div><label for="sortsel" class="label">Sort</label> <select id="sortsel"><option value="gain" ${state.sort === "gain" ? "selected" : ""}>Est. gain</option><option value="req" ${state.sort === "req" ? "selected" : ""}>Requests</option><option value="name" ${state.sort === "name" ? "selected" : ""}>Cell order</option></select></div></div>
+  ${summary}
+  <div class="workspace"><section class="card queue"><div class="queuescroll"><table class="q"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div></section><aside class="detail" id="detail"></aside></div>`;
+  $("daysel").onchange = (e) => { state.day = +e.target.value; state.sel = cells()[0].p; state.note = ""; renderDesk(); };
+  $("sortsel").onchange = (e) => { state.sort = e.target.value; renderDesk(); };
+  $("p-desk").querySelectorAll(".chip").forEach((b) => (b.onclick = () => { state.filter = b.dataset.f; renderDesk(); }));
+  $("p-desk").querySelectorAll("tr.row").forEach((r) => { r.onclick = () => { stopTour(); state.sel = +r.dataset.p; renderDesk(); }; r.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); r.click(); } }; });
+  $("applyall").onclick = () => { stopTour(); applyAll(); };
+  $("reveal").onclick = () => { stopTour(); revealDay(); };
+  $("reset").onclick = () => { stopTour(); state.dec[state.day] = {}; state.revealed[state.day] = false; state.note = ""; renderDesk(); };
+  $("walk").onclick = () => { if (state.touring) stopTour(true); else startTour(); };
+  renderDetail();
+}
+function applyAll() {
+  cells().forEach((c) => { state.dec[state.day][c.p] = { f: c.target, how: c.refused ? "Held" : "Applied" }; });
+  state.note = "Applied PLUMB’s call to all 40 cells (holds stay at the current floor). Reveal tomorrow to see what they would have paid.";
+  renderDesk();
+}
+function revealDay() { state.revealed[state.day] = true; state.note = ""; renderDesk(); }
+
+function renderDetail() {
+  const c = cellP(state.sel) || cells()[0];
+  const d = decOf(c), rv = state.revealed[state.day];
+  const move = Math.round((c.target / c.cur - 1) * 100);
+  const lo = c.gain != null ? c.gain - 1.645 * c.se : null, hi = c.gain != null ? c.gain + 1.645 * c.se : null;
+  const conf = Math.min(Math.max(c.z / 2, 0), 1) * (c.concave ? 1 : 0.5);
+  const sg = (v) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2);
+  const call = c.refused
+    ? `<div class="callbox"><span class="label">PLUMB call</span><div class="big">Hold at ${f2(c.cur)}</div><p class="why">${reasonText(c.reason)}</p></div>`
+    : `<div class="callbox rec"><span class="label">PLUMB call</span><div class="big rec">Move to ${f2(c.target)} (${move >= 0 ? "+" : "−"}${Math.abs(move)}%)</div><p class="why">Floor now ${f2(c.cur)}.${c.exclude_last ? ` The last ${c.exclude_last} days were dropped before refitting.` : ""}${c.direction === "raise" ? " Raise-only because of the surge note." : ""}</p>
+      <dl class="facts"><dt>Predicted gain</dt><dd class="num">${sg(c.gain)} per 1k requests</dd><dt>90% band</dt><dd class="num">${sg(lo)} to ${sg(hi)}</dd><dt>Confidence</dt><dd class="num">${Math.round(conf * 100)}% of fitted move</dd><dt>Est. gain</dt><dd class="num">${money(estGain(c))} / day</dd></dl></div>`;
+  const notes = c.notes.length ? `<ul class="notes">${c.notes.map((n) => { const e = c.evidence.find((x) => x[1] === n.text); return `<li><span class="age">${ageText(n.age)}</span><span>${n.text}</span>${e ? `<span class="read">PLUMB read: ${e[0]}</span>` : ""}</li>`; }).join("")}</ul>` : '<p class="empty">No ops notes in the last three days.</p>';
+  const yourF = decFloor(c);
+  const pressed = (h) => (d && d.how === h ? "true" : "false");
+  const acts = `<div class="row"><button class="btn primary small" id="a-sys" type="button" aria-pressed="${pressed(c.refused ? "Held" : "Applied")}">${c.refused ? "Follow PLUMB: hold at " + f2(c.cur) : "Accept PLUMB: " + f2(c.target)}</button>${c.refused ? "" : `<button class="btn small" id="a-hold" type="button" aria-pressed="${pressed("Held by you")}">Hold at ${f2(c.cur)}</button>`}<button class="btn small" id="a-man" type="button" aria-pressed="${pressed("Habit")}">Usual habit: ${f2(c.manual)}</button></div>
+    <div class="custom"><label for="sl">Your floor</label><input id="sl" type="range" min="-0.5" max="0.5" step="0.01" value="${d && d.how === "Custom" ? Math.log(d.f / c.cur).toFixed(2) : 0}"><span class="num" id="slv">${f2(d && d.how === "Custom" ? d.f : c.cur)}</span><button class="btn small" id="setc" type="button" aria-pressed="${pressed("Custom")}">Set</button></div>`;
+  let result = "";
+  if (rv) {
+    const best = bestRev(c);
+    const rows = [["var(--accent)", "Your decision", yourF], ["var(--muted)", "Hold current floor", c.cur], ["var(--ink)", "PLUMB", c.target], ["var(--faint)", "Usual habit", c.manual], ["var(--red)", "Best possible", c.best]];
+    const you = revAt(c, yourF) / best * 100, hold = revAt(c, c.cur) / best * 100;
+    result = `<section class="card"><span class="label">Tomorrow, revealed</span><p style="font-weight:600;margin:6px 0 8px">${Math.round(you)}% of the best possible day. Holding would have given ${Math.round(hold)}%.</p>${chart2(c, yourF)}
+      <div class="tablewrap"><table class="t resulttable" style="margin-top:6px"><tbody>${rows.map((r, i) => `<tr class="${i === 0 ? "you" : ""}"><td><span class="dot" style="background:${r[0]}"></span>${r[1]}</td><td class="r num">${f2(r[2])}</td><td class="r num">${money(revAt(c, r[2]))}</td><td class="r num">${Math.round((revAt(c, r[2]) / best) * 100)}%</td></tr>`).join("")}</tbody></table></div></section>`;
+  }
+  $("detail").innerHTML = `<section class="card" style="display:flex;flex-direction:column;gap:14px">
+    <div class="detailhead"><h3>${c.name}</h3><div class="meta"><span class="num">CELL-${String(c.p).padStart(2, "0")}</span><span>300x250</span><span>${c.tier} traffic</span><span class="num">${c.req.toLocaleString("en-US")} req / day</span></div></div>
+    <div><span class="label">Last 21 days</span>${chart1(c)}<p class="empty">Orange line: fitted revenue curve.${c.exclude_last ? " Hollow red dots: days PLUMB dropped. Dashed: the fit before dropping them." : ""}</p></div>
+    ${call}
+    <div><span class="label">What ops wrote</span><div style="margin-top:6px">${notes}</div></div>
+    <div class="decide"><span class="label">Your decision</span><div style="margin-top:8px">${acts}</div></div></section>${result}`;
+  const set = (f, how) => { stopTour(); state.dec[state.day][c.p] = { f, how }; state.note = `Saved: ${c.name}, ${f2(f)} (${how.toLowerCase()}).`; renderDesk(); };
+  $("a-sys").onclick = () => set(c.target, c.refused ? "Held" : "Applied");
+  if ($("a-hold")) $("a-hold").onclick = () => set(c.cur, "Held by you");
+  $("a-man").onclick = () => set(c.manual, "Habit");
+  $("sl").oninput = (e) => { $("slv").textContent = f2(c.cur * Math.exp(+e.target.value)); };
+  $("setc").onclick = () => set(c.cur * Math.exp(+$("sl").value), "Custom");
+}
+
+/* ---------- walkthrough (the backup for a live demo) ---------- */
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+async function startTour() {
+  state.touring = true; const tok = ++state.tok; state.day = 1; state.filter = "all"; state.dec[1] = {}; state.revealed[1] = false; state.note = "Walkthrough: opening the most instructive cells first.";
+  showTab("desk", false); renderDesk();
+  const pick = (re) => cells().find((c) => c.evidence.some((e) => re.test(e[0])));
+  const order = [cells().slice().sort((a, b) => estGain(b) - estGain(a))[0], pick(/outage/), pick(/data incomplete/), pick(/surge/), pick(/benign/), cells().find((c) => c.tier === "thin" && c.refused)].filter(Boolean);
+  const seen = new Set();
+  for (const c of order) {
+    if (tok !== state.tok) return; if (seen.has(c.p)) continue; seen.add(c.p);
+    state.sel = c.p; renderDesk(); await sleep(3600);
+  }
+  if (tok !== state.tok) return; state.note = "Walkthrough: applying PLUMB’s calls to every cell."; applyAll(); await sleep(2600);
+  if (tok !== state.tok) return; state.touring = true; revealDay(); await sleep(500);
+  if (tok === state.tok) { state.touring = false; state.note = "Walkthrough finished. Tomorrow is revealed above."; renderDesk(); }
+}
+function stopTour(rerender) { if (!state.touring) return; state.touring = false; state.tok++; if (rerender) renderDesk(); }
+
+/* ---------- results ---------- */
+function renderResults() {
+  const order = ["ops", "stats", "shrink", "rule", "agent", "pair"];
+  const colr = { ops: "var(--faint)", stats: "var(--ink)", shrink: "var(--ink)", rule: "var(--accent)", agent: "var(--accent)", pair: "var(--accent-ink)" };
+  const X = lin(60, 100, 0, 100);
+  const bars = order.map((k) => { const a = A[k]; return `<div class="arm"><div class="nm">${a.label}</div><div class="barbig"><i style="width:${X(a.capture * 100)}%;background:${colr[k]}"></i><b style="left:${X(a.capture_ci[0] * 100)}%;width:${X(a.capture_ci[1] * 100) - X(a.capture_ci[0] * 100)}%"></b></div><div class="vals"><strong>${pc(a.capture)}</strong><br>refuses ${pc(a.refuse_rate)} · harmful ${pc(a.harmful_move_rate)}</div></div>`; }).join("");
+  const V = [
+    ["Pair beats ops alone", "Supported", "yes", `${pts(D["pair-ops"].point)} points, 95% CI ${pts(D["pair-ops"].ci[0])} to ${pts(D["pair-ops"].ci[1])}. The ops arm is a modelled habit, so quote the direction rather than the size.`],
+    ["Pair beats the model alone", "Not supported", "no", `${pts(D["pair-agent"].point)} points, CI ${pts(D["pair-agent"].ci[0])} to ${pts(D["pair-agent"].ci[1])}. Across 36 assumed human behaviours it never reliably wins.`],
+    ["Refusal improves outcomes", "Safety yes, dollars no", "mix", `Harmful moves fall from ${pc(A.stats.harmful_move_rate)} to ${pc(A.agent.harmful_move_rate)}, at a cost of 2 to 3 points of revenue.`],
+    ["Agent beats a plain rule", "Not shown yet", "no", `Agent minus rule: ${pts(D["agent-rule"].point)} points. The agent here is a keyword stand-in, not Claude, so this needs the Claude run.`]
+  ];
+  const sens = RES.sensitivity.filter((s) => s.fallback_hold === 0.5);
+  const blinds = [0, 0.35, 0.7, 1], catches = [0.2, 0.6, 0.9];
+  const heat = (v) => { const a = Math.min(Math.abs(v) / 2.2, 1); return v < -0.05 ? `background:rgba(217,45,32,${(0.08 + a * 0.4).toFixed(2)})` : v > 0.05 ? `background:rgba(255,91,20,${(0.1 + a * 0.5).toFixed(2)})` : ""; };
+  const sensRows = blinds.map((b) => `<tr><td>${Math.round(b * 100)}% accepted unreviewed</td>${catches.map((cc) => { const s = sens.find((x) => x.blind === b && x.catch === cc); const v = s.vs_agent * 100; return `<td class="heat" style="${heat(v)}">${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(1)}</td>`; }).join("")}</tr>`).join("");
+  const ks = ["1", "3", "10", "20"], arms = ["ops", "stats", "shrink", "agent", "pair"];
+  const best = ks.map((k) => Math.max(...arms.map((a) => RES.mult[k][a])));
+  const multRows = arms.map((a) => `<tr><td>${A[a].label}</td>${ks.map((k, i) => `<td class="heat ${RES.mult[k][a] === best[i] ? "best" : ""}">${(RES.mult[k][a] * 100).toFixed(1)}%</td>`).join("")}</tr>`).join("");
+  $("p-results").innerHTML = `
+  <div class="sectionhead"><h2>Results</h2><p>Held-out synthetic world: ${RES.n_decisions.toLocaleString("en-US")} floor decisions across 40 cells, ${RES.n_anomaly} of them during an outage, surge or reporting glitch. Gates were tuned on a different world and frozen before this one was scored.</p></div>
+  <section class="card"><span class="label">Revenue captured against the best possible floor</span><p style="color:var(--muted);font-size:13.5px;margin-top:4px">Axis starts at 60%. The dark band is the 95% interval over cells.</p><div style="margin-top:8px">${bars}</div></section>
+  <section class="verdicts">${V.map((v) => `<div class="verdict"><span class="vs ${v[2]}">${v[1]}</span><h3>${v[0]}</h3><p>${v[3]}</p></div>`).join("")}</section>
+  <div class="two">
+    <section class="card"><h3 style="font-size:18px">When does refusal start to pay?</h3><p style="color:var(--muted);font-size:14px;margin:4px 0 10px">Revenue captured if a harmful move carries a penalty beyond its same-day loss, such as bidders pulling back. Column headers are the penalty multiplier.</p><div class="tablewrap"><table class="t"><thead><tr><th>Arm</th>${ks.map((k) => `<th class="r">${k}×</th>`).join("")}</tr></thead><tbody>${multRows}</tbody></table></div></section>
+    <section class="card"><h3 style="font-size:18px">Does the human add value?</h3><p style="color:var(--muted);font-size:14px;margin:4px 0 10px">Pair minus model alone, in revenue points, when a refusal leaves ops holding half the time. Rows: how often ops accepts without review. Columns: how often ops catches a bad call.</p><div class="tablewrap"><table class="t"><thead><tr><th></th>${catches.map((cc) => `<th class="r">${Math.round(cc * 100)}% catch</th>`).join("")}</tr></thead><tbody>${sensRows}</tbody></table></div></section>
+  </div>`;
+}
+
+/* ---------- case study ---------- */
+function renderCase() {
+  const rA = RES.refusal_agent;
+  $("p-case").innerHTML = `<article class="article">
+    <span class="eyebrow">Case study</span>
+    <h1>PLUMB: a floor-pricing partner that knows when not to price</h1>
+    <div class="byline"><span>J John Britto</span><span>Head of Product &amp; Technology, TapMind</span><span>Solo submission</span></div>
+    <div class="facts4"><div><b>${pc(sysCap)}</b><span>of best possible revenue, vs ${pc(opsCap)} manual (simulated)</span></div><div><b>${pc(A.agent.harmful_move_rate)}</b><span>harmful moves, vs ${pc(A.ops.harmful_move_rate)} manual (simulated)</span></div><div><b>${RES.n_decisions.toLocaleString("en-US")}</b><span>held-out floor decisions scored</span></div><div><b>4</b><span>design changes forced by the results</span></div></div>
+    <h2>The problem</h2>
+    <p>Every day an ad operations team sets CPM floors by hand across 30 to 40 bidders on OpenRTB. For each placement and ad size, one person pulls yesterday’s performance, reasons through fill, demand and revenue, and types in a price. The proposal estimated this at about two hours a day and 5 to 10% of achievable yield left on the table. Both figures are estimates that have not been measured.</p>
+    <p>Because the reasoning sits in one person’s head, a bad floor stays invisible until the revenue report lands. Floors set too high suppress fill. Floors set too low give revenue away.</p>
+    <h2>The idea</h2>
+    <p>Pair a statistical floor recommendation with an agent that explains it and refuses to recommend a move when the data is too thin or too unusual. The person accepts or overrides each call. The hypothesis was that this pair makes better floor decisions than ops alone or the model alone. The falsifier was that the pair is no better than ops alone, or ops accept every recommendation without ever overriding.</p>
+    <h2>How it was tested</h2>
+    <p>No official data was used. A simulator builds a bid landscape for 40 placement cells over 180 days, with a second-price auction, daily demand shocks, and four event types: a bidder outage, a demand surge, a reporting glitch and a regime shift. Because the true best floor is known for every cell and day, every decision can be scored exactly: the revenue of the floor chosen divided by the revenue at the best floor.</p>
+    <p>Six arms were compared in closed loop, each living with its own floor history: ops alone, the statistics layer with and without confidence scaling, the statistics layer with a rule-based refusal, the full system with an agent reading ops notes, and ops working with the agent. Gates were tuned on 10 cells of one world, frozen, and scored on a second world that was never used for tuning.</p>
+    <h2>What we found</h2>
+    <ul>
+      <li><b>The statistics layer carries the revenue.</b> About ${Math.round((A.stats.capture - opsCap) * 100)} points over the simulated manual process.</li>
+      <li><b>Refusal is a safety feature.</b> It cut harmful moves from ${pc(A.stats.harmful_move_rate)} to ${pc(A.agent.harmful_move_rate)} and cost 2 to 3 points of revenue. In the agent arm, ${rA.prevented_bad_moves} refusals prevented a bad move, worth about ${money(rA.usd_saved)}, while ${rA.false_refusals} refusals skipped a good one, costing about ${money(rA.usd_missed)}.</li>
+      <li><b>The pair did not beat the model alone.</b> ${pts(D["pair-agent"].point)} points, with an interval that spans zero.</li>
+      <li><b>The agent did not beat a plain rule.</b> The agent in these runs is a keyword stand-in. A Claude-backed agent is built and tested against a mock but has not been run.</li>
+    </ul>
+    <h2>What we changed because of it</h2>
+    <div class="iter">
+      <div class="it"><h3>A hard significance gate refused 82% of days</h3><p>The first design refused whenever the predicted gain was not statistically significant. It cost 1.7 points against the unguarded statistics layer. We replaced it with a confidence-scaled step: refuse only on data-quality problems, otherwise let confidence shrink the move.</p></div>
+      <div class="it"><h3>The safety metric was contaminated by exploration noise</h3><p>A held floor looked harmful just from random jitter. We redefined a harmful move as a floor change above 10% that lowers revenue by more than 1%.</p></div>
+      <div class="it"><h3>Refusing on thin cells freezes learning</h3><p>On the thinnest cells the refusal arms captured ${pc(A.agent.capture_thin)} against ${pc(A.ops.capture_thin)} for ops, because a refused cell stays at its starting floor. Next version pairs “insufficient signal” with a small randomized floor test so the cell gathers data.</p></div>
+      <div class="it"><h3>Holding through an outage can cost revenue</h3><p>On event days the agent arm trailed the rule arm. An outage removes bidders, which probably lowers the best floor, so freezing the floor is the wrong reaction. The agent should adjust direction, not only hold.</p></div>
+    </div>
+    <h2>What this does not prove</h2>
+    <ul>
+      <li>The manual-pricing arm is a model of ops behaviour, not a measurement. The size of the gap to ops depends on it.</li>
+      <li>Bidders do not react to floors in the simulator. Real bidders do.</li>
+      <li>The human in the pair arm is assumed. It is a sensitivity analysis, not an observation.</li>
+      <li>There are no user interviews and no pilot yet.</li>
+    </ul>
+    <h2>Pilot plan <span class="tag assume" style="vertical-align:middle">Simulated, not started</span></h2>
+    <p>The pilot as first written (20 cells, one shadow week, one week with half the cells on PLUMB, matched manual cells as control) was simulated 100 times, along with two larger designs. The Pilot tab has the results. The short version: the first design cannot tell a real gain from noise, and its harmful-move limit sits below what the system itself produces. The revised plan is a 40-cell, five-week pilot judged against matched cells.</p>
+    <p><button class="btn small dark" type="button" id="goPilot">Open the pilot simulation</button></p>
+    <h2>Next</h2>
+    <ul><li>Run the Claude-backed agent on a sample of cells and repeat the comparison with the rule arm.</li><li>Add the randomized floor test for thin cells and re-score.</li><li>Replace the modelled ops habit with real decisions from a shadow week.</li></ul>
+  </article>`;
+}
+
+/* ---------- pilot ---------- */
+const PCRIT = {
+  plan: (r) => r.lift >= 0.03 && r.harm <= 0.05 && r.override >= 0.05 && r.override <= 0.40,
+  v2: (r) => r.lo90 > 0 && r.harm <= 0.6 * r.harm_ctrl && r.override >= 0.05 && r.override <= 0.40,
+};
+let pilotKey = "four_weeks", pilotIdx = 0;
+function histSvg(rows, nulls) {
+  const W = window.innerWidth < 700 ? 340 : 640, H = 250, m = { l: 36, r: 24, t: 16, b: 38 };
+  const lo = -0.2, hi = 0.4, step = 0.025, nb = Math.round((hi - lo) / step);
+  const cnt = (arr) => { const c = new Array(nb).fill(0); arr.forEach((v) => { const i = Math.min(nb - 1, Math.max(0, Math.floor((v - lo) / step))); c[i]++; }); return c; };
+  const a = cnt(rows.map((r) => r.lift)), b = cnt(nulls);
+  const ymax = Math.max(...a, ...b, 10), X = lin(lo, hi, m.l, W - m.r), Y = lin(0, ymax, H - m.b, m.t), bw = (X(lo + step) - X(lo)) - 2;
+  let g = "";
+  [0, Math.round(ymax / 2), ymax].forEach((t) => { g += `<line class="grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(t)}" y2="${Y(t)}"/><text x="${m.l - 6}" y="${Y(t) + 4}" text-anchor="end">${t}</text>`; });
+  b.forEach((c, i) => { if (c) g += `<rect x="${X(lo + i * step) + 1}" y="${Y(c)}" width="${bw}" height="${H - m.b - Y(c)}" fill="none" stroke="#8d8d94" stroke-width="1.4"/>`; });
+  a.forEach((c, i) => { if (c) g += `<rect x="${X(lo + i * step) + 1}" y="${Y(c)}" width="${bw}" height="${H - m.b - Y(c)}" fill="var(--accent)" opacity="0.88"/>`; });
+  g += `<line class="axis" x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}"/>`;
+  [-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4].forEach((t) => { g += `<line class="axis" x1="${X(t)}" x2="${X(t)}" y1="${H - m.b}" y2="${H - m.b + 4}"/><text x="${X(t)}" y="${H - m.b + 17}" text-anchor="middle">${t > 0 ? "+" : ""}${Math.round(t * 100)}%</text>`; });
+  g += `<line x1="${X(0.03)}" x2="${X(0.03)}" y1="${m.t}" y2="${H - m.b}" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="5 4"/><text x="${X(0.03) + 5}" y="${m.t + 8}">3% bar</text>`;
+  g += `<text x="${(m.l + W - m.r) / 2}" y="${H - 3}" text-anchor="middle">measured lift, one pilot each</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of measured lift across 100 simulated pilots, with and without a real effect">${g}</svg>`;
+}
+function renderPilot() {
+  const D = PIL[pilotKey], P = D.plumb, N = D.placebo;
+  const keys = ["as_written", "four_weeks", "forty_cells"];
+  const chips = keys.map((k) => `<button class="chip" type="button" data-pk="${k}" aria-pressed="${k === pilotKey}">${PIL[k].label.replace("Extended: ", "")}</button>`).join("");
+  const rows = D.rows, r = rows[pilotIdx % rows.length];
+  const ok = (b) => `<span class="pill ${b ? "rec" : "flag"}">${b ? "Met" : "Missed"}</span>`;
+  const verdict = (f) => (f(r) ? "Pass" : "Not a pass");
+  const lift = (v) => (v >= 0 ? "+" : "") + pc(v);
+  const X = lin(-0.25, 0.45, 0, 100);
+  const tbl = keys.map((k) => { const p = PIL[k].plumb, n = PIL[k].placebo, l = PIL[k].low_adoption;
+    return `<tr><td><b>${PIL[k].label.replace("Extended: ", "")}</b></td><td class="r num">${lift(p.lift_median)} <span style="color:var(--muted)">(${lift(p.lift_p10)} to ${lift(p.lift_p90)})</span></td><td class="r num">${pc(p.p_pass_plan, 0)}</td><td class="r num">${pc(p.p_pass_v2, 0)}</td><td class="r num">${pc(n.p_lift_ge3, 0)}</td><td class="r num">${pc(n.p_ci_above0, 0)}</td><td class="r num">${l ? pc(l.p_pass_v2, 0) : "n/a"}</td></tr>`; }).join("");
+  const A0 = PIL.as_written, F = PIL.forty_cells;
+  $("p-pilot").innerHTML = `
+  <div class="sectionhead"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2>Pilot simulation</h2><span class="tag assume">Simulated, not started</span></div><p>Each pilot below picks cells at random, pairs them by traffic, switches half to PLUMB after a shadow week, and measures against the other half. 100 pilots per design, same simulator as the Results tab.</p></div>
+  <div class="chips" role="group" aria-label="Pilot design">${chips}</div>
+  <div class="two">
+    <section class="card" style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><span class="label">One simulated pilot, number ${(pilotIdx % rows.length) + 1} of ${rows.length}</span><button class="btn small primary" type="button" id="pilotNext">Run another pilot</button></div>
+      <div class="tl"><div class="tseg s1"><b>Week 1</b><span>Shadow. Nothing applied.</span></div><div class="tseg s2" style="flex:${D.label.includes("4 weeks") ? 4 : 1}"><b>${D.label.includes("4 weeks") ? "Weeks 2 to 5" : "Week 2"}</b><span>Half the cells on PLUMB</span></div><div class="tseg s3"><b>Review</b><span>Matched cells</span></div></div>
+      <div class="sumrow"><span>Measured lift</span><div class="bar" style="height:18px"><i style="left:${X(r.lo90)}%;right:${100 - X(r.hi90)}%;inset:0 auto 0 ${X(r.lo90)}%;width:${X(r.hi90) - X(r.lo90)}%;background:var(--faint)"></i><i style="inset:0 auto 0 ${X(r.lift) - 0.6}%;width:1.2%;background:var(--accent)"></i><i style="inset:0 auto 0 ${X(0)}%;width:2px;background:var(--ink)"></i></div><span class="v">${lift(r.lift)} (90%: ${lift(r.lo90)} to ${lift(r.hi90)})</span></div>
+      <p style="color:var(--muted);font-size:13px">Grey is the 90% interval across pairs, orange the estimate, black the zero line. The true effect in this simulated pilot was <b class="num">${lift(r.true_lift)}</b>, which a real pilot would not know.</p>
+      <table class="q" aria-label="Pilot readout"><tbody>
+        <tr><td>Harmful moves, PLUMB cells</td><td class="r num">${pc(r.harm)}</td></tr>
+        <tr><td>Harmful moves, manual cells</td><td class="r num">${pc(r.harm_ctrl)}</td></tr>
+        <tr><td>Override rate</td><td class="r num">${pc(r.override)}</td></tr>
+        <tr><td>Calls held back for ops</td><td class="r num">${pc(r.hold)}</td></tr>
+        <tr><td>Cell-days needing a human look</td><td class="r num">${pc(r.look)}</td></tr>
+      </tbody></table>
+      <div class="two" style="gap:10px">
+        <div class="card" style="padding:12px 14px"><span class="label">Criteria as written</span><p style="margin-top:6px">${verdict(PCRIT.plan)}</p><p style="color:var(--muted);font-size:12.5px;margin-top:4px">Lift 3% or more, harmful moves 5% or less, override 5% to 40%.</p></div>
+        <div class="card" style="padding:12px 14px"><span class="label">Revised criteria</span><p style="margin-top:6px">${verdict(PCRIT.v2)}</p><p style="color:var(--muted);font-size:12.5px;margin-top:4px">Lower bound above zero, harmful moves at most 0.6 of manual cells, override 5% to 40%.</p></div>
+      </div>
+    </section>
+    <section class="card" style="display:flex;flex-direction:column;gap:10px">
+      <span class="label">All ${rows.length} pilots of this design</span>
+      <div>${histSvg(rows, D.null_lifts)}</div>
+      <p style="color:var(--muted);font-size:13px"><b style="color:var(--accent-ink)">Orange:</b> PLUMB works as simulated. <b>Grey outline:</b> an A/A pilot where nothing changes, so every bar is noise. The overlap is how often a pilot would mislead.</p>
+      <ul class="plain">
+        <li>Measured lift of 3% or more: <b>${pc(P.p_lift_ge3, 0)}</b> of pilots with a real effect, <b>${pc(N.p_lift_ge3, 0)}</b> of pilots with none.</li>
+        <li>Pilots that read negative with a real effect: <b>${pc(P.p_lift_negative, 0)}</b>.</li>
+        <li>Lower bound above zero: <b>${pc(P.p_ci_above0, 0)}</b> with a real effect, <b>${pc(N.p_ci_above0, 0)}</b> with none.</li>
+        <li>Cell-days needing a look: about <b>${pc(P.look_median, 0)}</b>.</li>
+      </ul>
+    </section>
+  </div>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">Pass rates across 100 simulated pilots per design</h3>
+    <div style="overflow-x:auto"><table class="q wrap" aria-label="Pass rates by design"><thead><tr><th>Design</th><th class="r">Measured lift, median (10th to 90th)</th><th class="r">Pass, criteria as written</th><th class="r">Pass, revised criteria</th><th class="r">A/A reads 3% or more</th><th class="r">A/A lower bound above 0</th><th class="r">Pass if only a quarter of calls applied</th></tr></thead><tbody>${tbl}</tbody></table></div>
+  </section>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">What the simulation says about the plan</h3>
+    <div class="verdicts">
+      <div class="verdict"><h3>The harm limit is set below the system itself</h3><p>With a human in the loop, PLUMB cells show about ${pc(A0.plumb.harm_median, 1)} harmful moves, against ${pc(A0.plumb.harm_ctrl_median, 1)} on manual cells. A 5% ceiling fails most pilots even when the system works. Judge it against the matched manual cells instead.</p></div>
+      <div class="verdict"><h3>One week of ten pairs is noise</h3><p>As written, ${pc(A0.plumb.p_lift_negative, 0)} of pilots measure a loss when PLUMB helps, and ${pc(A0.placebo.p_lift_ge3, 0)} of pilots with no effect clear the 3% bar. A 3% threshold on a point estimate is not evidence.</p></div>
+      <div class="verdict"><h3>Forty cells for four weeks is the smallest design that works</h3><p>It clears zero with confidence in ${pc(F.plumb.p_ci_above0, 0)} of pilots and gives a false positive in ${pc(F.placebo.p_ci_above0, 0)} of no-effect pilots. Running it needs a week of shadow data first, which the plan already has.</p></div>
+      <div class="verdict"><h3>Adoption decides the result</h3><p>If ops apply only a quarter of the calls, the median lift falls to about ${pc(PIL.four_weeks.low_adoption.lift_median, 0)} and almost no pilot passes. The pilot needs an agreement with ops to apply or document a reason for each call.</p></div>
+    </div>
+  </section>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">Revised pilot protocol</h3>
+    <ol class="plain">
+      <li><b>Cells.</b> 40 cells in 20 pairs matched on tier and traffic. A coin flip inside each pair decides which cell gets PLUMB.</li>
+      <li><b>Week 1, shadow.</b> PLUMB proposes, ops price as usual, nothing is applied. This is the baseline for every cell.</li>
+      <li><b>Weeks 2 to 5, live.</b> PLUMB cells go through the floor desk. Ops accept, hold or override and write a reason for every override.</li>
+      <li><b>Readout.</b> Change in revenue per 1,000 requests, PLUMB cell against its pair, relative to the shadow week. Bootstrap the 90% interval over pairs.</li>
+      <li><b>Proof means:</b> lower bound above zero, harmful moves at most 0.6 of the matched manual cells, override rate between 5% and 40%. <b>Falsified means:</b> upper bound below +3%, or override rate under 2% with no written reasons.</li>
+    </ol>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px"><b>Limits.</b> The simulator has fixed bidders that do not react to floors, 40 cells, and an assumed model of ops behaviour. The effect size here is that model's gap, so a real pilot may find less, which is why the interval criterion matters more than the 3% bar. At about ${pc(P.look_median, 0)} of cell-days needing a look, expect roughly ${Math.round(P.look_median * 40)} of 40 cells on a typical day, close to the 13 assumed on the Overview tab.</p>
+  </section>`;
+  document.querySelectorAll("[data-pk]").forEach((b) => b.addEventListener("click", () => { pilotKey = b.dataset.pk; pilotIdx = 0; renderPilot(); }));
+  $("pilotNext").addEventListener("click", () => { pilotIdx++; renderPilot(); });
+}
+
+/* ---------- architecture ---------- */
+function renderArch() {
+  $("p-arch").innerHTML = `
+  <div class="sectionhead"><h2>Architecture</h2><p>One loop, run every day for every placement cell.</p></div>
+  <section class="flow" aria-label="Pipeline">
+    <div class="node"><h3>Logs</h3><p>Requests, fill and revenue per cell per day from the reporting store.</p></div>
+    <div class="node hot"><h3>Statistics layer</h3><p>21-day curve fit. Proposed floor, predicted gain, uncertainty band. No model.</p></div>
+    <div class="node hot"><h3>Agent layer</h3><p>Reads ops notes. Returns a trust plan, never a price. Can refuse.</p></div>
+    <div class="node dark"><h3>Ops review</h3><p>Accept, hold or set a floor. Refusals return here with the reason.</p></div>
+    <div class="node"><h3>Floor applied</h3><p>Next day’s outcome is logged and feeds the next fit.</p></div>
+  </section>
+  <section class="layers">
+    <div class="card"><h3>Statistics layer</h3><ul><li>Quadratic fit of revenue per 1,000 requests against log floor.</li><li>Step capped at 25% a day, shrunk by confidence.</li><li>Small random dither on applied floors so the curve stays identifiable.</li></ul></div>
+    <div class="card"><h3>Agent layer</h3><ul><li>Outage note: hold with “insufficient signal”.</li><li>Data lag note: drop the last two days and refit.</li><li>Surge note: allow a raise only.</li><li>Benign alert: ignore. Ambiguous warning: halve the step.</li></ul></div>
+    <div class="card"><h3>Safeguards</h3><ul><li>Hard refusals: thin traffic, floor barely varied, last day an outlier.</li><li>The agent edits how far to trust the number, never the number.</li><li>Every call is logged with its evidence.</li></ul></div>
+  </section>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">The agent’s contract</h3><p style="color:var(--muted);font-size:14px;margin-bottom:10px">The agent receives the statistics summary and recent notes, and returns only this. The engine applies it deterministically. A keyword stand-in produced the results shown here; the Claude backend uses the same contract.</p>
+<pre class="code">{
+  <span class="k">"hold_reason"</span>: "insufficient_signal: demand partner outage reported",
+  <span class="k">"exclude_last"</span>: 0,
+  <span class="k">"window"</span>: null,
+  <span class="k">"direction"</span>: "both",
+  <span class="k">"step_scale"</span>: 1.0,
+  <span class="k">"evidence"</span>: ["Bidder-H endpoint returning 5xx since 09:00"],
+  <span class="k">"strength"</span>: "strong"
+}</pre></section>`;
+}
+
+/* ---------- boot ---------- */
+RES.mult = RES.harm_multiplier;
+renderOverview(); renderDesk(); renderResults(); renderPilot(); renderCase(); renderArch();
+let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (!$("p-desk").hidden) renderDetail(); }, 150); });
+const h = (location.hash || "").replace("#", ""); if (TABS.includes(h)) showTab(h, false);
+window.addEventListener("hashchange", () => { const k = (location.hash || "").replace("#", ""); if (TABS.includes(k)) showTab(k, false); });
+</script>
