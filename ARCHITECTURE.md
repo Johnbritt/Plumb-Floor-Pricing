@@ -37,9 +37,9 @@ The agent edits how far to trust the number, never the number. `heuristic_agent`
 - Applies the agent's plan: hold, drop the last N days, shorten the window, raise-only, or halve the step.
 
 ## Human
-Accept, hold, or set a floor. Refusals return to ops with the reason. In the simulation this is a parameterised model (accept, catch and false-override rates) swept in a sensitivity analysis.
+Accept, hold, or set a floor. Refusals return to ops with the reason. On the sample data this is a parameterised model (accept, catch and false-override rates) swept in a sensitivity analysis.
 
-## Simulator (`sim.py`)
+## Data generator (`sim.py`)
 Second-price auction with a reserve (the floor), lognormal bidders with participation probability, Monte Carlo revenue curve per cell and day over a 72-point floor grid, so the best floor is known exactly. Four event types (outage, surge, reporting glitch, regime shift), each of which may leave a free-text ops note, plus decoy, benign and noise notes.
 
 ## Evaluation (`evaluate.py`)

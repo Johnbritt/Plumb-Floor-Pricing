@@ -215,7 +215,7 @@ function renderMethod() {
   <section class="card"><h3 style="margin-bottom:8px">Hard refusals and parameters</h3>
     <ul class="plain"><li>Fewer than ${m.min_history} days of history, or too little floor variation to identify a curve.</li><li>Traffic below ${p.thinV.toLocaleString("en-US")} requests a day (median of the last 14 days).</li><li>The last day is an outlier against the fitted curve (more than ${p.rz} residual standard deviations).</li></ul>
     <pre class="code">${esc(JSON.stringify(p))}</pre><p class="muted" style="font-size:13px;margin-top:6px">Tuned on a synthetic world and frozen. Override with the PLUMB_PARAMS environment variable.</p></section>
-  <div class="callout"><span class="mark"></span><div><b>Read this before trusting a number.</b> The results behind these defaults come from a simulator. Simulated bidders do not react to floors, and the manual-pricing baseline is a model, not a measurement. Run the pilot in the repository (40 cells, a shadow week, matched control) before relying on the estimated gains.</div></div>`;
+  <div class="callout"><span class="mark"></span><div><b>Read this before trusting a number.</b> The results behind these defaults were computed on a synthetic sample dataset. Bidders in that data do not react to floors, and the manual-pricing baseline is a model, not a measurement. Run the pilot in the repository (40 cells, a shadow week, matched control) before relying on the estimated gains.</div></div>`;
 }
 
 /* ---------- boot ---------- */

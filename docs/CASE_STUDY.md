@@ -1,12 +1,12 @@
-# PLUMB: simulation results (synthetic data only)
+# PLUMB: results on sample data (synthetic)
 
-**Everything here comes from a simulator. No TapMind or other official data was used.** The simulator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
+**Everything here is computed on a synthetic sample dataset. No TapMind or other official data was used.** The data generator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
 
 ## What was built
 | Piece | What it does |
 |---|---|
 | `sim.py` | 40 placement cells x 180 days. Second-price auction with a floor, daily demand shocks, and four event types: bidder outage, demand surge, reporting glitch, demand regime shift. Each event may or may not leave a free-text ops note; decoy and benign notes are added. |
-| `engine.py` | Stats layer (quadratic revenue-vs-floor fit on the last 21 days, uncertainty on the predicted gain), rule gate, closed-loop runner where each arm lives with its own floor history, simulated ops person. |
+| `engine.py` | Stats layer (quadratic revenue-vs-floor fit on the last 21 days, uncertainty on the predicted gain), rule gate, closed-loop runner where each arm lives with its own floor history, modelled ops person. |
 | `agents.py` | Agent layer behind one interface. **Offline stand-in** (keyword rules over the notes) is what produced the numbers below. **Claude backend** is wired and unit-tested with a mock, but not run: this session has no API key. |
 | `evaluate.py` | Six arms, cluster bootstrap over cells, refusal accounting, human-catch accounting, sensitivity sweeps. |
 
@@ -25,7 +25,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 ![results](../results/fig1_results.png)
 
 ## Scorecard against the submission's claims
-| Claim in the doc | Verdict in the simulator | Evidence |
+| Claim in the doc | Verdict on the sample data | Evidence |
 |---|---|---|
 | The pair beats ops alone | **Supported** (but see caveat 1) | +16.5 pts, CI +11.5 to +21.3 |
 | The pair beats the model alone | **Not supported** | +0.3 pts, CI -0.8 to +1.5; across 36 human-behaviour settings it ranges -2.2 to +0.3 pts |
@@ -33,7 +33,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 | The agent beats a plain rule (Null Test) | **Not shown** by the stand-in | agent minus rule: -0.1 pts, CI -0.8 to +1.0. The stand-in is itself a rule set, so this needs the Claude run |
 | The human catches what the agent misses | **Weak** | 30 of 234 harmful recs caught; net $-22. Wrong overrides (232, at an assumed 10% false-override rate) cost $1,430 |
 
-**The honest headline:** the statistical layer does almost all the work, about 20 points over the simulated manual process. Refusal is a safety feature that costs some revenue in this world. The model's own contribution is unproven until the Claude backend is run.
+**The honest headline:** the statistical layer does almost all the work, about 20 points over the modelled manual process. Refusal is a safety feature that costs some revenue in this world. The model's own contribution is unproven until the Claude backend is run.
 
 ## Design changes the findings forced (use these for the build-journey slide)
 1. **Hard significance gate refused 81.8% of days (v1) and cost 1.7 pts vs the unguarded stats layer.** Replaced with a confidence-scaled step: refuse only on data-quality problems, otherwise let confidence shrink the move. Refusals fell to 17.7%.
@@ -51,7 +51,7 @@ Left: if a harmful move carries a penalty beyond its same-day revenue loss (bidd
 3. **The pair arm uses an assumed human** (accept, catch and false-override rates). It is a sensitivity analysis, not a measurement.
 4. **The agent arm is a keyword stand-in, not Claude.** Do not present it as an LLM result.
 5. Two synthetic worlds, one seed each. Intervals are cluster bootstraps over cells, so they do not capture world-to-world variation.
-6. The $2.5K to $5K a month figure in the doc is not supported by this simulation. Simulated gains are percentages of oracle revenue, not rupees.
+6. The $2.5K to $5K a month figure in the doc is not supported by this analysis. The gains here are percentages of oracle revenue, not rupees.
 
 ## Files
 `synthetic_daily_cells.csv` (7,200 cell-days under manual pricing: requests, floor, fill, revenue), `synthetic_ground_truth.csv` (true best floor and event flags), `synthetic_ops_notes.csv` (what the agent reads), `synthetic_ops_notes_truth.csv` (same plus true note type), `eval_decisions_world2.csv` (all decisions, all arms), `results_v1.json`, `results_v2.json`, `tuning_grid_v1.csv`, `tuning_grid_v2.csv`, and the code.

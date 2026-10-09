@@ -273,7 +273,7 @@ footer.foot { color: var(--muted); font-size: 13px; padding-block: 4px; }
       <button role="tab" id="tab-case" aria-selected="false" type="button">Case study</button>
       <button role="tab" id="tab-arch" aria-selected="false" type="button">Architecture</button>
     </nav>
-    <span class="envchip">Simulation &middot; synthetic data</span>
+    <span class="envchip">Sample data &middot; synthetic</span>
   </div>
 </div>
 
@@ -283,7 +283,7 @@ footer.foot { color: var(--muted); font-size: 13px; padding-block: 4px; }
 <main class="page" id="p-pilot" role="tabpanel" hidden></main>
 <main class="page" id="p-case" role="tabpanel" hidden></main>
 <main class="page" id="p-arch" role="tabpanel" hidden></main>
-<div class="page" style="padding-block: 0 28px"><footer class="foot">Every number in this product comes from a simulator, not from any real ad stack or customer. Items tagged Assumption are estimates derived from the simulation and the original proposal, not measurements.</footer></div>
+<div class="page" style="padding-block: 0 28px"><footer class="foot">Every number in this product is computed on a synthetic sample dataset, not on any real ad stack or customer. Items tagged Assumption are estimates derived from the sample results and the original proposal, not measurements.</footer></div>
 
 <script>
 const DAYS = /*DAYS*/;
@@ -369,8 +369,8 @@ function renderOverview() {
     </div>
   </section>
   <section class="kpis">
-    <div class="card kpi"><span class="label">Revenue vs best possible floor</span><span class="big">${pc(sysCap)}</span><span class="vs">manual pricing: ${pc(opsCap)}</span><span><span class="tag">Simulated, held out</span></span></div>
-    <div class="card kpi"><span class="label">Harmful floor moves</span><span class="big">${pc(A.agent.harmful_move_rate)}</span><span class="vs">manual pricing: ${pc(A.ops.harmful_move_rate)}</span><span><span class="tag">Simulated, held out</span></span></div>
+    <div class="card kpi"><span class="label">Revenue vs best possible floor</span><span class="big">${pc(sysCap)}</span><span class="vs">manual pricing: ${pc(opsCap)}</span><span><span class="tag">Sample data, held out</span></span></div>
+    <div class="card kpi"><span class="label">Harmful floor moves</span><span class="big">${pc(A.agent.harmful_move_rate)}</span><span class="vs">manual pricing: ${pc(A.ops.harmful_move_rate)}</span><span><span class="tag">Sample data, held out</span></span></div>
     <div class="card kpi"><span class="label">Daily pricing time</span><span class="big">~30 min <small>from ~2 h</small></span><span class="vs">${look} of 40 cells need a look on a busy day</span><span><span class="tag assume">Assumption</span></span></div>
     <div class="card kpi"><span class="label">Yield recovered on $50K a month</span><span class="big">${money(monthLo)}–${money(monthHi)}<small> /mo</small></span><span class="vs">${pc(recovered, 0)} of manual loss recovered</span><span><span class="tag assume">Assumption-based</span></span></div>
   </section>
@@ -380,16 +380,16 @@ function renderOverview() {
       <div class="step"><span class="n">2</span><h3>Agent, judgment only</h3><p>Reads the ops notes and decides how far to trust the proposal: hold on an outage, drop a bad reporting day, allow only a raise before a surge. It never writes a price.</p></div>
       <div class="step"><span class="n">3</span><h3>The person decides</h3><p>Ops accepts, holds, or sets their own floor. Every call that was refused comes back to a human with the reason attached.</p></div>
     </div></section>
-  <section class="card"><div class="sectionhead"><h2>Assumptions behind the numbers</h2><p>Where a figure is not measured in the simulation, this is how it was filled in.</p></div>
+  <section class="card"><div class="sectionhead"><h2>Assumptions behind the numbers</h2><p>Where a figure is not measured on the sample data, this is how it was filled in.</p></div>
     <div class="tablewrap" style="margin-top:12px"><table class="t"><thead><tr><th>Item</th><th class="r">Value</th><th>Basis</th></tr></thead><tbody>
       <tr><td>Manual pricing time</td><td class="r num">~2 h / day</td><td>Estimate in the original proposal. Not timed.</td></tr>
       <tr><td>Time with PLUMB</td><td class="r num">~30 min / day</td><td>${look} cells per busy day need a look (holds plus notes that changed the call), about 2 min each, plus 5 min for the queue.</td></tr>
       <tr><td>Yield lost to manual pricing</td><td class="r num">5–10%</td><td>Estimate in the original proposal. Not measured.</td></tr>
-      <tr><td>Share of that loss recovered</td><td class="r num">${pc(recovered, 0)}</td><td>Simulation: (${pc(sysCap)} − ${pc(opsCap)}) ÷ (100% − ${pc(opsCap)}).</td></tr>
+      <tr><td>Share of that loss recovered</td><td class="r num">${pc(recovered, 0)}</td><td>Sample data: (${pc(sysCap)} − ${pc(opsCap)}) ÷ (100% − ${pc(opsCap)}).</td></tr>
       <tr><td>In-scope revenue</td><td class="r num">$50K / month</td><td>Illustrative figure from the original proposal.</td></tr>
       <tr><td>Resulting range</td><td class="r num">${money(monthLo)}–${money(monthHi)} / mo</td><td>$50K × 5–10% × ${pc(recovered, 0)}. Replace with real figures before relying on it.</td></tr>
     </tbody></table></div>
-    <div class="callout" style="margin-top:16px"><span class="mark"></span><div><b>Validation status.</b> Simulation only. No user interviews, no pilot and no signed commitment yet. The pilot plan in the case study defines what would count as proof.</div></div>
+    <div class="callout" style="margin-top:16px"><span class="mark"></span><div><b>Validation status.</b> Sample data only. No user interviews, no live pilot and no signed commitment yet. The pilot plan in the case study defines what would count as proof.</div></div>
   </section>`;
   $("p-overview").querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => showTab(b.dataset.go)));
 }
@@ -469,7 +469,7 @@ function renderDesk() {
   if (rv) {
     const t = totals(), top = t.best;
     const row = (cls, nm, v) => `<div class="sumrow ${cls}"><span>${nm}</span><div class="bar"><i style="width:${(v / top) * 100}%"></i></div><span class="v">${money(v)} · ${Math.round((v / top) * 100)}%</span></div>`;
-    summary = `<section class="card daysummary"><div><span class="label">Tomorrow, revealed</span><h3 style="font-size:20px;margin-top:4px">Your decisions captured ${Math.round((t.you / top) * 100)}% of the best possible day across 40 cells</h3><p style="color:var(--muted);font-size:14px;margin-top:4px">Cells you did not decide use the usual manual habit. Revenue is the simulated day’s total.</p></div>
+    summary = `<section class="card daysummary"><div><span class="label">Tomorrow, revealed</span><h3 style="font-size:20px;margin-top:4px">Your decisions captured ${Math.round((t.you / top) * 100)}% of the best possible day across 40 cells</h3><p style="color:var(--muted);font-size:14px;margin-top:4px">Cells you did not decide use the usual manual habit. Revenue is that day’s total on the sample data.</p></div>
       ${row("", "Hold every floor", t.hold)}${row("", "Usual manual habit", t.habit)}${row("", "PLUMB calls as proposed", t.sys)}${row("you", "Your decisions", t.you)}${row("best", "Best possible", t.best)}</section>`;
   }
   const head = `<th>Cell</th><th class="r hide-s">Req / day</th><th class="r">Floor now</th><th>PLUMB call</th><th class="r hide-s">Est. gain / day</th><th class="hide-s">Flag</th><th>Status</th>${rv ? '<th class="r">% of best</th>' : ""}`;
@@ -605,18 +605,18 @@ function renderCase() {
     <span class="eyebrow">Case study</span>
     <h1>PLUMB: a floor-pricing partner that knows when not to price</h1>
     <div class="byline"><span>J John Britto</span><span>Head of Product &amp; Technology, TapMind</span><span>Solo submission</span></div>
-    <div class="facts4"><div><b>${pc(sysCap)}</b><span>of best possible revenue, vs ${pc(opsCap)} manual (simulated)</span></div><div><b>${pc(A.agent.harmful_move_rate)}</b><span>harmful moves, vs ${pc(A.ops.harmful_move_rate)} manual (simulated)</span></div><div><b>${RES.n_decisions.toLocaleString("en-US")}</b><span>held-out floor decisions scored</span></div><div><b>4</b><span>design changes forced by the results</span></div></div>
+    <div class="facts4"><div><b>${pc(sysCap)}</b><span>of best possible revenue, vs ${pc(opsCap)} manual (sample data)</span></div><div><b>${pc(A.agent.harmful_move_rate)}</b><span>harmful moves, vs ${pc(A.ops.harmful_move_rate)} manual (sample data)</span></div><div><b>${RES.n_decisions.toLocaleString("en-US")}</b><span>held-out floor decisions scored</span></div><div><b>4</b><span>design changes forced by the results</span></div></div>
     <h2>The problem</h2>
     <p>Every day an ad operations team sets CPM floors by hand across 30 to 40 bidders on OpenRTB. For each placement and ad size, one person pulls yesterday’s performance, reasons through fill, demand and revenue, and types in a price. The proposal estimated this at about two hours a day and 5 to 10% of achievable yield left on the table. Both figures are estimates that have not been measured.</p>
     <p>Because the reasoning sits in one person’s head, a bad floor stays invisible until the revenue report lands. Floors set too high suppress fill. Floors set too low give revenue away.</p>
     <h2>The idea</h2>
     <p>Pair a statistical floor recommendation with an agent that explains it and refuses to recommend a move when the data is too thin or too unusual. The person accepts or overrides each call. The hypothesis was that this pair makes better floor decisions than ops alone or the model alone. The falsifier was that the pair is no better than ops alone, or ops accept every recommendation without ever overriding.</p>
     <h2>How it was tested</h2>
-    <p>No official data was used. A simulator builds a bid landscape for 40 placement cells over 180 days, with a second-price auction, daily demand shocks, and four event types: a bidder outage, a demand surge, a reporting glitch and a regime shift. Because the true best floor is known for every cell and day, every decision can be scored exactly: the revenue of the floor chosen divided by the revenue at the best floor.</p>
+    <p>No official data was used. A data generator builds a bid landscape for 40 placement cells over 180 days, with a second-price auction, daily demand shocks, and four event types: a bidder outage, a demand surge, a reporting glitch and a regime shift. Because the true best floor is known for every cell and day, every decision can be scored exactly: the revenue of the floor chosen divided by the revenue at the best floor.</p>
     <p>Six arms were compared in closed loop, each living with its own floor history: ops alone, the statistics layer with and without confidence scaling, the statistics layer with a rule-based refusal, the full system with an agent reading ops notes, and ops working with the agent. Gates were tuned on 10 cells of one world, frozen, and scored on a second world that was never used for tuning.</p>
     <h2>What we found</h2>
     <ul>
-      <li><b>The statistics layer carries the revenue.</b> About ${Math.round((A.stats.capture - opsCap) * 100)} points over the simulated manual process.</li>
+      <li><b>The statistics layer carries the revenue.</b> About ${Math.round((A.stats.capture - opsCap) * 100)} points over the modelled manual process.</li>
       <li><b>Refusal is a safety feature.</b> It cut harmful moves from ${pc(A.stats.harmful_move_rate)} to ${pc(A.agent.harmful_move_rate)} and cost 2 to 3 points of revenue. In the agent arm, ${rA.prevented_bad_moves} refusals prevented a bad move, worth about ${money(rA.usd_saved)}, while ${rA.false_refusals} refusals skipped a good one, costing about ${money(rA.usd_missed)}.</li>
       <li><b>The pair did not beat the model alone.</b> ${pts(D["pair-agent"].point)} points, with an interval that spans zero.</li>
       <li><b>The agent did not beat a plain rule.</b> The agent in these runs is a keyword stand-in. A Claude-backed agent is built and tested against a mock but has not been run.</li>
@@ -631,13 +631,13 @@ function renderCase() {
     <h2>What this does not prove</h2>
     <ul>
       <li>The manual-pricing arm is a model of ops behaviour, not a measurement. The size of the gap to ops depends on it.</li>
-      <li>Bidders do not react to floors in the simulator. Real bidders do.</li>
+      <li>Bidders do not react to floors in the sample data. Real bidders do.</li>
       <li>The human in the pair arm is assumed. It is a sensitivity analysis, not an observation.</li>
       <li>There are no user interviews and no pilot yet.</li>
     </ul>
-    <h2>Pilot plan <span class="tag assume" style="vertical-align:middle">Simulated, not started</span></h2>
-    <p>The pilot as first written (20 cells, one shadow week, one week with half the cells on PLUMB, matched manual cells as control) was simulated 100 times, along with two larger designs. The Pilot tab has the results. The short version: the first design cannot tell a real gain from noise, and its harmful-move limit sits below what the system itself produces. The revised plan is a 40-cell, five-week pilot judged against matched cells.</p>
-    <p><button class="btn small dark" type="button" id="goPilot">Open the pilot simulation</button></p>
+    <h2>Pilot plan <span class="tag assume" style="vertical-align:middle">Planned, not started</span></h2>
+    <p>The pilot as first written (20 cells, one shadow week, one week with half the cells on PLUMB, matched manual cells as control) was stress-tested 100 times on the sample data, along with two larger designs. The Pilot tab has the results. The short version: the first design cannot tell a real gain from noise, and its harmful-move limit sits below what the system itself produces. The revised plan is a 40-cell, five-week pilot judged against matched cells.</p>
+    <p><button class="btn small dark" type="button" id="goPilot">Open the pilot plan</button></p>
     <h2>Next</h2>
     <ul><li>Run the Claude-backed agent on a sample of cells and repeat the comparison with the rule arm.</li><li>Add the randomized floor test for thin cells and re-score.</li><li>Replace the modelled ops habit with real decisions from a shadow week.</li></ul>
   </article>`;
@@ -663,7 +663,7 @@ function histSvg(rows, nulls) {
   [-0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4].forEach((t) => { g += `<line class="axis" x1="${X(t)}" x2="${X(t)}" y1="${H - m.b}" y2="${H - m.b + 4}"/><text x="${X(t)}" y="${H - m.b + 17}" text-anchor="middle">${t > 0 ? "+" : ""}${Math.round(t * 100)}%</text>`; });
   g += `<line x1="${X(0.03)}" x2="${X(0.03)}" y1="${m.t}" y2="${H - m.b}" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="5 4"/><text x="${X(0.03) + 5}" y="${m.t + 8}">3% bar</text>`;
   g += `<text x="${(m.l + W - m.r) / 2}" y="${H - 3}" text-anchor="middle">measured lift, one pilot each</text>`;
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of measured lift across 100 simulated pilots, with and without a real effect">${g}</svg>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of measured lift across 100 test runs, with and without a real effect">${g}</svg>`;
 }
 function renderPilot() {
   const D = PIL[pilotKey], P = D.plumb, N = D.placebo;
@@ -678,14 +678,14 @@ function renderPilot() {
     return `<tr><td><b>${PIL[k].label.replace("Extended: ", "")}</b></td><td class="r num">${lift(p.lift_median)} <span style="color:var(--muted)">(${lift(p.lift_p10)} to ${lift(p.lift_p90)})</span></td><td class="r num">${pc(p.p_pass_plan, 0)}</td><td class="r num">${pc(p.p_pass_v2, 0)}</td><td class="r num">${pc(n.p_lift_ge3, 0)}</td><td class="r num">${pc(n.p_ci_above0, 0)}</td><td class="r num">${l ? pc(l.p_pass_v2, 0) : "n/a"}</td></tr>`; }).join("");
   const A0 = PIL.as_written, F = PIL.forty_cells;
   $("p-pilot").innerHTML = `
-  <div class="sectionhead"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2>Pilot simulation</h2><span class="tag assume">Simulated, not started</span></div><p>Each pilot below picks cells at random, pairs them by traffic, switches half to PLUMB after a shadow week, and measures against the other half. 100 pilots per design, same simulator as the Results tab.</p></div>
+  <div class="sectionhead"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><h2>Pilot plan</h2><span class="tag assume">Planned, not started</span></div><p>Each pilot below picks cells at random, pairs them by traffic, switches half to PLUMB after a shadow week, and measures against the other half. 100 test runs per design on the same sample data as the Results tab. This is a plan and a power check, not the result of a live pilot.</p></div>
   <div class="chips" role="group" aria-label="Pilot design">${chips}</div>
   <div class="two">
     <section class="card" style="display:flex;flex-direction:column;gap:14px">
-      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><span class="label">One simulated pilot, number ${(pilotIdx % rows.length) + 1} of ${rows.length}</span><button class="btn small primary" type="button" id="pilotNext">Run another pilot</button></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><span class="label">One test run, number ${(pilotIdx % rows.length) + 1} of ${rows.length}</span><button class="btn small primary" type="button" id="pilotNext">Run another pilot</button></div>
       <div class="tl"><div class="tseg s1"><b>Week 1</b><span>Shadow. Nothing applied.</span></div><div class="tseg s2" style="flex:${D.label.includes("4 weeks") ? 4 : 1}"><b>${D.label.includes("4 weeks") ? "Weeks 2 to 5" : "Week 2"}</b><span>Half the cells on PLUMB</span></div><div class="tseg s3"><b>Review</b><span>Matched cells</span></div></div>
       <div class="sumrow"><span>Measured lift</span><div class="bar" style="height:18px"><i style="left:${X(r.lo90)}%;right:${100 - X(r.hi90)}%;inset:0 auto 0 ${X(r.lo90)}%;width:${X(r.hi90) - X(r.lo90)}%;background:var(--faint)"></i><i style="inset:0 auto 0 ${X(r.lift) - 0.6}%;width:1.2%;background:var(--accent)"></i><i style="inset:0 auto 0 ${X(0)}%;width:2px;background:var(--ink)"></i></div><span class="v">${lift(r.lift)} (90%: ${lift(r.lo90)} to ${lift(r.hi90)})</span></div>
-      <p style="color:var(--muted);font-size:13px">Grey is the 90% interval across pairs, orange the estimate, black the zero line. The true effect in this simulated pilot was <b class="num">${lift(r.true_lift)}</b>, which a real pilot would not know.</p>
+      <p style="color:var(--muted);font-size:13px">Grey is the 90% interval across pairs, orange the estimate, black the zero line. The true effect in this test run was <b class="num">${lift(r.true_lift)}</b>, which a real pilot would not know.</p>
       <table class="q" aria-label="Pilot readout"><tbody>
         <tr><td>Harmful moves, PLUMB cells</td><td class="r num">${pc(r.harm)}</td></tr>
         <tr><td>Harmful moves, manual cells</td><td class="r num">${pc(r.harm_ctrl)}</td></tr>
@@ -699,9 +699,9 @@ function renderPilot() {
       </div>
     </section>
     <section class="card" style="display:flex;flex-direction:column;gap:10px">
-      <span class="label">All ${rows.length} pilots of this design</span>
+      <span class="label">All ${rows.length} test runs of this design</span>
       <div>${histSvg(rows, D.null_lifts)}</div>
-      <p style="color:var(--muted);font-size:13px"><b style="color:var(--accent-ink)">Orange:</b> PLUMB works as simulated. <b>Grey outline:</b> an A/A pilot where nothing changes, so every bar is noise. The overlap is how often a pilot would mislead.</p>
+      <p style="color:var(--muted);font-size:13px"><b style="color:var(--accent-ink)">Orange:</b> PLUMB works as the sample data suggests. <b>Grey outline:</b> an A/A pilot where nothing changes, so every bar is noise. The overlap is how often a pilot would mislead.</p>
       <ul class="plain">
         <li>Measured lift of 3% or more: <b>${pc(P.p_lift_ge3, 0)}</b> of pilots with a real effect, <b>${pc(N.p_lift_ge3, 0)}</b> of pilots with none.</li>
         <li>Pilots that read negative with a real effect: <b>${pc(P.p_lift_negative, 0)}</b>.</li>
@@ -710,10 +710,10 @@ function renderPilot() {
       </ul>
     </section>
   </div>
-  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">Pass rates across 100 simulated pilots per design</h3>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">Pass rates across 100 test runs per design</h3>
     <div style="overflow-x:auto"><table class="q wrap" aria-label="Pass rates by design"><thead><tr><th>Design</th><th class="r">Measured lift, median (10th to 90th)</th><th class="r">Pass, criteria as written</th><th class="r">Pass, revised criteria</th><th class="r">A/A reads 3% or more</th><th class="r">A/A lower bound above 0</th><th class="r">Pass if only a quarter of calls applied</th></tr></thead><tbody>${tbl}</tbody></table></div>
   </section>
-  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">What the simulation says about the plan</h3>
+  <section class="card"><h3 style="font-size:18px;margin-bottom:10px">What the test runs say about the plan</h3>
     <div class="verdicts">
       <div class="verdict"><h3>The harm limit is set below the system itself</h3><p>With a human in the loop, PLUMB cells show about ${pc(A0.plumb.harm_median, 1)} harmful moves, against ${pc(A0.plumb.harm_ctrl_median, 1)} on manual cells. A 5% ceiling fails most pilots even when the system works. Judge it against the matched manual cells instead.</p></div>
       <div class="verdict"><h3>One week of ten pairs is noise</h3><p>As written, ${pc(A0.plumb.p_lift_negative, 0)} of pilots measure a loss when PLUMB helps, and ${pc(A0.placebo.p_lift_ge3, 0)} of pilots with no effect clear the 3% bar. A 3% threshold on a point estimate is not evidence.</p></div>
@@ -729,7 +729,7 @@ function renderPilot() {
       <li><b>Readout.</b> Change in revenue per 1,000 requests, PLUMB cell against its pair, relative to the shadow week. Bootstrap the 90% interval over pairs.</li>
       <li><b>Proof means:</b> lower bound above zero, harmful moves at most 0.6 of the matched manual cells, override rate between 5% and 40%. <b>Falsified means:</b> upper bound below +3%, or override rate under 2% with no written reasons.</li>
     </ol>
-    <p style="color:var(--muted);font-size:13px;margin-top:10px"><b>Limits.</b> The simulator has fixed bidders that do not react to floors, 40 cells, and an assumed model of ops behaviour. The effect size here is that model's gap, so a real pilot may find less, which is why the interval criterion matters more than the 3% bar. At about ${pc(P.look_median, 0)} of cell-days needing a look, expect roughly ${Math.round(P.look_median * 40)} of 40 cells on a typical day, close to the 13 assumed on the Overview tab.</p>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px"><b>Limits.</b> The sample data has fixed bidders that do not react to floors, 40 cells, and an assumed model of ops behaviour. The effect size here is that model's gap, so a real pilot may find less, which is why the interval criterion matters more than the 3% bar. At about ${pc(P.look_median, 0)} of cell-days needing a look, expect roughly ${Math.round(P.look_median * 40)} of 40 cells on a typical day, close to the 13 assumed on the Overview tab.</p>
   </section>`;
   document.querySelectorAll("[data-pk]").forEach((b) => b.addEventListener("click", () => { pilotKey = b.dataset.pk; pilotIdx = 0; renderPilot(); }));
   $("pilotNext").addEventListener("click", () => { pilotIdx++; renderPilot(); });

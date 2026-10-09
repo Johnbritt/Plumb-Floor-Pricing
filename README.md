@@ -51,7 +51,7 @@ PLUMB suggests floors; it does not write to an ad server. Basic auth is a shared
 
 ## Results (synthetic, held-out world)
 
-Gates were tuned on one simulated world and scored on a fresh one with thinner cells. 40 cells, 120 days, closed loop, same random draws across arms.
+Gates were tuned on one synthetic world and scored on a fresh one with thinner cells. 40 cells, 120 days, closed loop, same random draws across arms.
 
 | Arm | Revenue vs best possible floor | Harmful moves | Calls refused |
 |---|---|---|---|
@@ -70,15 +70,15 @@ What this does and does not show:
 
 Design iterations, including the hard-gate version that refused 82% of days and cost revenue, are in [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) and `results/results_v1.json`.
 
-## Pilot simulation
+## Pilot plan, checked on sample data
 
-[`src/pilot_sim.py`](src/pilot_sim.py) simulates the proposed pilot: matched pairs, a shadow week, then half the cells on PLUMB, 100 runs per design plus an A/A control. The plan as first written (20 cells, one live week) cannot separate a real gain from noise, and its 5% harmful-move limit is below what the system itself produces. The revised design is 40 cells for five weeks, judged on a confidence bound against matched manual cells. See the Pilot tab in the demo.
+[`src/pilot_sim.py`](src/pilot_sim.py) runs the proposed pilot design on the sample data: matched pairs, a shadow week, then half the cells on PLUMB, 100 runs per design plus an A/A control. The plan as first written (20 cells, one live week) cannot separate a real gain from noise, and its 5% harmful-move limit is below what the system itself produces. The revised design is 40 cells for five weeks, judged on a confidence bound against matched manual cells. See the Pilot tab in the demo.
 
 ## Stack
 
 | Layer | Choice |
 |---|---|
-| Simulator and engine | Python, NumPy, pandas |
+| Data generator and engine | Python, NumPy, pandas |
 | Agent layer | Keyword stand-in (default), Claude backend via the Anthropic SDK (optional) |
 | Web app | FastAPI, SQLite, vanilla JS UI, optional Docker |
 | Demo | One self-contained HTML page, no backend, data baked in |
@@ -92,10 +92,10 @@ Details in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 app/                FastAPI backend (main, service, store, ingest, seed) and static UI
 src/
   sim.py            world generator: second-price auction with a floor, events, free-text notes
-  engine.py         stats fit, gates, confidence step, simulated ops habit, closed-loop run
+  engine.py         stats fit, gates, confidence step, modelled ops habit, closed-loop run
   agents.py         heuristic_agent, make_llm_agent, prompt and plan schema
   evaluate.py       tune on world 1, freeze, score on world 2
-  pilot_sim.py      pilot simulation
+  pilot_sim.py      pilot plan check
   demo_data2.py     snapshots 40 cells on three eventful days for the demo
   build_product.py  bakes results into the demo page
   make_report.py    exports the synthetic datasets, figures and case study
@@ -104,7 +104,7 @@ data/               synthetic datasets (daily cells, ground truth, ops notes)
 results/            metrics, tuning grids, decisions, figures, pilot results
 demo/               product template, baked page, demo data
 docs/               case study and screenshots
-tests/              pytest checks (engine, agent, simulator, web app)
+tests/              pytest checks (engine, agent, data generator, web app)
 Dockerfile, render.yaml, DEPLOY.md, .env.example
 workflow.json       pipeline description
 ```
@@ -130,7 +130,7 @@ Generated worlds are cached in `.cache/` and rebuild deterministically from the 
 ## Known limitations
 
 - The manual-pricing arm is a model of ops behaviour, not a measurement. The size of the gap to ops depends on it.
-- Simulated bidders do not react to floors. Real bidders do.
+- Bidders in the sample data do not react to floors. Real bidders do.
 - The human in the pair arm is an assumption, shown as a sensitivity analysis.
 - Refusing on thin cells freezes learning, so those cells need a small randomized floor test. Not built yet.
 - Holding through an outage can cost revenue, because an outage probably lowers the best floor. The agent should adjust direction, not only hold.
