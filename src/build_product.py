@@ -10,4 +10,6 @@ frag=t.replace("/*DAYS*/",json.dumps(days,separators=(",",":"))).replace("/*RESU
 open(P_(DEMO,"plumb_product_fragment.html"),"w").write(frag)
 full=('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>:root{color-scheme:light}body{margin:0}[hidden]{display:none!important}</style></head><body>'+frag+"</body></html>")
 m=re.search(r"<title>.*?</title>",full); ti=m.group(0); full=full.replace(ti,"",1).replace("</head>",ti+"</head>",1)
-open(P_(DEMO,"plumb_product.html"),"w").write(full); print(len(frag))
+open(P_(DEMO,"plumb_product.html"),"w").write(full)
+open(P_(DEMO,"index.html"),"w").write(full)   # static hosts (Vercel, Netlify, GitHub Pages) serve this
+print(len(frag))

@@ -41,6 +41,14 @@ Because the data resets and is open to anyone with the link by default, use this
 
 For a deployment that keeps its data, use a paid Render plan with a disk, a small VPS with the Docker command above, or any host that gives you a persistent volume.
 
+## Free static hosting for the product demo (Vercel)
+
+The product demo (`demo/index.html`) is one self-contained page, so it hosts for free on Vercel, Netlify or GitHub Pages. It never sleeps, has no cold start, and the Case study tab opens directly at `/#case`.
+
+On Vercel: Add New, Project, import the repo, set **Root Directory** to `demo`, set Framework Preset to **Other**, and Deploy. Leave the build command empty.
+
+This hosts the demo only. It does not run the web app, because Vercel runs Python as short-lived serverless functions with no persistent disk, so the app's SQLite file and saved decisions would not stay put. To run the full app there you would need to move storage to a hosted database such as Postgres. Use Render (above) or a VPS for the app.
+
 ## Put it behind HTTPS
 
 Basic auth sends the password with every request, so serve it over HTTPS. The simplest route is Caddy:
