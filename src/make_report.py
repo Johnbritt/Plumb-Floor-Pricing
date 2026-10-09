@@ -6,13 +6,13 @@ import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from paths import RESULTS, DATA, DEMO, DOCS, CACHE, p as P_
 from sim import build, GRID
 from engine import Rng, observe, ops_floor
 
-OUT = "/home/claude/plumb/"
-R2 = json.load(open(OUT + "results_v2.json"))
+R2 = json.load(open(P_(RESULTS, "results_v2.json")))
 H = R2["world2_confirmation"]; S = R2["world1_seen"]
-V1 = json.load(open(OUT + "results_v1.json"))
+V1 = json.load(open(P_(RESULTS, "results_v1.json")))
 ARMS = ["ops", "stats", "shrink", "rule", "agent", "pair"]
 SHORT = {"ops": "Ops alone", "stats": "Stats, full step", "shrink": "Stats, scaled step", "rule": "Stats + rule refusal",
          "agent": "Stats + agent refusal", "pair": "Ops + agent (pair)"}
@@ -21,7 +21,7 @@ pc = lambda x: f"{x*100:.1f}%"
 pt = lambda x: f"{x*100:+.1f}"
 
 # ---------------- dataset export (world 2, what the logs would look like under today's manual process)
-w = build(seed=29, cache=OUT + "world2.npz", thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38)); rg = Rng(40, 180, seed=77)
+w = build(seed=29, cache=P_(CACHE, "world2.npz"), thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38)); rg = Rng(40, 180, seed=77)
 rows, truth = [], []
 dates = pd.date_range("2026-04-01", periods=180)
 for p in range(40):
@@ -37,11 +37,11 @@ for p in range(40):
                           demand_surge=int(w["surge"][p, d] > 0), reporting_glitch_factor=round(float(w["glitch"][p, d]), 2),
                           demand_regime_shift_today=int(w["shift"][p, d])))
         f = ops_floor(rg, p, d, f, Fl)
-pd.DataFrame(rows).to_csv(OUT + "synthetic_daily_cells.csv", index=False)
-pd.DataFrame(truth).to_csv(OUT + "synthetic_ground_truth.csv", index=False)
+pd.DataFrame(rows).to_csv(P_(DATA, "synthetic_daily_cells.csv"), index=False)
+pd.DataFrame(truth).to_csv(P_(DATA, "synthetic_ground_truth.csv"), index=False)
 nt = pd.DataFrame(w["notes"]); nt["cell_id"] = nt.p.map(lambda p: f"CELL-{p:02d}"); nt["date"] = nt.day.map(lambda d: dates[d].date())
-nt[["cell_id", "date", "text"]].to_csv(OUT + "synthetic_ops_notes.csv", index=False)
-nt[["cell_id", "date", "text", "kind"]].to_csv(OUT + "synthetic_ops_notes_truth.csv", index=False)
+nt[["cell_id", "date", "text"]].to_csv(P_(DATA, "synthetic_ops_notes.csv"), index=False)
+nt[["cell_id", "date", "text", "kind"]].to_csv(P_(DATA, "synthetic_ops_notes_truth.csv"), index=False)
 
 # ---------------- figures
 plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
@@ -62,7 +62,7 @@ for a in ARMS:
 ax[1].set_xlabel("Harmful moves (floor moved >10% and revenue fell >1%), % of decisions"); ax[1].set_ylabel("% of oracle revenue captured")
 ax[1].set_title("Safety vs revenue", loc="left", fontweight="bold"); ax[1].grid(alpha=0.25)
 ax[1].set_xlim(0, 19)
-plt.tight_layout(); plt.savefig(OUT + "fig1_results.png", dpi=170); plt.close()
+plt.tight_layout(); plt.savefig(P_(RESULTS, "fig1_results.png"), dpi=170); plt.close()
 
 fig = plt.figure(figsize=(13.5, 4.6))
 gs = fig.add_gridspec(1, 4, width_ratios=[1.5, 1, 1, 1], wspace=0.35)
@@ -92,7 +92,7 @@ for i, fb in enumerate([0.0, 0.5, 1.0]):
         sp.set_visible(False)
 fig.suptitle("Right: pair minus model-alone, revenue points, by assumed human behaviour", x=0.62, y=1.0, fontsize=10, fontweight="bold")
 cax = fig.add_axes([0.92, 0.18, 0.012, 0.6]); fig.colorbar(im, cax=cax)
-plt.savefig(OUT + "fig2_sensitivity.png", dpi=170, bbox_inches="tight"); plt.close()
+plt.savefig(P_(RESULTS, "fig2_sensitivity.png"), dpi=170, bbox_inches="tight"); plt.close()
 
 # ---------------- report
 A = H["arms"]; D = H["diffs"]; rf = H["refusal_agent"]; ph = H["pair_human"]
@@ -117,7 +117,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 |---|---|---|---|
 """ + "\n".join(f"| {A[a]['label']} | {pc(A[a]['capture'])} ({pc(A[a]['capture_ci'][0])} to {pc(A[a]['capture_ci'][1])}) | {pc(A[a]['refuse_rate'])} | {pc(A[a]['harmful_move_rate'])} |" for a in ARMS) + f"""
 
-![results](fig1_results.png)
+![results](../results/fig1_results.png)
 
 ## Scorecard against the submission's claims
 | Claim in the doc | Verdict in the simulator | Evidence |
@@ -136,7 +136,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 3. **Refusing on thin cells freezes learning.** On the thinnest cells, refusal arms capture {pc(A['agent']['capture_thin'])} vs {pc(A['ops']['capture_thin'])} for ops and {pc(A['stats']['capture_thin'])} for the unguarded layer: a refused cell stays stuck at its starting floor. Next iteration: pair "insufficient signal" with a small randomized floor test so the cell gathers data, or pool thin cells with similar ones.
 4. **Notes-driven holds hurt during outages.** Agent minus rule on event days: ${H['agent_vs_rule_usd']['anomaly_days']['usd']:+.0f}. Likely cause: an outage removes bidders, which lowers the best floor, so freezing the floor is the wrong response. I have not isolated this, but it points to an agent that adjusts direction instead of just holding.
 
-![sensitivity](fig2_sensitivity.png)
+![sensitivity](../results/fig2_sensitivity.png)
 
 Left: if a harmful move carries a penalty beyond its same-day revenue loss (bidders pulling back, persistence), the guarded arms close the gap. At 20x the scaled-step arm overtakes the full-step arm. Right: the pair never reliably beats the model alone. Two things drive this: refusals hand decisions back to a human whose manual process is the weakest arm, and wrong overrides cost more than catches save.
 
@@ -154,9 +154,6 @@ Left: if a harmful move carries a penalty beyond its same-day revenue loss (bidd
 ## Run it
 `python3 evaluate.py` reproduces everything (about 2 minutes). With `ANTHROPIC_API_KEY` set, replace `heuristic_agent` with `make_llm_agent()` in `evaluate.py`. Run it on a sample of cells first: it makes one API call per decision, so the full run is about {H['n_decisions']*2:,} calls across the agent and pair arms.
 """
-open(OUT + "REPORT.md", "w").write(md)
+open(P_(DOCS, "CASE_STUDY.md"), "w").write(md)
 
-with zipfile.ZipFile(OUT + "plumb_code.zip", "w") as z:
-    for f in ["sim.py", "engine.py", "agents.py", "evaluate.py", "make_report.py"]:
-        z.write(OUT + f, f)
 print("ok")

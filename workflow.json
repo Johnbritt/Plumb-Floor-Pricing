@@ -3,6 +3,11 @@
   "data": "synthetic only (src/sim.py); no real ad-stack data",
   "steps": [
     {
+      "id": "simulate",
+      "what": "synthetic world: auction with floor, events, free-text ops notes",
+      "module": "src/sim.py"
+    },
+    {
       "id": "observe",
       "what": "daily revenue per 1k requests and floor per placement (cell)"
     },

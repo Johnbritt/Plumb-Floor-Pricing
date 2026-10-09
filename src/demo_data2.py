@@ -2,13 +2,13 @@
 import json
 import numpy as np
 from sim import build, GRID
+from paths import RESULTS, DATA, DEMO, DOCS, CACHE, p as P_
 from engine import Rng, observe, ops_floor, decide_system, stats_fit, true_rev, D0, D1
 from agents import heuristic_agent
 
-OUT = "/home/claude/plumb/"
-w = build(seed=29, cache=OUT + "world2.npz", thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
+w = build(seed=29, cache=P_(CACHE, "world2.npz"), thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
 rg = Rng(40, 180, seed=77)
-prm = json.load(open(OUT + "results_v2.json"))["world2_confirmation"]["prm"]
+prm = json.load(open(P_(RESULTS, "results_v2.json")))["world2_confirmation"]["prm"]
 by_p = {}
 for n in w["notes"]:
     by_p.setdefault(n["p"], []).append(n)
@@ -62,9 +62,9 @@ for p in range(40):
         hf.append(f_new); hR.append(R); hFill.append(Fl); hV.append(V)
 
 days = [dict(d=int(d), date=str(dates[d]), cells=snaps[d]) for d in DATES]
-json.dump(days, open(OUT + "demo_queue.json", "w"), separators=(",", ":"))
+json.dump(days, open(P_(DEMO, "demo_queue.json"), "w"), separators=(",", ":"))
 import os
-print("bytes", os.path.getsize(OUT + "demo_queue.json"))
+print("bytes", os.path.getsize(P_(DEMO, "demo_queue.json")))
 for dd in days:
     c = dd["cells"]
     print(dd["date"], "cells", len(c), "recommend", sum(not x["refused"] for x in c), "hold", sum(x["refused"] for x in c), "with notes", sum(bool(x["notes"]) for x in c))

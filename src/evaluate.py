@@ -11,6 +11,7 @@ import json
 import numpy as np
 import pandas as pd
 from sim import build
+from paths import RESULTS, DATA, DEMO, DOCS, CACHE, p as P_
 from engine import Rng, run_arm, DEV
 from agents import heuristic_agent
 
@@ -138,16 +139,16 @@ def main():
     w1 = build(); rg1 = Rng(40, 180)
     prm, tune_tbl = tune(w1, rg1)
     print("v2 params tuned on world-1 DEV:", prm)
-    tune_tbl.to_csv("/home/claude/plumb/tuning_grid_v2.csv", index=False)
-    w2 = build(seed=29, cache="/home/claude/plumb/world2.npz", thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
+    tune_tbl.to_csv(P_(RESULTS, "tuning_grid_v2.csv"), index=False)
+    w2 = build(seed=29, cache=P_(CACHE, "world2.npz"), thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
     rg2 = Rng(40, 180, seed=77)
     res = {}
     o2, r2 = evaluate(w2, rg2, list(range(40)), prm, HP)
     res["world2_confirmation"] = o2
-    pd.concat(r2.values(), ignore_index=True).to_csv("/home/claude/plumb/eval_decisions_world2.csv", index=False)
+    pd.concat(r2.values(), ignore_index=True).to_csv(P_(RESULTS, "eval_decisions_world2.csv"), index=False)
     o1, r1 = evaluate(w1, rg1, list(range(10, 40)), prm, HP, hp_grid=False)
     res["world1_seen"] = o1
-    json.dump(res, open("/home/claude/plumb/results_v2.json", "w"), indent=1, default=float)
+    json.dump(res, open(P_(RESULTS, "results_v2.json"), "w"), indent=1, default=float)
     for name, o in res.items():
         print("\n==", name, o["n_decisions"], "decisions;", o["n_anomaly_decisions"], "anomalous;", "tiers", o["tiers"])
         for a in ARMS:

@@ -2,4 +2,5 @@ numpy
 pandas
 scipy
 matplotlib
-anthropic
+pytest
+anthropic  # only for the optional Claude agent backend

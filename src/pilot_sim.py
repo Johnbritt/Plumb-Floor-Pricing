@@ -5,12 +5,12 @@ Every pilot draws a random start day, a random subset of cells, a new noise seed
 import json, sys
 import numpy as np, pandas as pd
 from sim import build
+from paths import RESULTS, DATA, DEMO, DOCS, CACHE, p as P_
 from engine import Rng, run_arm
 from agents import heuristic_agent
 
-O = "/home/claude/plumb/"
-w = build(seed=29, cache=O + "world2.npz", thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
-prm = json.load(open(O + "results_v2.json"))["world2_confirmation"]["prm"]
+w = build(seed=29, cache=P_(CACHE, "world2.npz"), thin_rng=(80, 700), mid=(5, 12, 18, 24, 30, 38))
+prm = json.load(open(P_(RESULTS, "results_v2.json")))["world2_confirmation"]["prm"]
 HP = dict(blind=0.35, catch=0.6, catch_noted=0.9, false_override=0.10, fallback_hold=0.5)
 N_REP = int(sys.argv[1]) if len(sys.argv) > 1 else 200
 SHADOW = 7
@@ -89,5 +89,5 @@ if __name__ == "__main__":
                low_adoption=summarize(weak) if weak else None, example=rows[0],
                rows=[{a: (None if b != b else round(b, 4)) for a, b in r.items()} for r in rows],
                null_lifts=[round(r['lift'], 4) for r in null])
-    json.dump(res, open(O + f"pilot_{k}.json", "w"), indent=1)
+    json.dump(res, open(P_(RESULTS, f"pilot_{k}.json"), "w"), indent=1)
     print("done", k)

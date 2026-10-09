@@ -41,7 +41,10 @@ NOISE_T = ["Weekly sync moved to 4pm", "New ops dashboard link shared in channel
            "Reminder: update sprint tickets", "Invoice reconciliation for last month done"]
 
 
-def build(seed=11, P=40, D=180, cache="/home/claude/plumb/world.npz", thin_rng=(500, 2500), mid=()):
+def build(seed=11, P=40, D=180, cache=None, thin_rng=(500, 2500), mid=()):
+    if cache is None:
+        from paths import CACHE
+        cache = os.path.join(CACHE, "world1.npz")
     if os.path.exists(cache):
         z = np.load(cache, allow_pickle=True)
         w = {k: z[k] for k in z.files}

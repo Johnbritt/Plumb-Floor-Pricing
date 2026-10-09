@@ -1,14 +1,117 @@
-# PLUMB: floor pricing you can defend, or a plain "not enough signal"
-100xEngineers C7 capstone (solo). All data is synthetic.
+# PLUMB
 
-- `src/` simulator, engine, agent layer, evaluation
-- `data/` synthetic datasets; `results/` metrics and figures
-- `demo/plumb_product.html` offline copy of the product demo
-- `docs/CASE_STUDY.md` full write-up; `workflow.json` pipeline; `DEMO_VIDEO_SCRIPT.md`
+**A floor price you can defend, or a plain "not enough signal."**
+PLUMB is a floor-pricing partner for ad operations: a statistics layer proposes each floor, an agent decides how far to trust it (and can refuse), and a person makes the call. All data here is synthetic.
 
-Run: `pip install -r requirements.txt`, then from `src/`: `python evaluate.py`, `python make_report.py`.
-Headline (held-out world, simulation): 95.0% of best-possible revenue vs 78.7% manual; harmful moves 2.9% vs 16.3%.
-Limits: the agent here is an offline keyword stand-in; the Claude backend is mock-tested only. No user interviews or pilot yet.
+[![ci](https://github.com/Johnbritt/Plumb-Floor-Pricing/actions/workflows/ci.yml/badge.svg)](https://github.com/Johnbritt/Plumb-Floor-Pricing/actions/workflows/ci.yml)
+
+100xEngineers Cohort 7 capstone, solo submission.
+
+## Live
+
+| | |
+|---|---|
+| Product demo | https://claude.ai/artifact/MNNzpuFdRgiEo9JpKSQ2uE (tabs: Overview, Floor desk, Results, Pilot, Case study, Architecture) |
+| Offline copy | [`demo/plumb_product.html`](demo/plumb_product.html), open it in any browser |
+| Case study | the demo's Case study tab, or [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) |
+| Pipeline JSON | [`workflow.json`](workflow.json) |
+| Demo script | [`DEMO_VIDEO_SCRIPT.md`](DEMO_VIDEO_SCRIPT.md) |
+
+## What it does
+
+- Fits revenue per 1,000 requests against log floor over the last 21 days for each placement (a "cell") and proposes a floor with a predicted gain and an uncertainty band. Plain statistics, no model.
+- An agent reads the ops notes and returns a *trust plan*: hold on an outage, drop a bad reporting day, allow only a raise before a surge, ignore a benign alert. It never writes a price.
+- The engine applies the plan deterministically: hard refusals for thin traffic or a barely varied floor, and a step shrunk by confidence and capped at 25% a day.
+- A person accepts, holds, or sets their own floor in the floor desk. Every refusal comes back with its reason.
+
+![Floor desk](docs/screens/3-floor-desk-revealed.png)
+
+## Results (synthetic, held-out world)
+
+Gates were tuned on one simulated world and scored on a fresh one with thinner cells. 40 cells, 120 days, closed loop, same random draws across arms.
+
+| Arm | Revenue vs best possible floor | Harmful moves | Calls refused |
+|---|---|---|---|
+| Ops alone (modelled manual habit) | 78.7% | 16.3% | 0% |
+| Statistics layer, full step | 98.3% | 6.2% | 0% |
+| Statistics layer, confidence-scaled step | 96.1% | 2.6% | 0% |
+| Stats plus rule refusal | 95.0% | 3.0% | 17.7% |
+| Stats plus agent refusal | 95.0% | 2.9% | 20.3% |
+| Ops plus agent (the pair) | 95.3% | 6.1% | 19.5% |
+
+What this does and does not show:
+- The statistics layer produces the revenue gain, about 17 to 20 points over the modelled manual process.
+- Refusal is a safety feature that costs 2 to 3 points of revenue in exchange for fewer harmful moves.
+- The agent here is an offline keyword stand-in, not Claude, and it does not beat the plain rule baseline. The claim that an agent adds value is not proven. The Claude backend (`make_llm_agent`) is mock-tested only.
+- The human in the pair arm is assumed and swept in a sensitivity analysis. It does not beat the model alone.
+
+Design iterations, including the hard-gate version that refused 82% of days and cost revenue, are in [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) and `results/results_v1.json`.
 
 ## Pilot simulation
-`src/pilot_sim.py` simulates the proposed pilot (matched pairs, shadow week, half of cells on PLUMB) 100 times per design, with an A/A control and a low-adoption case. Run `python3 pilot_sim.py 100 four_weeks` (also `as_written`, `forty_cells`). Results are in `results/pilot_*.json`. Finding: the plan as first written cannot separate a real gain from noise; the revised design is 40 cells for 5 weeks judged on a confidence bound against matched cells.
+
+[`src/pilot_sim.py`](src/pilot_sim.py) simulates the proposed pilot: matched pairs, a shadow week, then half the cells on PLUMB, 100 runs per design plus an A/A control. The plan as first written (20 cells, one live week) cannot separate a real gain from noise, and its 5% harmful-move limit is below what the system itself produces. The revised design is 40 cells for five weeks, judged on a confidence bound against matched manual cells. See the Pilot tab in the demo.
+
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Simulator and engine | Python, NumPy, pandas |
+| Agent layer | Keyword stand-in (default), Claude backend via the Anthropic SDK (optional) |
+| Demo | One self-contained HTML page, no backend, data baked in |
+| Checks | pytest, GitHub Actions |
+
+Details in [`ARCHITECTURE.md`](ARCHITECTURE.md).
+
+## Project structure
+
+```
+src/
+  sim.py            world generator: second-price auction with a floor, events, free-text notes
+  engine.py         stats fit, gates, confidence step, simulated ops habit, closed-loop run
+  agents.py         heuristic_agent, make_llm_agent, prompt and plan schema
+  evaluate.py       tune on world 1, freeze, score on world 2
+  pilot_sim.py      pilot simulation
+  demo_data2.py     snapshots 40 cells on three eventful days for the demo
+  build_product.py  bakes results into the demo page
+  make_report.py    exports the synthetic datasets, figures and case study
+  paths.py          file locations
+data/               synthetic datasets (daily cells, ground truth, ops notes)
+results/            metrics, tuning grids, decisions, figures, pilot results
+demo/               product template, baked page, demo data
+docs/               case study and screenshots
+tests/              pytest checks
+workflow.json       pipeline description
+```
+
+## Data
+
+Everything is generated by `src/sim.py` from fixed seeds. There is no real ad-stack, publisher or customer data anywhere in this repo. Datasets: `data/synthetic_daily_cells.csv` (7,200 cell-days under manual pricing), `synthetic_ground_truth.csv` (true best floor and event flags), `synthetic_ops_notes.csv` (what the agent reads) and `synthetic_ops_notes_truth.csv` (same, with the true note type).
+
+## Run it locally
+
+```bash
+pip install -r requirements.txt
+pytest -q                                   # about 2 seconds
+cd src
+python3 evaluate.py                         # tune, freeze, score; writes results/
+python3 make_report.py                      # datasets, figures, case study
+python3 pilot_sim.py 100 four_weeks         # also: as_written, forty_cells
+python3 demo_data2.py && python3 build_product.py   # rebuild demo/plumb_product.html
+```
+
+Generated worlds are cached in `.cache/` and rebuild deterministically from the seeds. To try the Claude agent, set `ANTHROPIC_API_KEY` and swap `heuristic_agent` for `make_llm_agent()` in `evaluate.py`. Run it on a sample of cells first, because it makes one API call per decision.
+
+## Known limitations
+
+- The manual-pricing arm is a model of ops behaviour, not a measurement. The size of the gap to ops depends on it.
+- Simulated bidders do not react to floors. Real bidders do.
+- The human in the pair arm is an assumption, shown as a sensitivity analysis.
+- Refusing on thin cells freezes learning, so those cells need a small randomized floor test. Not built yet.
+- Holding through an outage can cost revenue, because an outage probably lowers the best floor. The agent should adjust direction, not only hold.
+- There are no user interviews, no pilot and no signed commitment yet. Figures labelled Assumption in the demo are estimates, not measurements.
+
+## Next
+
+1. Run the Claude-backed agent on a sample and compare against the rule arm.
+2. Add the randomized floor test for thin cells and re-score.
+3. Run the revised pilot and replace the modelled ops habit with real decisions from a shadow week.
