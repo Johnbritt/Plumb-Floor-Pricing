@@ -23,7 +23,6 @@ Full walkthrough (about 2 minutes, no audio): [`docs/media/plumb_walkthrough.mp4
 |---|---|
 | Product demo | https://plumb-floor-pricing-demo.vercel.app (tabs: Overview, Floor desk, Results, Pilot, Case study, Architecture) |
 | Web app | `uvicorn app.main:app` (see [Run the web app](#run-the-web-app)) |
-| Offline copy | [`demo/plumb_product.html`](demo/plumb_product.html), open it in any browser |
 | Case study | https://plumb-floor-pricing-demo.vercel.app/#case, [PDF on Drive](https://drive.google.com/file/d/1QwukpT_6SO-xlgbReuY_GJ-QS8Q7R0-F/view?usp=sharing) ([in repo](docs/PLUMB_Case_Study.pdf)), or [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) |
 | Pitch deck (Slides) | https://docs.google.com/presentation/d/1m3aTNOrSx-chyzpYhw6lZj0XDbfQKfaHLiLXOtkeatU/edit?usp=sharing |
 | Demo video | [Product walkthrough on Drive](https://drive.google.com/file/d/1JGBBPzHxYWsa7dIzhTl8PS7_pQoKQXAo/view?usp=sharing) |
@@ -136,7 +135,7 @@ cd src
 python3 evaluate.py                         # tune, freeze, score; writes results/
 python3 make_report.py                      # datasets, figures, case study
 python3 pilot_sim.py 100 four_weeks         # also: as_written, forty_cells
-python3 demo_data2.py && python3 build_product.py   # rebuild demo/plumb_product.html
+python3 demo_data2.py && python3 build_product.py   # rebuild demo/index.html
 ```
 
 Generated worlds are cached in `.cache/` and rebuild deterministically from the seeds. To try the Claude agent, set `ANTHROPIC_API_KEY` and swap `heuristic_agent` for `make_llm_agent()` in `evaluate.py`. Run it on a sample of cells first, because it makes one API call per decision.
