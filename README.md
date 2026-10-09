@@ -80,7 +80,7 @@ What this does and does not show:
 - The agent here is an offline keyword stand-in, not Claude, and it does not beat the plain rule baseline. The claim that an agent adds value is not proven. The Claude backend (`make_llm_agent`) is mock-tested only.
 - The human in the pair arm is assumed and swept in a sensitivity analysis. It does not beat the model alone.
 
-Design iterations, including the hard-gate version that refused 82% of days and cost revenue, are in [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md) and `results/results_v1.json`.
+Design iterations, including the hard-gate version that refused 82% of days and cost revenue, are in [`docs/CASE_STUDY.md`](docs/CASE_STUDY.md), [`docs/RESULTS_DETAIL.md`](docs/RESULTS_DETAIL.md) and `results/results_v1.json`.
 
 ## Pilot plan, checked on sample data
 
