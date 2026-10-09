@@ -1,6 +1,6 @@
 # PLUMB: results on sample data (synthetic)
 
-**Everything here is computed on a synthetic sample dataset. No TapMind or other official data was used.** The data generator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
+**Everything here is computed on a synthetic sample dataset. No employer, customer or platform data was used.** The data generator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
 
 ## What was built
 | Piece | What it does |

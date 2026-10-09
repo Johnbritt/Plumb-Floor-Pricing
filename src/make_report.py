@@ -71,7 +71,7 @@ ks = [1, 2, 3, 5, 10, 20]
 for a in ARMS:
     a0.plot(ks, [H["harm_multiplier"][str(k)][a] * 100 for k in ks], marker="o", color=COL[a], label=SHORT[a], lw=2 if a in ("stats", "agent") else 1.3)
 a0.set_xscale("log"); a0.set_xticks(ks); a0.set_xticklabels(ks)
-a0.set_xlabel("Penalty multiplier on harmful moves\n(bidder reaction, not simulated)"); a0.set_ylabel("% of oracle revenue captured")
+a0.set_xlabel("Penalty multiplier on harmful moves\n(bidder reaction, not modelled)"); a0.set_ylabel("% of oracle revenue captured")
 a0.set_title("When does refusal start to pay?", loc="left", fontweight="bold", fontsize=10); a0.grid(alpha=0.25)
 a0.set_ylim(35, 101); a0.legend(frameon=False, fontsize=7.5, loc="lower left")
 sens = pd.DataFrame(H["sensitivity"])
@@ -98,15 +98,15 @@ plt.savefig(P_(RESULTS, "fig2_sensitivity.png"), dpi=170, bbox_inches="tight"); 
 A = H["arms"]; D = H["diffs"]; rf = H["refusal_agent"]; ph = H["pair_human"]
 v1r, v1s = V1["arms"]["rule"], V1["arms"]["stats"]
 sens_min, sens_max = sens.vs_agent.min() * 100, sens.vs_agent.max() * 100
-md = f"""# PLUMB: simulation results (synthetic data only)
+md = f"""# PLUMB: results on sample data (synthetic)
 
-**Everything here comes from a simulator. No TapMind or other official data was used.** The simulator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
+**Everything here is computed on a synthetic sample dataset. No employer, customer or platform data was used.** The data generator builds a bid landscape per placement cell, so the best floor is known exactly for every cell and day. That is what lets us score decisions properly. It also means every number below describes the simulated world, not your ad stack.
 
 ## What was built
 | Piece | What it does |
 |---|---|
 | `sim.py` | 40 placement cells x 180 days. Second-price auction with a floor, daily demand shocks, and four event types: bidder outage, demand surge, reporting glitch, demand regime shift. Each event may or may not leave a free-text ops note; decoy and benign notes are added. |
-| `engine.py` | Stats layer (quadratic revenue-vs-floor fit on the last 21 days, uncertainty on the predicted gain), rule gate, closed-loop runner where each arm lives with its own floor history, simulated ops person. |
+| `engine.py` | Stats layer (quadratic revenue-vs-floor fit on the last 21 days, uncertainty on the predicted gain), rule gate, closed-loop runner where each arm lives with its own floor history, modelled ops person. |
 | `agents.py` | Agent layer behind one interface. **Offline stand-in** (keyword rules over the notes) is what produced the numbers below. **Claude backend** is wired and unit-tested with a mock, but not run: this session has no API key. |
 | `evaluate.py` | Six arms, cluster bootstrap over cells, refusal accounting, human-catch accounting, sensitivity sweeps. |
 
@@ -120,7 +120,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 ![results](../results/fig1_results.png)
 
 ## Scorecard against the submission's claims
-| Claim in the doc | Verdict in the simulator | Evidence |
+| Claim in the doc | Verdict on the sample data | Evidence |
 |---|---|---|
 | The pair beats ops alone | **Supported** (but see caveat 1) | {pt(D['pair-ops']['point'])} pts, CI {pt(D['pair-ops']['ci'][0])} to {pt(D['pair-ops']['ci'][1])} |
 | The pair beats the model alone | **Not supported** | {pt(D['pair-agent']['point'])} pts, CI {pt(D['pair-agent']['ci'][0])} to {pt(D['pair-agent']['ci'][1])}; across 36 human-behaviour settings it ranges {sens_min:+.1f} to {sens_max:+.1f} pts |
@@ -128,7 +128,7 @@ Evaluation protocol: gate thresholds tuned on 10 dev cells of world 1, then froz
 | The agent beats a plain rule (Null Test) | **Not shown** by the stand-in | agent minus rule: {pt(D['agent-rule']['point'])} pts, CI {pt(D['agent-rule']['ci'][0])} to {pt(D['agent-rule']['ci'][1])}. The stand-in is itself a rule set, so this needs the Claude run |
 | The human catches what the agent misses | **Weak** | {ph['caught']} of {ph['harmful_recs']} harmful recs caught; net ${ph['usd_from_catches']:+.0f}. Wrong overrides ({ph['wrong_overrides']}, at an assumed 10% false-override rate) cost ${ph['usd_lost_wrong_overrides']:,.0f} |
 
-**The honest headline:** the statistical layer does almost all the work, about {abs(D['stats-ops']['point'])*100:.0f} points over the simulated manual process. Refusal is a safety feature that costs some revenue in this world. The model's own contribution is unproven until the Claude backend is run.
+**The honest headline:** the statistical layer does almost all the work, about {abs(D['stats-ops']['point'])*100:.0f} points over the modelled manual process. Refusal is a safety feature that costs some revenue in this world. The model's own contribution is unproven until the Claude backend is run.
 
 ## Design changes the findings forced (use these for the build-journey slide)
 1. **Hard significance gate refused {pc(v1r['refuse_rate'])} of days (v1) and cost {abs(v1r['capture']-v1s['capture'])*100:.1f} pts vs the unguarded stats layer.** Replaced with a confidence-scaled step: refuse only on data-quality problems, otherwise let confidence shrink the move. Refusals fell to {pc(A['rule']['refuse_rate'])}.
@@ -146,7 +146,7 @@ Left: if a harmful move carries a penalty beyond its same-day revenue loss (bidd
 3. **The pair arm uses an assumed human** (accept, catch and false-override rates). It is a sensitivity analysis, not a measurement.
 4. **The agent arm is a keyword stand-in, not Claude.** Do not present it as an LLM result.
 5. Two synthetic worlds, one seed each. Intervals are cluster bootstraps over cells, so they do not capture world-to-world variation.
-6. The $2.5K to $5K a month figure in the doc is not supported by this simulation. Simulated gains are percentages of oracle revenue, not rupees.
+6. The $2.5K to $5K a month figure in the doc is not supported by this analysis. The gains here are percentages of oracle revenue, not rupees.
 
 ## Files
 `synthetic_daily_cells.csv` (7,200 cell-days under manual pricing: requests, floor, fill, revenue), `synthetic_ground_truth.csv` (true best floor and event flags), `synthetic_ops_notes.csv` (what the agent reads), `synthetic_ops_notes_truth.csv` (same plus true note type), `eval_decisions_world2.csv` (all decisions, all arms), `results_v1.json`, `results_v2.json`, `tuning_grid_v1.csv`, `tuning_grid_v2.csv`, and the code.

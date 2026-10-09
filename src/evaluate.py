@@ -106,7 +106,7 @@ def evaluate(w, rg, placements, prm, hp, hp_grid=True):
                              override_rate=float(m[~m.refused_ag].human.str.contains("override").mean()),
                              actions=pr.human.value_counts().to_dict())
 
-    # penalty multiplier on harmful moves (bidder reaction / persistence, not simulated)
+    # penalty multiplier on harmful moves (bidder reaction / persistence, not modelled)
     mult = {}
     for k in [1, 2, 3, 5, 10, 20]:
         row = {}

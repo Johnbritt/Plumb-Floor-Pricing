@@ -166,7 +166,7 @@ def decide_system(mode, w, notes_p, p, d, hf, hR, vmed, prm, agent):
 
 
 def human_step(rg, p, d, anomaly, noted, refused, rec, cur, manual, hp):
-    """Simulated ops person. Parameters are assumptions, swept in the sensitivity analysis."""
+    """Modelled ops person. Parameters are assumptions, swept in the sensitivity analysis."""
     u = rg.uh[p, d]
     if refused:
         if anomaly and u[0] < hp["catch"]:

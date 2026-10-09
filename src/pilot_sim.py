@@ -1,4 +1,4 @@
-"""Simulates the pilot plan (shadow week, then half of cells on PLUMB, matched control) many times.
+"""Runs the pilot design on the sample data many times (shadow week, then half of cells on PLUMB, matched control).
 Run: python3 pilot_sim.py   -> pilot_results.json
 Every pilot draws a random start day, a random subset of cells, a new noise seed and a random treatment split inside matched pairs.
 """

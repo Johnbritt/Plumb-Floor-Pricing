@@ -1,5 +1,5 @@
 # PLUMB demo video (about 3 min)
-1. 0:00 Overview tab. "Ad ops set floors by hand across dozens of placements. PLUMB proposes, explains, refuses, and the person decides." Point at the validation-status box: simulation only.
+1. 0:00 Overview tab. "Ad ops set floors by hand across dozens of placements. PLUMB proposes, explains, refuses, and the person decides." Point at the "About the data" note: every figure is on a synthetic sample dataset; real platform data is confidential.
 2. 0:30 Floor desk. Filter Hold, open one. Show the ops note and why PLUMB held.
 3. 1:00 Open a Recommend row. Chart: history, fitted curve, uncertainty. Click Accept, then override one with your own floor.
 4. 1:30 Apply PLUMB calls to all, then Reveal tomorrow. Show your day vs habit vs best possible.

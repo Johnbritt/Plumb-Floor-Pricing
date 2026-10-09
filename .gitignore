@@ -7,3 +7,4 @@ var/
 *.db-wal
 *.db-shm
 .env
+demo/plumb_product_fragment.html
