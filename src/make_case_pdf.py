@@ -17,7 +17,8 @@ CSS = """
 *{box-sizing:border-box}
 body{font:10.5pt/1.55 "Geist",Inter,system-ui,sans-serif;color:var(--ink);margin:0}
 .cover{background:var(--ink);color:#fff;margin:0 0 6mm;padding:12mm 11mm 11mm;border-top:2.2mm solid var(--accent);-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.brand{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.lg{display:flex;align-items:center;gap:3mm;font-weight:700;letter-spacing:.16em;font-size:14pt}
+.brand{margin-top:6mm;font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
 .cover h1{font-size:32pt;line-height:1.08;margin:5mm 0 4mm;letter-spacing:-.02em}
 .cover .tag{font-size:13.5pt;line-height:1.4;color:#e8e8e6;max-width:150mm}
 .cover .by{margin-top:7mm;font-size:9.5pt;color:#b9b9b6}
@@ -37,7 +38,7 @@ td:not(:first-child),th:not(:first-child){font-variant-numeric:tabular-nums;whit
 tr:nth-child(even) td{background:#fafaf9}
 """
 html = f"""<!doctype html><meta charset=utf-8><style>{CSS}</style>
-<div class=cover><div class=brand>PLUMB &nbsp;·&nbsp; Case study</div><h1>Floor pricing,<br>with a human in charge</h1>
+<div class=cover><div class=lg><svg width="22" height="26" viewBox="0 0 22 26"><line x1="11" y1="0" x2="11" y2="10" stroke="#fff" stroke-width="2"/><path d="M11 10 L19 19 L11 26 L3 19 Z" fill="#ff5b14"/></svg><span>PLUMB</span></div><div class=brand>Case study</div><h1>Floor pricing,<br>with a human in charge</h1>
 <div class=tag>{tag}</div><div class=by>{by[3:]}</div></div>
 <div class=note>{note}</div>{body}"""
 out = R/"docs/PLUMB_Case_Study.pdf"
