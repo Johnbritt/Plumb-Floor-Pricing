@@ -16,9 +16,9 @@ CSS = """
 :root{--ink:#0b0b0c;--muted:#5d5d63;--line:#e4e4e1;--accent:#ff5b14;--accent-ink:#c93d00;--soft:#fff0e7;--bg:#f6f6f5}
 *{box-sizing:border-box}
 body{font:10.5pt/1.55 "Geist",Inter,system-ui,sans-serif;color:var(--ink);margin:0}
-.cover{background:var(--ink);color:#fff;margin:-16mm -16mm 8mm;padding:16mm 16mm 12mm}
+.cover{background:var(--ink);color:#fff;margin:0 0 6mm;padding:12mm 11mm 11mm;border-top:2.2mm solid var(--accent);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .brand{font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.cover h1{font-size:34pt;line-height:1.05;margin:6mm 0 4mm;letter-spacing:-.02em}
+.cover h1{font-size:32pt;line-height:1.08;margin:5mm 0 4mm;letter-spacing:-.02em}
 .cover .tag{font-size:13.5pt;line-height:1.4;color:#e8e8e6;max-width:150mm}
 .cover .by{margin-top:7mm;font-size:9.5pt;color:#b9b9b6}
 .note{background:var(--soft);border-left:3px solid var(--accent);padding:3mm 4mm;font-size:9.5pt;color:#5a2a10;margin:0 0 6mm}
